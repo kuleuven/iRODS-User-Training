@@ -338,7 +338,7 @@ For instance, you can query the data size and and quantity of the data object yo
 +--------------+-----------+-----------+
 | D_OWNER_NAME | D_DATA_ID | DATA_SIZE |
 +--------------+-----------+-----------+
-| u0137480     | 11        | 157312    |
+| userName     | 11        | 157312    |
 +--------------+-----------+-----------+
 ```
 

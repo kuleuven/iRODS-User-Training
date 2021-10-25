@@ -6,10 +6,10 @@ You will be provided with your zone name and an URL to access to that in the tra
 
 For now, we don’t have any federated zones. However, we can federate zones in the future to facilitate data transfer between zones.
 
-For your all questions and requests you can send an email to our service placeholder@iRODSservicedesk.be
+For your all questions and requests you can send an email to our service ...
 
 Time to time you can receive a notification email from the email address below to be informed about changes, updates or maintenances with iRODS. Please pay attention to those mails.
-Mailing list: PLACEHOLDER@iRODSkuleuven.be
+Mailing list: 
 
 
 ## Prerequisites
