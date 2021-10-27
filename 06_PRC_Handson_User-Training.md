@@ -485,8 +485,8 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
     <summary>Making a local directory for the files</summary>
     
 ```py
-current_directory = os.getcwd()
-os.makedirs(current_directory + "/molecules")    
+    current_directory = os.getcwd()
+    os.makedirs(current_directory + "/molecules")    
 ```    
 
 </details>
@@ -495,9 +495,9 @@ os.makedirs(current_directory + "/molecules")
     <summary>Downloading the files</summary>
     
 ```py 
-collection = session.collections.get("/zone/home/username/molecules")
-    for data_object in collection.data_objects:
-        session.data_objects.get(data_object.path, './molecules')
+    collection = session.collections.get("/zone/home/username/molecules")
+        for data_object in collection.data_objects:
+            session.data_objects.get(data_object.path, './molecules')
 ```    
 
 </details> 
@@ -506,17 +506,17 @@ collection = session.collections.get("/zone/home/username/molecules")
     <summary>Counting the hydrogen atoms and writing the result to a file</summary>
     
 ```py    
-# Counting hydrogen atoms
-hydrogen_count=0
-for i in os.listdir("./molecules"):
-    with open("./molecules/"+i, "r") as file:
-        for character in file.read():
-            if character == "H":
-                hydrogen_count += 1
+    # Counting hydrogen atoms
+    hydrogen_count=0
+    for i in os.listdir("./molecules"):
+        with open("./molecules/"+i, "r") as file:
+            for character in file.read():
+                if character == "H":
+                    hydrogen_count += 1
     
-# Write hydrogen count to a file
-with open("hydrogen_count.txt", 'w') as file:
-    file.write(str(hydrogen_count))
+    # Write hydrogen count to a file
+    with open("hydrogen_count.txt", 'w') as file:
+        file.write(str(hydrogen_count))
 ```    
 
 </details>
@@ -525,8 +525,8 @@ with open("hydrogen_count.txt", 'w') as file:
     <summary>Uploading the result to iRODS</summary>
     
 ```py    
-# Upload results to iRODS
-session.data_objects.put("hydrogen_count.txt", "/zone/home/username/molecules/hydrogen_count.txt")
+    # Upload results to iRODS
+    session.data_objects.put("hydrogen_count.txt", "/zone/home/username/molecules/hydrogen_count.txt")
 ```    
 
 </details>
@@ -536,8 +536,8 @@ session.data_objects.put("hydrogen_count.txt", "/zone/home/username/molecules/hy
 ### Exercise 3: searching files based on metadata
 
 Adapt your script from the previous exercise:  
-instead of downloading all files, make a query that
-lists all files with the AVU 'kind: organic', and downloads these.
+instead of downloading all data objects, make a query that
+lists the data objects with the AVU 'kind: organic', and downloads these.
 The rest of the script can stay the same.
 
 Which number of hydrogen atoms do you get now? 
@@ -545,7 +545,37 @@ Which number of hydrogen atoms do you get now?
 <details>
 <summary>Solution</summary>
 
+Add the following import statements to your script, 
+for example at the beginning:
 
+```py
+from irods.column import Criterion
+from irods.models import DataObject, DataObjectMeta, Collection
+```
+
+Then, replace the following part 
+
+```py 
+    collection = session.collections.get("/zone/home/username/molecules")
+        for data_object in collection.data_objects:
+            session.data_objects.get(data_object.path, './molecules')
+```    
+
+with this:
+
+```py
+    # Executing the query
+    results = session.query(Collection.name, DataObject.name).filter( \
+        Criterion("=", DataObjectMeta.name, "kind")).filter( \
+        Criterion("=", DataObjectMeta.value, "organic"))
+
+    # Downloading the files        
+    for result in results:
+        dataobject_path = result[Collection.name] + "/" + result[DataObject.name]
+        session.data_objects.get(dataobject_path, './molecules')
+``` 
+
+The hydrogen count should now be 22.
 
 
 </details>
