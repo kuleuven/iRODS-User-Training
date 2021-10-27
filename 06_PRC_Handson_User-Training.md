@@ -344,10 +344,107 @@ For instance, you can query the data size and and quantity of the data object yo
 
 ##  Exercises 
 
-### Exercise 1: stage in/stage out
+### Exercise 1: uploading data
 
-- Upload the molecules directory (in the 'data' folder of this repository) to iRODS. 
-You can do this as follows: `iput -r molecules`
+Make a script that does the following:
+
+- Make a collection in your home called 'chemistry'  
+Tip: if you already had this folder from another training session, you can remove it via the command line with `irm -r molecules`
+- Upload all files from the molecules directory
+- Add the AVU 'kind: organic' to any organic molecules.
+- Add the AVU 'kind: inorganic' to any inorganic molecules.  
+Tip: organic molecules are the ones which have carbon (C) atoms inside of them.  
+Feel free to take a look inside of the files.
+
+
+<details>
+    <summary>Solution</summary>
+
+Step by step:
+
+<details>
+    <summary>Starting an iRODS session</summary>
+    
+```py    
+import os
+import ssl
+from irods.session import iRODSSession
+try:
+    env_file = os.environ['IRODS_ENVIRONMENT_FILE']
+except KeyError:
+    env_file = os.path.expanduser('~/.irods/irods_environment.json')
+
+ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH, cafile=None, capath=None, cadata=None)
+ssl_settings = {'ssl_context': ssl_context}
+
+# Creating a session
+with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
+```    
+
+</details>
+
+<details>
+    <summary>Creating a collection</summary>
+    
+```py
+    collection = session.collections.create("/zone/home/username/molecules")
+```    
+
+</details>
+
+<details>
+    <summary>Uploading the files</summary>
+    
+```py    
+    # Listing the files
+    # This can be hardcoded, but with the os module, 
+    # we can also do this automatically.
+    directory = "/path/to/the/molecules/directory"
+    files = os.listdir(directory)
+```  
+
+```py 
+    # uploading files
+    for filename in files:
+        source = directory + "/" + filename
+        destination = collection.path + "/" + filename
+        session.data_objects.put(source, destination)
+```
+
+</details>
+
+
+<details>
+    <summary>Adding metadata</summary>
+    
+```py    
+    # adding metadata to organic molecules
+    organic_molecules = ["c6h6.xyz", "ch2och2.xyz", "ch3cooh.xyz", "isobutene.xyz"]
+    attribute = "kind"
+    value = "organic"
+    for molecule in organic_molecules:
+        obj = session.data_objects.get(collection.path + "/" + molecule)
+        obj.metadata.add(attribute, value)
+
+
+
+    # adding metadata to inorganic molecules
+    inorganic_molecules = ["alcl3.xyz","no2.xyz","sih4.xyz"]
+    # the variable 'attribute' is still set to 'kind'
+    value = "inorganic"
+    for molecule in inorganic_molecules:
+        obj = session.data_objects.get(collection.path + "/" + molecule)
+        obj.metadata.add(attribute, value)
+```    
+
+</details>
+
+</details>
+
+
+
+### Exercise 2: stage in/stage out
+
 - Make a script that does the following:
     - Make a local folder with the name 'molecules'
     - Download all molecule files from iRODS to the local molecules folder
@@ -433,5 +530,22 @@ session.data_objects.put("hydrogen_count.txt", "/zone/home/username/molecules/hy
 ```    
 
 </details>
+
+</details>
+
+### Exercise 3: searching files based on metadata
+
+Adapt your script from the previous exercise:  
+instead of downloading all files, make a query that
+lists all files with the AVU 'kind: organic', and downloads these.
+The rest of the script can stay the same.
+
+Which number of hydrogen atoms do you get now? 
+
+<details>
+<summary>Solution</summary>
+
+
+
 
 </details>
