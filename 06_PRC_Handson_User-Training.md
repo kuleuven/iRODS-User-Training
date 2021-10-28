@@ -342,7 +342,13 @@ For instance, you can query the data size and and quantity of the data object yo
 +--------------+-----------+-----------+
 ```
 
-##  Exercises 
+#  Exercises
+
+Let's do the exercises below! 
+
+
+Before starting the exercises, please clone the [git repository](https://github.com/kuleuven/iRODS-User-Training) of this training.
+You will find files for the exercises in the 'data' directory.
 
 ### Exercise 1: uploading data
 
