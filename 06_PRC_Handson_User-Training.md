@@ -445,12 +445,12 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
 
 ### Exercise 2: stage in/stage out
 
-- Make a script that does the following:
-    - Make a local folder with the name 'molecules'  
-    - Download all molecule files from iRODS to the local molecules folder
-    - Count the total amount of hydrogen atoms in these files
-    - Write the result to a file called 'hydrogen_count.txt'
-    - Upload hydrogen_count.txt to the 'molecules' collection in iRODS
+Make a script that does the following:
+- Make a local folder with the name 'molecules'  
+- Download all molecule files from iRODS to the local molecules folder
+- Count the total amount of hydrogen atoms in these files
+- Write the result to a file called 'hydrogen_count.txt'
+- Upload hydrogen_count.txt to the 'molecules' collection in iRODS
 
 
 <details>
@@ -537,7 +537,7 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
 
 Adapt your script from the previous exercise:  
 instead of downloading all data objects, make a query that
-lists the data objects with the AVU 'kind: organic', and downloads these.
+lists the data objects with the AVU 'kind: organic', and downloads these.  
 The rest of the script can stay the same.
 
 Which number of hydrogen atoms do you get now? 
