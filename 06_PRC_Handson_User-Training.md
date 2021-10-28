@@ -348,7 +348,7 @@ For instance, you can query the data size and and quantity of the data object yo
 
 Make a script that does the following:
 
-- Make a collection in your home called 'chemistry'  
+- Make a collection in your home called 'molecules' 
 Tip: if you already had this folder from another training session, you can remove it via the command line with `irm -r molecules`
 - Upload all files from the molecules directory
 - Add the AVU 'kind: organic' to any organic molecules.
