@@ -348,7 +348,7 @@ For instance, you can query the data size and and quantity of the data object yo
 
 Make a script that does the following:
 
-- Make a collection in your home called 'molecules' 
+- Make a collection in your home called 'molecules'  
 Tip: if you already had this folder from another training session, you can remove it via the command line with `irm -r molecules`
 - Upload all files from the molecules directory
 - Add the AVU 'kind: organic' to any organic molecules.
@@ -446,11 +446,11 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
 ### Exercise 2: stage in/stage out
 
 - Make a script that does the following:
-    - Make a local folder with the name 'molecules'
+    - Make a local folder with the name 'molecules'  
     - Download all molecule files from iRODS to the local molecules folder
     - Count the total amount of hydrogen atoms in these files
     - Write the result to a file called 'hydrogen_count.txt'
-    - Upload hydrogen_count.txt to the 'molecules' collection in iRODS.
+    - Upload hydrogen_count.txt to the 'molecules' collection in iRODS
 
 
 <details>
