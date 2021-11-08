@@ -16,6 +16,8 @@ The mentioned mail address:
 
 - A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones
 
+- Being a member of a project
+
 If you want to use iRODS' command line client (iCommands) or the python programming client (PRC), you need to have following:
 
 - A Linux client environment - a linux based operation system and terminal
@@ -84,7 +86,7 @@ sudo apt update
 sudo apt install irods-icommands
 ```
 
-If the above does not work for you (e.g., no support for Ubuntu 20), you can contact placeholder@iRODSservicedesk.be.
+If the above does not work for you (e.g., no support for Ubuntu 20), you can contact icts@kuleuven.be.
 
 ### How to Use Miniconda on Your Linux OS with PRC (Optional)
 
@@ -142,7 +144,7 @@ conda activate prc-irods
 |05_iCommands_Handson_User-Training.md|Explains how to use the command line client of iRODS|This module is mostly for the users and zones that work with command line interface - terminal|
 |06_PRC_Handson_User-Training.md|Explains how to use the programming client - the Python iRODS client (PRC) to iRODS|This module is mostly for the users and zones that want to interact with python|
 |/img (folder)|Place for images of the tutorials||
-|/molecules (folder)|Place for data objects (files)|will be used in the PRC|
+|/data (folder)|Place for data objects (files)|will be used in the PRC|
 |environment.yml|Contains a list of dependencies to install|for the users who want to use PRC|
 |README.md|Explains the goals and structure of this training repository||
 
@@ -155,7 +157,7 @@ conda activate prc-irods
 
  OR
 
-- Send an email to [placeholder@iRODSservicedesk.be](mailto:placeholder@iRODSservicedesk.be)
+- Send an email to [icts@kuleuven.be](mailto:icts@kuleuven.be)
 
 ### Fixing and/or improving documentation via GitHub
 
