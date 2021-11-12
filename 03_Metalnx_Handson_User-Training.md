@@ -49,38 +49,157 @@ This is the tab you will be using the most in Metalnx.
 
 **Trash**: Here you can see the files and collections moved to trash bin. All the collections and data objects that are deleted moves to the trash collection and they are permanently cleaned when they are older than 15 days. You can also use ‘Empty Trash’ button to empty the trash collection completely.
 
-Now let’s do some hands-on exercises:
+#  Exercises
 
-**Exercise 1: data objects, folders and metadata**:
+Let's do the exercises below! 
 
-- Create a metalnx_test collection under your home directory.
-- Upload a file inside the collection.
-- Click on 'view info' to see some basic information about this file.
-- Add one metadata AVU to the this uploaded file. (Attribute: Author, Value: your name).
-- Look at the preview of your file, and try to edit the file (note: you can only edit certain file types, like .txt files).
-- Rename your file to 'testfile'.
-- Download testfile to your local machine.
 
- **Exercise 2: metadata templates**:
+You can find the files used for the exercises in the [git repository](https://github.com/hpcleuven/KULeuven-iRODS-User-Training) of this training, in the 'data' folder.  
+You can download the files mentioned in the exercises as follows:  
+* Click on the file  
+* Click on 'raw'  
+* Right click and select 'save as'.  
+Alternatively, you can clone the repository from the command line.  
 
-- Create one public metadata template with the name of “test_training” and it has to include at least two AVUs.
-- Create one private metadata template with the name of your choice.
-- Add the private one on your testfile.
-- Add one of the public metadata templates on the metalnx_test collection.
 
-Take a look at the metadata of your collection and your uploaded file. As you can see, we can easily manage metadata on both collections and the files in them, even if they have different metadata.
+**Exercise 1: uploading and organizing**
 
-**Exercise 3: favorites and sharing**:
+- Download the file inflation.txt from data/economy
+- Create two collections called 'earth_science' and 'economy'.
+- Upload inflation.txt to the collection 'earth_science'.
+- You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Move the file to that collection.
+- Move into the 'economy' collection and check whether the file is actually there.
+- Move one level back and remove the 'earth_science' collection.
 
-- Add metalnx_test collection to your favorites.
-- Give “own” access permission to a friend and share this file link.
-- Check your shared tab if there are any files shared with you. (If not, ask me to share with you one.)
 
-**Exercise 4: deleting**:
-- Delete your file.
-- Delete metalnx_test collection.
-- Go to the trash tab and look at your deleted items.
-- Permanently delete the deleted file.
-- Move the deleted collection metalnx_test to the public collection.
 
-As you have seen we can do lots of data management operations easily with the Metalnx portal.
+<details>   
+  <summary>Solution</summary> 
+
+You start this exercise in the 'collections' tab.  
+- Use the 'create collection' button to create the collection 'earth_science'.    
+  This is the first of the four buttons on the upper right corner of the screen.     
+  Make the collection 'economy' in the same way.    
+- Click on the newly made 'earth_science' collection.  
+- Click on the upload button (third of the four buttons in the upper right corner).    
+  In the popup that opens, you can search the inflation.txt file on your local pc.  
+- Click on the tickbox next to inflation.txt. From the action menu, select 'move'.  
+  In the popup that appears, select your home collection, then 'economy'. Click the 'move' button.
+- Click on 'home' just above the navigation tool. 
+- Click on the tickbox next to the 'earth_science' and choose 'delete' from the action menu.
+
+
+</details>       
+
+  
+**Exercise 2: Editing and downloading**
+
+- You realise there is a mistake in the uploaded data object inflation.txt. 
+  Edit the data object so the inflation for 2021 is 1.4%. 
+- Rename the data object to 'inflation_corrected.csv'.
+- Download the edited file from iRODS.
+
+
+<details>
+    <summary>Solution</summary>
+You start this exercise in the 'collections' tab.  
+
+- Go to the economy folder and click on 'view info' next to inflation.txt. 
+- Click the 'preview' tab. There, you can edit the file and save your changes.
+- Select 'rename' on the action dropdown, and type 'inflation_corrected.csv'.
+- Click on the download button (rightmost button in the top right corner).
+
+</details>
+
+**Exercise 3: managing permissions**  
+Download the files patient1.csv and anonymized.csv from data/lifescience.  
+
+- Make a collection called 'lifescience' in your home and upload both files to it.
+- Give your group read access to the collection lifescience, recursively.
+- Oh no, we forgot something! While the data in anonymized.csv is anonymized, the other file contains sensitive data!  
+  Remove the read permissions for the group from patient1.csv.
+- Since the data in patient1.csv is sensitive, only colleagues who really need it can have access.   
+  Choose one of your colleagues and give this person write access to the file.
+- Check whether the permissions of both files are correctly set.
+
+
+<details>
+    <summary>Solution</summary>
+You start this exercise in the 'collections' tab.  
+
+- Use the 'create collection' button to create the collection 'lifescience'.    
+  This is the first of the four buttons on the upper right corner of the screen.
+- Click on the collection 'lifescience'.
+- Use the upload button (third of the four buttons in the upper right corner) to upload both files.
+- Click on the 'info' button (second of the four buttons in the upper right corner). This will bring you to the info page of the collection you are currently in.  
+- Select the permissions tab, click on the '+permissions' button and give your group read permissions. Be sure to tick the box 'Apply to subcollections and files'.
+
+- Go back to your home collection, and then to the lifescience collection. Click on the button 'view info' next to patient1.csv.
+- Go to the permissions tab. You should see here that your group has read permissions. Set these to 'none'
+- Click on the '+permissions' button and give a colleague write permissions. This should appear in the list of permissions.
+- Go back to the lifescience collection, click on 'view info' next to anonymized.csv, and click on the permissions tab. Your group should still have read access.  
+
+
+
+</details>
+
+
+**Exercise 4: working with metadata**  
+Download the files corpus1.txt, corpus2.txt and corpus3.txt from data/languages.  
+- Make a collection called 'languages' and upload the files to it.
+- Add the following AVU's to the files:
+    - Attrbute 'language' and value 'dutch' to corpus1.txt
+    - Attrbute 'language' and value 'french' to corpus2.txt
+    - Attrbute 'language' and value 'latin' to corpus3.txt
+- Oops, we made a mistake! Open the file corpus2.txt, and look what the language is.   
+  Overwrite the current AVU with one with the correct value.
+
+
+<details>
+    <summary>Solution</summary>
+    
+You start this exercise in the 'collections' tab.  
+
+- Use the 'create collection' button to create the collection 'languages'.      
+  This is the first of the four buttons on the upper right corner of the screen.  
+- Click on the languages collection.  
+- Use the upload button (third of the four buttons in the upper right corner) to upload the three files.  
+- Repeat the following steps for each of the files:  
+    - Click on the 'view info' icon next to the file.
+    - Click on the 'metadata' tab.
+    - Click on the '+metadata' button, fill in the fields, and click 'save'.
+    - Go back to the languages collection.
+- Go back to the 'view info' page of corpus2.txt.  
+  Click on the 'preview' tab to see which language corpus2.txt is written in (English).  
+  On the metadata tab, you'll see the avu 'Language: French'.   
+  Click on the 'edit' button to change this to 'English' and then save.
+
+
+</details>
+
+**Exercise 5: metadata templates**
+
+- Download the file biology/bird.JPG and upload it on Metalnx.  
+- Create a private metadata template with the name 'Biology_images'. Give it an appropriate description.  
+  It should contain the following attributes:  
+    -Type, with default value 'plant/animal'  
+    -Mammal, with default value 'no'  
+    -Flies, with default value 'no'   
+- Apply this template to bird.JPG.   
+
+
+
+<details>
+    <summary>Solution</summary>
+You start this exercise in the 'collections' tab.  
+
+- Use the upload button (third of the four buttons in the upper right corner) to upload bird.JPG.
+- Go to the 'Templates' tab and click on 'add template'.
+- Give in the name 'Biology_images', a short description, and set Access to 'private'.
+- Click on the '+metadata' button to add the three AVU's. You can leave the unit fields blank.
+- Go to the collections tab. Check the tickbox next to bird.jpg and select 'apply template' on the action menu. 
+- Select the newly made biology template. 
+- Switch the value of 'flies' to 'yes' and the value of 'type' to 'animal'. 
+- You can select the 'view info' button next to bird.jpg to see the added metadata.
+
+</details>
