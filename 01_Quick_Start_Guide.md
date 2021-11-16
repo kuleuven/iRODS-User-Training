@@ -28,7 +28,7 @@ If you want to use the python programming client (PRC) with a longer password du
 - A Linux client environment - a linux based operation system and terminal
 - Installed iCommands (also needed to use the PRC)
 - An installed python release
-- The Python iRODS Client (PRC) and a VSC-PRC extension of it to gain functionalities some extra tools
+- The Python iRODS Client (PRC)
 
 If you want to use the python programming client (PRC) with its default password duration (60 hours), you need to have following:
 
