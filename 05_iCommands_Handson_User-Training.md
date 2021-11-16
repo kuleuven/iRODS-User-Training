@@ -431,7 +431,7 @@ iquest attrs
 Let's do the exercises below! 
 
 
-Before starting the exercises, please clone the [git repository](https://github.com/hpcleuven/KULeuven-iRODS-User-Training) of this training.
+Before starting the exercises, please clone the [git repository](https://github.com/kuleuven/iRODS-User-Training) of this training.
 You will find files for the exercises in the 'data' directory.
 
 **Exercise 1: uploading and organizing**
