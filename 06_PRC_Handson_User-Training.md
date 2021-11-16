@@ -22,13 +22,15 @@ The following functionalities will be covered:
 
 ## Configuration of the iRODS connection
 
-We will use the environment file of iRODS to have a secure and longer session in PRC. Therefore we connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow the instructions of the section iRODS Linux Client. 
+We will use the environment file of iRODS to have a secure and longer session in PRC. Therefore we need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there. 
 
-In this way you will start an iRODS session that will last 7 days. 
+If you are using a Linux machine (including VMs and WSL2):
 
-After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
+- Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal,
 
-You can initiate an iRODS session in a secure way with the PRC by using the code snippet below:
+- Open your terminal, paste and execute the coppied snippet,
+
+- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below,
 
 ```py
 import os
@@ -45,6 +47,30 @@ ssl_settings = {'ssl_context': ssl_context}
 with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
     [your code here]
 ```
+
+- In this way you will start an iRODS session that will last 7 days,
+
+- After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
+
+If you are using a pure Windows machine (no available Linux OS via VMs and WSL2):
+
+- Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal,
+
+- If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the coppied snippet,
+
+- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the coppied snippet,
+
+- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below,
+
+```py
+import os, os.path
+from irods.session import iRODSSession
+env_file = os.getenv('IRODS_ENVIRONMENT_FILE', os.path.expanduser('~/.irods/irods_environment.json'))
+with iRODSSession(irods_env_file=env_file) as session:
+    [your code here]
+```
+
+- In this way you will start an iRODS session that will last 60 hours.
 
 ### How to work with the PRC
 
