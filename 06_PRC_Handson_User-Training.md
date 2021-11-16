@@ -15,10 +15,10 @@ The following functionalities will be covered:
 
 - Uploading and downloading data
 - Uploading and downloading data collections
+- Working with file-like objects
 - Adding and editing metadata
-- Setting access permissions for data objects and collections
+- ACLs for data objects and collections
 - Querying for data using user defined metadata
-- Using the VSC-PRC command line tools
 
 ## Configuration of the iRODS connection
 
@@ -182,6 +182,38 @@ For the python object having the `__dict__` attribute, you can use the builtin `
 >>> b=session.data_objects.get("/yourZone/home/userName/test1/test.txt", "/yourLocalPath/test.txt")
 >>> vars(b)
 {'manager': <irods.manager.data_object_manager.DataObjectManager object at 0x7f534659ef10>, 'collection': <iRODSCollection 10183 b'test1'>, 'id': 10198, 'collection_id': 10183, 'name': 'test.txt', 'replica_number': 0, 'version': None, 'type': 'generic', 'size': 25, 'resource_name': 'netapp', 'path': '/yourZone/home/userName/test1/test.txt', 'owner_name': 'userName', 'owner_zone': 'yourZone', 'replica_status': '1', 'status': None, 'checksum': None, 'expiry': '00000000000', 'map_id': 0, 'comments': None, 'create_time': datetime.datetime(2021, 10, 20, 20, 39, 45), 'modify_time': datetime.datetime(2021, 10, 20, 20, 59), 'resc_hier': 'default;netapp', 'resc_id': '10014', 'replicas': [<irods.data_object.iRODSReplica netapp>], '_meta': None}
+```
+
+### Getting and Setting Permissions
+
+The PRC make it possible to work with ACLs (Access Control Lists). You can list given permissions on a collection or on a data object. Also, adding a new ACL and modifying an existing one on a collection/data object in iRODS via the PRC is possible.
+
+Let's now create a new collection:
+
+```py
+>>> coll = session.collections.create("/yourZone/home/userName/permission")
+>>> coll.path
+'/yourZone/home/userName/permission'
+```
+
+You can list given permissions for a collection:
+
+```py
+>>> acl_coll = session.permissions.get(coll)[0]
+>>> acl_coll
+<iRODSAccess own /yourZone/home/userName/permission u0137480 yourZone>
+```
+
+You can add a new permission or change the existing one. To be able to add/modify ACLs, you should import relevant classes:
+
+```py
+>>> from irods.access import iRODSAccess
+>>> acl_dataObj = iRODSAccess("own", "/yourZone/home/userName/test.txt", "user2", "yourZone")
+>>> session.permissions.set(acl_dataObj)
+>>> data_obj = session.data_objects.get("/yourZone/home/userName/test.txt")
+>>> acl_dataObj = session.permissions.get(data_obj)[0]
+>>> acl_dataObj
+<iRODSAccess own /yourZone/home/userName/test.txt user2 yourZone>
 ```
 
 ### Reading and Writing Files
