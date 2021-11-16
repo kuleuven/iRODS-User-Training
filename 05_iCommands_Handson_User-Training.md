@@ -579,7 +579,8 @@ ibun -cDtar chemistry.tar chemistry
 
 **Exercise 6: working with metadata**
 
-- Go to data/languages. you will there find the files latincorpus.txt, englishcorpus.txt and dutchcorpus.txt.
+- Go to data/languages. you will there find the files corpus1.txt, corpus2.txt and corpus3.txt.   
+  These are so called 'text corpora', featuring a set of texts in a certain language.
 - Make a collection called 'languages' and upload the files to it.
 - Add the following AVU's to the files:
     - Attrbute 'language' and value 'dutch' to corpus1.txt
