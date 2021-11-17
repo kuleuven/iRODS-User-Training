@@ -21,12 +21,12 @@ The mentioned mail address:
 If you want to use iRODS' command line client (iCommands), you need to have following:
 
 - A Linux client environment - a linux based operation system and terminal
-- Installed iCommands (also needed to use the PRC)
+- Installed iCommands
 
 If you want to use the python programming client (PRC) with a longer password duration (7 days), you need to have following:
 
 - A Linux client environment - a linux based operation system and terminal
-- Installed iCommands (also needed to use the PRC)
+- Installed iCommands
 - An installed python release
 - The Python iRODS Client (PRC)
 

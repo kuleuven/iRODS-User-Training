@@ -2,8 +2,6 @@
 
 *Prerequisites:*  
 *-A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones*  
-*-A Linux client environment - a linux based operation system and terminal*  
-*-Basic knowledge of command line (Bash)*  
 *-Basic knowledge of Python*    
 
 This training introduces you to the basics of using the iRODS client API implemented in Python. The Python iRODS Client (PRC) is a programming client of iRODS. The main goal of PRC is to offer researchers means to manage their data in python. With the help of this client, users can manage their research data. Currently supported operations with PRC are quite various and enough to interact with iRODS without requiring any other tools.
@@ -17,7 +15,7 @@ The following functionalities will be covered:
 - Uploading and downloading data collections
 - Working with file-like objects
 - Adding and editing metadata
-- ACLs for data objects and collections
+- Managing persmissions for data objects and collections
 - Querying for data using user defined metadata
 
 ## Configuration of the iRODS connection
