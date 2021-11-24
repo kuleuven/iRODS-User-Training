@@ -458,9 +458,9 @@ The same is true in iCommands.
   imkdir earth_science
   imkdir economy
   
-  iput data/economy/inflation.csv earth science
+  iput data/economy/inflation.txt earth science
 
-  imv earth_science/inflation.csv economy
+  imv earth_science/inflation.txt economy
   icd economy
   ils
 
@@ -474,7 +474,7 @@ The same is true in iCommands.
   
 **Exercise 2: downloading**
 
-- Remove the file inflation.csv from your local directory.
+- Remove the file inflation.txt from your local directory.
 - Download the file again from iRODS.
 
 
@@ -482,10 +482,10 @@ The same is true in iCommands.
     <summary>Solution</summary>
     
 ```    
-rm inflation.csv
+rm inflation.txt
 
 icd economy
-iget inflation.csv
+iget inflation.txt
 ```    
 
 </details>

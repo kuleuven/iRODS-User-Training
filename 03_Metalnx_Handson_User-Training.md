@@ -54,7 +54,8 @@ This is the tab you will be using the most in Metalnx.
 Let's do the exercises below! 
 
 
-You can find the files used for the exercises in the [git repository](https://github.com/hpcleuven/KULeuven-iRODS-User-Training) of this training, in the 'data' folder.  
+You can find the files used for the exercises in the [git repository](https://github.com/hpcleuven/KULeuven-iRODS-User-Training) of this training, in the 'data' folder. 
+
 You can download the files mentioned in the exercises as follows:  
 * Click on the file  
 * Click on 'raw'  
@@ -195,7 +196,7 @@ You start this exercise in the 'collections' tab.
 
 - Use the upload button (third of the four buttons in the upper right corner) to upload bird.JPG.
 - Go to the 'Templates' tab and click on 'add template'.
-- Give in the name 'Biology_images', a short description, and set Access to 'private'.
+- Give in the name 'Biology_images_<your_name>', a short description, and set Access to 'private'.
 - Click on the '+metadata' button to add the three AVU's. You can leave the unit fields blank.
 - Go to the collections tab. Check the tickbox next to bird.jpg and select 'apply template' on the action menu. 
 - Select the newly made biology template. 
