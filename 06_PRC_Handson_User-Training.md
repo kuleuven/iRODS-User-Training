@@ -346,6 +346,29 @@ You can also use a pre-built list of AVUOperations using Python's f(*args_list) 
 []
 ```
 
+It is possible to read a json object both on your local machine and iRODS and add these keys/values as metadata to an iRODS object (file/folder).
+
+You can read a json file on your local pc and attach these keys and values as metadata to your data object:
+
+```py
+>>> import json
+>>> with open("your/path/to/metadata_example.json") as jsonFile:
+...    jsonObject = json.load(jsonFile)
+...    avus = [item for item in jsonObject.items()]
+...    obj.metadata.apply_atomic_operations(*[AVUOperation(operation='add', avu=iRODSMeta("{}".format(str(meta[0]))
+...    , "{}".format(str(meta[1])))) for meta in avus])
+>>> obj.metadata.items()
+[<iRODSMeta 11883 reviewerID A30TL5EWN6DFXT None>,
+ <iRODSMeta 11884 asin 120401325X None>,
+ <iRODSMeta 11886 helpful [0, 0] None>,
+ <iRODSMeta 11887 reviewText They look good. None>,
+ <iRODSMeta 11888 overall 4.0 None>,
+ <iRODSMeta 11889 summary Looks Good None>,
+ <iRODSMeta 11890 unixReviewTime 1400630400 None>,
+ <iRODSMeta 11892 reviewerName Kaan None>,
+ <iRODSMeta 11893 reviewTime 25.11.2021 None>]
+```
+
 ## How to make queries
 
 The PRC offers different query options that you can use based on your need. You may use these queries in your script to easily manage your research data.
