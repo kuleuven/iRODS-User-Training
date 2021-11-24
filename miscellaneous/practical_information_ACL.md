@@ -2,7 +2,7 @@ The permission management in iRODS is performed by using Access Control Lists (A
 
 You can look at the table below to know about the impact of ACL:
 
-| Permission Level  | Read     | Write/Edit | Download/Save | Metadata | Rename  | Move    | Delete  |
+| Permission Type   | Read     | Write/Edit | Download/Save | Metadata | Rename  | Move    | Delete  |
 |-------------------|----------|------------|---------------|----------|---------|---------|---------|
 | read              | &#x2713; |            | &#x2713;      |   View   |         |         |         |
 | write             | &#x2713; | &#x2713;   | &#x2713;      |Add/Modify|         |         |         |

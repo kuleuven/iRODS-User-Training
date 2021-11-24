@@ -157,6 +157,7 @@ conda activate prc-irods
 |06_PRC_Handson_User-Training.md|Explains how to use the programming client - the Python iRODS client (PRC) to iRODS|This module is mostly for the users and zones that want to interact with python|
 |/img (folder)|Place for images of the tutorials||
 |/data (folder)|Place for data objects (files)|will be used in the PRC|
+|/miscellaneous (folder)|Place for supporting documentation. It keeps a jupyter notebook for PRC training, some practical information about permission management etc.|useful for the PRC, iCommands and Metalnx clients|
 |environment.yml|Contains a list of dependencies to install|for the users who want to use PRC|
 |README.md|Explains the goals and structure of this training repository||
 
