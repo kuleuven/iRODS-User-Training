@@ -56,10 +56,7 @@ Let's do the exercises below!
 
 You can find the files used for the exercises in the [git repository](https://github.com/hpcleuven/KULeuven-iRODS-User-Training) of this training, in the 'data' folder. 
 
-You can download the files mentioned in the exercises as follows:  
-* Click on the file  
-* Click on 'raw'  
-* Right click and select 'save as'.  
+You can download the repository as a Zip-file by clicking on the green 'code' button and selecting 'Download ZIP'.   
 Alternatively, you can clone the repository from the command line.  
 
 
