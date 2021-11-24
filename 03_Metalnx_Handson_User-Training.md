@@ -178,7 +178,7 @@ You start this exercise in the 'collections' tab.
 **Exercise 5: metadata templates**
 
 - Download the file biology/bird.JPG and upload it on Metalnx.  
-- Create a private metadata template with the name 'Biology_images'. Give it an appropriate description.  
+- Create a private metadata template with the name 'Biology_images_<your_name>'. Give it an appropriate description.  
   It should contain the following attributes:  
     -Type, with default value 'plant/animal'  
     -Mammal, with default value 'no'  
