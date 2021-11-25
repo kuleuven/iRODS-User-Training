@@ -521,7 +521,7 @@ ils molecules
 
 </details>
 
-**Exercise 4:**
+**Exercise 4: managing permissions**
 - Go to data/lifesciences. You will there find the files patient1.csv and anonymized.csv. 
 - Make a folder called 'lifescience' in your home and upload both files to it.
 - Give your group read access to the folder lifescience, recursively.
