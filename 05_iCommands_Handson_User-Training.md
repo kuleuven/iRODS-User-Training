@@ -554,14 +554,14 @@ ils -A lifescience
 </details>
 
 
-**Exercise 5: working with tar files**
+**Exercise 5: working with tar files via the ibun command**
 
 
 - Create a tar file of your local lifescience folder.
 - Upload the tar file to iRODS. Make sure it has the right data type.
 - Make a collection called 'archive'.
 - Unbundle the tar file in iRODS in this collection.
-- Download your directory 'chemistry' as a tar file.
+- Bundle the 'molecules' directory in iRODS and download it. 
 
 
 <details>
@@ -571,9 +571,10 @@ ils -A lifescience
 tar -cf lifescience.tar lifescience
 iput -Dtar lifescience.tar
 imkdir archive
-ibun -x lifescience.tar 
+ibun -x lifescience.tar archive
 
-ibun -cDtar chemistry.tar chemistry
+ibun -cDtar molecules.tar molecules
+iget molecules.tar
 ```
 </details>
 
