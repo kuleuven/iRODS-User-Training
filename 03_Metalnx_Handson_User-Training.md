@@ -94,7 +94,7 @@ You start this exercise in the 'collections' tab.
 
 - You realise there is a mistake in the uploaded data object inflation.txt. 
   Edit the data object so the inflation for 2021 is 1.4%. 
-- Rename the data object to 'inflation_corrected.csv'.
+- Rename the data object to 'inflation_corrected.txt'.
 - Download the edited file from iRODS.
 
 
@@ -104,7 +104,7 @@ You start this exercise in the 'collections' tab.
 
 - Go to the economy folder and click on 'view info' next to inflation.txt. 
 - Click the 'preview' tab. There, you can edit the file and save your changes.
-- Select 'rename' on the action dropdown, and type 'inflation_corrected.csv'.
+- Select 'rename' on the action dropdown, and type 'inflation_corrected.txt'.
 - Click on the download button (rightmost button in the top right corner).
 
 </details>
