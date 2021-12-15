@@ -2,8 +2,6 @@
 
 *Prerequisites:*  
 *-A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones*  
-*-A Linux client environment - a linux based operation system and terminal*  
-*-Basic knowledge of command line (Bash)*  
 *-Basic knowledge of Python*    
 
 This training introduces you to the basics of using the iRODS client API implemented in Python. The Python iRODS Client (PRC) is a programming client of iRODS. The main goal of PRC is to offer researchers means to manage their data in python. With the help of this client, users can manage their research data. Currently supported operations with PRC are quite various and enough to interact with iRODS without requiring any other tools.
@@ -15,20 +13,22 @@ The following functionalities will be covered:
 
 - Uploading and downloading data
 - Uploading and downloading data collections
+- Working with file-like objects
 - Adding and editing metadata
-- Setting access permissions for data objects and collections
+- Managing persmissions for data objects and collections
 - Querying for data using user defined metadata
-- Using the VSC-PRC command line tools
 
 ## Configuration of the iRODS connection
 
-We will use the environment file of iRODS to have a secure and longer session in PRC. Therefore we connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow the instructions of the section iRODS Linux Client. 
+We will use the environment file of iRODS to have a secure and longer session in PRC. Therefore we need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there. 
 
-In this way you will start an iRODS session that will last 7 days. 
+If you are using a Linux machine (including VMs and WSL2):
 
-After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
+- Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal,
 
-You can initiate an iRODS session in a secure way with the PRC by using the code snippet below:
+- Open your terminal, paste and execute the coppied snippet,
+
+- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below,
 
 ```py
 import os
@@ -45,6 +45,30 @@ ssl_settings = {'ssl_context': ssl_context}
 with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
     [your code here]
 ```
+
+- In this way you will start an iRODS session that will last 7 days,
+
+- After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
+
+If you are using a pure Windows machine (no available Linux OS via VMs and WSL2):
+
+- Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal,
+
+- If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the coppied snippet,
+
+- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the coppied snippet,
+
+- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below,
+
+```py
+import os, os.path
+from irods.session import iRODSSession
+env_file = os.getenv('IRODS_ENVIRONMENT_FILE', os.path.expanduser('~/.irods/irods_environment.json'))
+with iRODSSession(irods_env_file=env_file) as session:
+    [your code here]
+```
+
+- In this way you will start an iRODS session that will last 60 hours.
 
 ### How to work with the PRC
 
@@ -156,6 +180,38 @@ For the python object having the `__dict__` attribute, you can use the builtin `
 >>> b=session.data_objects.get("/yourZone/home/userName/test1/test.txt", "/yourLocalPath/test.txt")
 >>> vars(b)
 {'manager': <irods.manager.data_object_manager.DataObjectManager object at 0x7f534659ef10>, 'collection': <iRODSCollection 10183 b'test1'>, 'id': 10198, 'collection_id': 10183, 'name': 'test.txt', 'replica_number': 0, 'version': None, 'type': 'generic', 'size': 25, 'resource_name': 'netapp', 'path': '/yourZone/home/userName/test1/test.txt', 'owner_name': 'userName', 'owner_zone': 'yourZone', 'replica_status': '1', 'status': None, 'checksum': None, 'expiry': '00000000000', 'map_id': 0, 'comments': None, 'create_time': datetime.datetime(2021, 10, 20, 20, 39, 45), 'modify_time': datetime.datetime(2021, 10, 20, 20, 59), 'resc_hier': 'default;netapp', 'resc_id': '10014', 'replicas': [<irods.data_object.iRODSReplica netapp>], '_meta': None}
+```
+
+### Getting and Setting Permissions
+
+The PRC make it possible to work with ACLs (Access Control Lists). You can list given permissions on a collection or on a data object. Also, adding a new ACL and modifying an existing one on a collection/data object in iRODS via the PRC is possible.
+
+Let's now create a new collection:
+
+```py
+>>> coll = session.collections.create("/yourZone/home/userName/permission")
+>>> coll.path
+'/yourZone/home/userName/permission'
+```
+
+You can list given permissions for a collection:
+
+```py
+>>> acl_coll = session.permissions.get(coll)[0]
+>>> acl_coll
+<iRODSAccess own /yourZone/home/userName/permission u0137480 yourZone>
+```
+
+You can add a new permission or change the existing one. To be able to add/modify ACLs, you should import relevant classes:
+
+```py
+>>> from irods.access import iRODSAccess
+>>> acl_dataObj = iRODSAccess("own", "/yourZone/home/userName/test.txt", "user2", "yourZone")
+>>> session.permissions.set(acl_dataObj)
+>>> data_obj = session.data_objects.get("/yourZone/home/userName/test.txt")
+>>> acl_dataObj = session.permissions.get(data_obj)[0]
+>>> acl_dataObj
+<iRODSAccess own /yourZone/home/userName/test.txt user2 yourZone>
 ```
 
 ### Reading and Writing Files
@@ -288,6 +344,29 @@ You can also use a pre-built list of AVUOperations using Python's f(*args_list) 
 >>> obj.metadata.apply_atomic_operations( *[AVUOperation(operation='remove', avu=i) for i in avus_on_object] )
 >>> obj.metadata.items()
 []
+```
+
+It is possible to read a json object both on your local machine and iRODS and add these keys/values as metadata to an iRODS object (file/folder).
+
+You can read a json file on your local pc and attach these keys and values as metadata to your data object:
+
+```py
+>>> import json
+>>> with open("your/path/to/metadata_example.json") as jsonFile:
+...    jsonObject = json.load(jsonFile)
+...    avus = [item for item in jsonObject.items()]
+...    obj.metadata.apply_atomic_operations(*[AVUOperation(operation='add', avu=iRODSMeta("{}".format(str(meta[0]))
+...    , "{}".format(str(meta[1])))) for meta in avus])
+>>> obj.metadata.items()
+[<iRODSMeta 11883 reviewerID A30TL5EWN6DFXT None>,
+ <iRODSMeta 11884 asin 120401325X None>,
+ <iRODSMeta 11886 helpful [0, 0] None>,
+ <iRODSMeta 11887 reviewText They look good. None>,
+ <iRODSMeta 11888 overall 4.0 None>,
+ <iRODSMeta 11889 summary Looks Good None>,
+ <iRODSMeta 11890 unixReviewTime 1400630400 None>,
+ <iRODSMeta 11892 reviewerName Kaan None>,
+ <iRODSMeta 11893 reviewTime 25.11.2021 None>]
 ```
 
 ## How to make queries

@@ -23,7 +23,7 @@ The Metalnx portal is composed of two panes. The left pane is a menu with differ
 - Moving files/collections  
 - Copying files/collections  
 - Renaming files/collections  
-- Applying metadata templates (see later)  
+- Applying metadata templates
 - Downloading files  
 
 Behind any collection or file, you can press 'View info' for the following options:

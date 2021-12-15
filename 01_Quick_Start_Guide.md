@@ -16,11 +16,25 @@ The mentioned mail address:
 
 - A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones
 
-If you want to use iRODS' command line client (iCommands) or the python programming client (PRC), you need to have following:
+- Being a member of a project
+
+If you want to use iRODS' command line client (iCommands), you need to have following:
 
 - A Linux client environment - a linux based operation system and terminal
-- Installed iCommands (also needed to use the PRC)
-- The Python iRODS Client (PRC) and a VSC-PRC extension of it to gain functionalities some extra tools
+- Installed iCommands
+
+If you want to use the python programming client (PRC) with a longer password duration (7 days), you need to have following:
+
+- A Linux client environment - a linux based operation system and terminal
+- Installed iCommands
+- An installed python release
+- The Python iRODS Client (PRC)
+
+If you want to use the python programming client (PRC) with its default password duration (60 hours), you need to have following:
+
+- An installed python release
+- The Python iRODS Client (PRC)
+
 
 ### Installation of WSL2 (if a Linux environment is not already available)
 
@@ -84,7 +98,7 @@ sudo apt update
 sudo apt install irods-icommands
 ```
 
-If the above does not work for you (e.g., no support for Ubuntu 20), you can contact placeholder@iRODSservicedesk.be.
+If the above does not work for you (e.g., no support for Ubuntu 20), you can contact icts@kuleuven.be.
 
 ### How to Use Miniconda on Your Linux OS with PRC (Optional)
 
@@ -142,7 +156,8 @@ conda activate prc-irods
 |05_iCommands_Handson_User-Training.md|Explains how to use the command line client of iRODS|This module is mostly for the users and zones that work with command line interface - terminal|
 |06_PRC_Handson_User-Training.md|Explains how to use the programming client - the Python iRODS client (PRC) to iRODS|This module is mostly for the users and zones that want to interact with python|
 |/img (folder)|Place for images of the tutorials||
-|/molecules (folder)|Place for data objects (files)|will be used in the PRC|
+|/data (folder)|Place for data objects (files)|will be used in the PRC|
+|/miscellaneous (folder)|Place for supporting documentation. It keeps a jupyter notebook for PRC training, some practical information about permission management etc.|useful for the PRC, iCommands and Metalnx clients|
 |environment.yml|Contains a list of dependencies to install|for the users who want to use PRC|
 |README.md|Explains the goals and structure of this training repository||
 
@@ -156,6 +171,7 @@ conda activate prc-irods
  OR
 
 - Send an email to [rdm-icts@kuleuven.be](mailto:rdm-icts@kuleuven.be)  
+
 
 ### Fixing and/or improving documentation via GitHub
 
