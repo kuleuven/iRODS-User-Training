@@ -170,7 +170,8 @@ conda activate prc-irods
 
  OR
 
-- Send an email to [icts@kuleuven.be](mailto:icts@kuleuven.be)
+- Send an email to [rdm-icts@kuleuven.be](mailto:rdm-icts@kuleuven.be)  
+
 
 ### Fixing and/or improving documentation via GitHub
 
