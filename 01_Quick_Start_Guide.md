@@ -6,7 +6,7 @@ You will be provided with your zone name and an URL to access to that in the tra
 
 For now, we don’t have any federated zones. However, we can federate zones in the future to facilitate data transfer between zones.
 
-For your all questions and requests you can send an email to our service desk with a 'Data:' prefix on the title. The service desk email address is icts@kuleuven.be.
+For your all questions and requests you can send an email to our service desk. The service desk email address is rdm-icts@kuleuven.be.
 
 Time to time you can receive a notification email from the email address below to be informed about changes, updates or maintenances with iRODS. Please pay attention to those mails.
 The mentioned mail address: 
@@ -98,7 +98,7 @@ sudo apt update
 sudo apt install irods-icommands
 ```
 
-If the above does not work for you (e.g., no support for Ubuntu 20), you can contact icts@kuleuven.be.
+If the above does not work for you (e.g., no support for Ubuntu 20), you can contact rdm-icts@kuleuven.be.
 
 ### How to Use Miniconda on Your Linux OS with PRC (Optional)
 
