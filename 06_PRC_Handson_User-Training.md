@@ -20,15 +20,19 @@ The following functionalities will be covered:
 
 ## Configuration of the iRODS connection
 
-We will use the environment file of iRODS to have a secure and longer session in PRC. Therefore we need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there. 
+We will use the environment file of iRODS to have a secure and longer session in PRC. 
 
-If you are using a Linux machine (including VMs and WSL2):
+### Using PRC on a Linux Machine
+
+If you are using a Linux machine (including VMs and WSL2) you first need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and please follow relevant instructions there as you will see more explicitly here:
 
 - Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal,
 
 - Open your terminal, paste and execute the coppied snippet,
 
-- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below,
+- So that you will have created a temporary password that will expire 7 days later and once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS,
+
+- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below.
 
 ```py
 import os
@@ -46,19 +50,41 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
     [your code here]
 ```
 
-- In this way you will start an iRODS session that will last 7 days,
+### Using PRC on a Windows Machine
 
-- After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
+If you are using a pure Windows machine (no available Linux OS via VMs and WSL2), there are two options that you can follow.
 
-If you are using a pure Windows machine (no available Linux OS via VMs and WSL2):
+The first option:
 
 - Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal,
 
 - If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the coppied snippet,
 
-- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the coppied snippet,
+- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the coppied snippet.
 
-- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below,
+The second option:
+
+- Click the link here https://rdmrepo.icts.kuleuven.be/ui/repos/tree/General/coz-p-foz-generic-public/iinit.exe,
+
+- Download 'iinit.exe' file by clicking 'download' icon (a little arrow at right hans-side) located on incoming screen,
+
+- You will find iRODS iconned this file -green iRODS icon- in your 'Downloads' folder. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows pc which doesnt require an admin right,
+
+- You should know about your group domain policy - an example place could be `C:\Workdir\MyApps`,
+
+- Double clicking `iinit.exe` will pop up an terminal screen and will ask you to enter your 'zone' name,
+
+- Once you type your zone name correctly, hit the enter button,
+
+- You will be forwarded to your default screen to be notified about that 'You have successfully authenticated' in addition to some information,
+
+- So that you will have created a temporary password that will expire 7 days later and once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS,
+
+- The popped-up terminal will disappear in 8 seconds.
+
+- Each time you dont have to follow all steps. After you download `iinit.exe`, you can use it when you need to renew your password.
+
+After you are authenticated to iRODS, you can initiate an iRODS session in a secure way with the PRC by using the code snippet below.
 
 ```py
 import os, os.path
@@ -68,7 +94,7 @@ with iRODSSession(irods_env_file=env_file) as session:
     [your code here]
 ```
 
-- In this way you will start an iRODS session that will last 60 hours.
+We recommend you to use the second option since it seems more user-friendly and fault tolerant.
 
 ### How to work with the PRC
 
