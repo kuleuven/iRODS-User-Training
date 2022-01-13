@@ -28,7 +28,7 @@ If you are using a Linux machine (including VMs and WSL2) you first need to conn
 
 - Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal,
 
-- Open your terminal, paste and execute the coppied snippet,
+- Open your terminal, paste and execute the copied snippet,
 
 - So that you will have created a temporary password that will expire 7 days later and once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS,
 
@@ -58,19 +58,17 @@ The first option:
 
 - Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal,
 
-- If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the coppied snippet,
+- If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the copied snippet,
 
-- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the coppied snippet.
+- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the copied snippet.
 
 The second option:
 
 - Click the link here https://rdmrepo.icts.kuleuven.be/ui/repos/tree/General/coz-p-foz-generic-public/iinit.exe,
 
-- Download 'iinit.exe' file by clicking 'download' icon (a little arrow at right hans-side) located on incoming screen,
+- Download the 'iinit.exe' file by clicking the 'download' icon (a little arrow at right hand-side) located on incoming screen,
 
-- You will find iRODS iconned this file -green iRODS icon- in your 'Downloads' folder. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows pc which doesnt require an admin right,
-
-- You should know about your group domain policy - an example place could be `C:\Workdir\MyApps`,
+- You will find this file -green iRODS icon- in your 'Downloads' folder. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows pc which doesnt require an admin right,
 
 - Double clicking `iinit.exe` will pop up an terminal screen and will ask you to enter your 'zone' name,
 
