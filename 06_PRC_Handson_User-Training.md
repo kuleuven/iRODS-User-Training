@@ -64,9 +64,7 @@ The first option:
 
 The second option:
 
-- Click the link here https://rdmrepo.icts.kuleuven.be/ui/repos/tree/General/coz-p-foz-generic-public/iinit.exe,
-
-- Download the 'iinit.exe' file by clicking the 'download' icon (a little arrow at right hand-side) located on incoming screen,
+- Click the link here https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe to download the 'iinit.exe' file,
 
 - You will find this file -green iRODS icon- in your 'Downloads' folder. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows pc which doesnt require an admin right,
 
