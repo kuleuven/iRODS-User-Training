@@ -32,12 +32,16 @@ Connection profiles (.cyberduckprofile) describe specific connection settings fo
 
 In order to configure your iRODS connection for the first time, you should complete the following steps:
  
-- Click a generic profile template provided at <a id="raw-url" href="https://raw.githubusercontent.com/kuleuven/iRODS-User-Training/blob/main/miscellaneous/yourZoneName.cyberduckprofile">connection profile</a> to download it to your pc.. 
-- Rename the downloaded file with your zone name. Pay attention not to change the file extention - keep it as '.cyberduckprofile'.
+- Create a text document on your local pc and rename it with your zone name. Use '.cyberduckprofile' as a file extension. Your file will be `yourZoneName.cyberduckprofile`.
+
+<img align="center" src="img/cduck6.png" width="400px">
+
 - Open the file by a text editor (i.e., right click and move your mouse to the 'Open with' to open the file with 'Notepad').
 
 <img align="center" src="img/cduck2.png" width="400px">
 
+- Click a generic profile template provided at [connection profile](miscellaneous/yourZoneName.cyberduckprofile) to copy its content.
+- Paste the copied content in your `yourZoneName.cyberduckprofile` file.
 - Connect to your zone front page https://{YOURZONE}.irods.icts.kuleuven.be/ to get required information.
 
 <img align="center" src="img/cduck3.png" width="400px">
