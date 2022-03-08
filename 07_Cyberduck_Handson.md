@@ -32,7 +32,7 @@ Connection profiles (.cyberduckprofile) describe specific connection settings fo
 
 In order to configure your iRODS connection for the first time, you should complete the following steps:
  
-- Click a generic profile template provided at [connection profile](miscellaneous/yourZoneName.cyberduckprofile) to download it to your pc.
+- Click a generic profile template provided at <a href="miscellaneous/yourZoneName.cyberduckprofile" download>connection profile</a> to download it to your pc. 
 - Rename the downloaded file with your zone name. Pay attention not to change the file extention - keep it as '.cyberduckprofile'.
 - Open the file by a text editor (i.e., right click and move your mouse to the 'Open with' to open the file with 'Notepad').
 
