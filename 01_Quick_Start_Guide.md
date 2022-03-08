@@ -155,6 +155,7 @@ conda activate prc-irods
 |04_WebDav_Handson.md|Explains the WebDav interface, which provides local filesytem type access to data and teaches you how to use it|This module is mostly for the users and zones that use a desktop based GUI client|
 |05_iCommands_Handson_User-Training.md|Explains how to use the command line client of iRODS|This module is mostly for the users and zones that work with command line interface - terminal|
 |06_PRC_Handson_User-Training.md|Explains how to use the programming client - the Python iRODS client (PRC) to iRODS|This module is mostly for the users and zones that want to interact with python|
+|07_Cyberduck_Handson.md|Explains how to download and configure cyberduck client and teaches how to use it|This module is mostly for the users and zones that want to use a desktop application to interact with iRODS|
 |/img (folder)|Place for images of the tutorials||
 |/data (folder)|Place for data objects (files)|will be used in the PRC|
 |/miscellaneous (folder)|Place for supporting documentation. It keeps a jupyter notebook for PRC training, some practical information about permission management etc.|useful for the PRC, iCommands and Metalnx clients|

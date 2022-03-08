@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Protocol</key>
+        <string>irods</string>
+        <key>Vendor</key>
+        <string>KU Leuven</string>
+        <key>Description</key>
+        <string>KU Leuven yourZoneName Zone</string>
+        <key>Hostname Configurable</key>
+        <false/>
+        <key>Port Configurable</key>
+        <false/>
+        <key>Default Hostname</key>
+        <string>yourZoneHostname</string>
+        <key>Region</key>
+        <string>yourZoneName:default</string>
+        <key>Default Port</key>
+        <string>1247</string>
+        <key>Username Placeholder</key>
+        <string>KU Leuven username</string>
+        <key>Password Placeholder</key>
+        <string>iRODS password</string>
+        <key>Authorization</key>
+        <string>PAM</string>
+    </dict>
+</plist>
