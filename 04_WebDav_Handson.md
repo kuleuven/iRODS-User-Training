@@ -12,7 +12,8 @@ The module that we use for our iRODS connection is called [Davrods](https://gith
 A connection through Davrods is available at https://{YOURZONE}.irods.icts.kuleuven.be:8443/  address. After you click the link you can log in using your u-account and the temporary password that is displayed when you connect to the [KU Leuven iRODS login page]: (https://{YOURZONE}.irods.icts.kuleuven.be/)
 
 
-![login](img/WebDav-login.png)
+<img align="center" src="img/WebDav-login.png" width="400px">
+
 
 Once you enter your user name and the password, you will see the exact same directory structure as you see in your iRODS server.
 
@@ -44,8 +45,8 @@ How to access iRODS using WebDAV on a Windows 10 pc:
 
 <img align="center" src="img/WebDav-network-drive-login.png" width="400px">
 
-- Enter your user u-account.
-- Paste the password you obtained in the login page.
+- Enter your user u-account
+- Paste the password you obtained in the login page
 - Click “ok”.
 
 
@@ -57,5 +58,5 @@ Once you’ve connected, the WebDAV directory is mounted in your local pc. After
 
 ## Other WebDav clients
 
-On windows systems the WebDav protocol can be used with programs as [WinSCP](https://winscp.net/eng/index.php) or [Cyberduck](https://cyberduck.io/). The later works also for MacOS.
+ON windows systems the WebDav protocol can be used with programs as [WinSCP](https://winscp.net/eng/index.php) or [Cyberduck](https://cyberduck.io/). The later works also for MacOS.
 On Linux systems a good alternative is the [Cadaver client](http://www.webdav.org/cadaver/)
