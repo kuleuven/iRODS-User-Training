@@ -13,7 +13,7 @@ Cyberduck supports direct data transfer into and out of iRODS. Cyberduck users c
 - In order to install Cyberduck for your operating system for the first time, you should go to the Cyberduck installation page at https://cyberduck.io/. Click 'Download' icon to download your operating system compatiple installer.
 
 
-<img align="center" src="img/cduck1.png" width="400px">
+<img align="center" src="img/cduck1.png" width="400px" height="250px">
 
 
 - After you download an exe file (Windows) or a zip file (Mac), you you should move this file to the location which is compatible with your operating system and group domain policy.
@@ -26,13 +26,13 @@ Cyberduck supports direct data transfer into and out of iRODS. Cyberduck users c
 
 ## Configuring Cyberduck
 
-It is possible to configure both the WebDav protocol and the Connection Profiles method to use Cyberduck in order to interact with iRODS. However this training is designed to configure the Connection Profiles. Also, we recommend you to use Cyberduck with the provided Connection Profiles because of a longer password duration and parallel transfer capability.
+It is possible to configure both the WebDav protocol and the Connection Profiles method to use Cyberduck in order to interact with iRODS. However this training is designed to configure the Connection Profiles.
 
 Connection profiles (.cyberduckprofile) describe specific connection settings for a hosting provider to make it easier to setup a connection to your provider. A connection profile installed adds a provider option in the protocol selection dropdown menu. Then it create a new bookmark and requests you to only enter your credentials. When you double-click your profile, it configures all mentioned for you.
 
 In order to configure your iRODS connection for the first time, you should complete the following steps:
  
-- Click a generic profile template provided at <a href="miscellaneous/yourZoneName.cyberduckprofile" download>connection profile</a> to download it to your pc. 
+- Click a generic profile template provided at <a id="raw-url" href="https://raw.githubusercontent.com/kuleuven/iRODS-User-Training/blob/main/miscellaneous/yourZoneName.cyberduckprofile">connection profile</a> to download it to your pc.. 
 - Rename the downloaded file with your zone name. Pay attention not to change the file extention - keep it as '.cyberduckprofile'.
 - Open the file by a text editor (i.e., right click and move your mouse to the 'Open with' to open the file with 'Notepad').
 
