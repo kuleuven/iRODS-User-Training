@@ -458,14 +458,14 @@ The same is true in iCommands.
   imkdir earth_science
   imkdir economy
   
-  iput data/economy/inflation.txt earth science
+  iput data/economy/inflation.txt earth_science
 
   imv earth_science/inflation.txt economy
   icd economy
   ils
 
   icd ..
-  irm -r earth_science
+  irm -r -f earth_science
   
   ```
 
