@@ -102,11 +102,11 @@ We recommend you to use the second option since it seems more user-friendly and 
 
 ### How to work with the PRC
 
-As a best practie we recommend you to work with a virtual enviroment. There are several ways to create a virtual enviroment. You can choose one of them besides what we offered - conda - in the Quick Start Guide.
+As a best practice we recommend you to work with a virtual environment. There are several ways to create a virtual environment. You can choose one of them besides what we offered - conda - in the Quick Start Guide.
 
 To be able to call python codes during the traing and the exercises, you can choose one of the ways below:
 
-- Make pythonscripts by using your favourite editor (vi, nano,...) and execute them with `python3 <filename>`. 
+- Make python scripts by using your favourite editor (vi, nano,...) and execute them with `python3 <filename>`. 
 - Add the shebang line in your script file and make your file executable (chmod +x) and execute the file `./filename`.
 - Alternatively, you can open the python interpreter and work interactively.
 - Or you can use IPython (Interactive Python) which is a command shell for interactive programming in python. (The iPython is not installed by default, so you will need to install it using pip: e.g: pip install --user ipython)
@@ -114,11 +114,11 @@ To be able to call python codes during the traing and the exercises, you can cho
 **Note1:** The shebang line in any script determines the script's ability to be executed like a standalone executable without typing 'python' beforehand in the terminal. In other words, the shebang
 line specifies exactly how to run a script. You can put this `#!/usr/bin/env python3` as a first line in your PRC script file.
 
-**Note2:** You can use pyhton builtin `dir()` function to know about all available attributes and methods that you may use. For instance, `[ x for x in dir(col) if not x.startswith('__') ]` snippet gives you the methods of 'coll' instance.
+**Note2:** You can use python builtin `dir()` function to know about all available attributes and methods that you may use. For instance, `[ x for x in dir(col) if not x.startswith('__') ]` snippet gives you the methods of 'coll' instance.
 
 ## Working with Collections
 
-You can connect to a specific iRODS collection, this could be your home collection, project collection or any other sub-collection. After you instantiate the collection you prefer, you can see some basic information of this collection. You can list the sub-collections and data objects of this instantiated collection. Also you can do some certain operations (cretae, move, remove etc.) with collections' methods.
+You can connect to a specific iRODS collection, this could be your home collection, project collection or any other sub-collection. After you instantiate the collection you prefer, you can see some basic information of this collection. You can list the sub-collections and data objects of this instantiated collection. Also you can do some certain operations (create, move, remove etc.) with collections' methods.
 
 You can instantiate a collection you want:
 
@@ -190,9 +190,9 @@ You can download a data object:
 <iRODSDataObject 10193 test.txt>
 ```
 
-**Note4:** Data object transfers using put() and get() spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring parallelly if your transfer is bigger than 32 Megabytes.
+**Note4:** Data object transfers using put() and get() spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
 
-If you want to completely delete a data object you can use the code snippet below. Unless you dont provide the keyword argument `force=True`, you in fact move the data object you want to delete to the trash colletion.
+If you want to completely delete a data object you can use the code snippet below. Unless you don't provide the keyword argument `force=True`, you in fact move the data object you want to delete to the trash collection.
 
 ```py
 >>> session.data_objects.unlink("/yourZone/home/userName/test.txt", force=True)
@@ -204,7 +204,7 @@ From one collection to another one you can copy a data object:
 >>> session.data_objects.copy("/yourZone/home/userName/test.txt", "/yourZone/home/userName/test1/test.txt")
 ```
 
-For the python object having the `__dict__` attribute, you can use the builtin `vars()` function to see many useful information about the objest you instantiated.
+For the python object having the `__dict__` attribute, you can use the builtin `vars()` function to see many useful information about the object you instantiated.
 
 ```py
 >>> b=session.data_objects.get("/yourZone/home/userName/test1/test.txt", "/yourLocalPath/test.txt")
@@ -274,7 +274,7 @@ b'World\n'
 
 You can associate a checksum on the object in question. Checksums are used to verify data integrity upon data moving.
 
-By calling `chksum()` on an object you can add a cheksum, what this method does is to compute the checksum if already in the catalog, otherwise to compute and store it.
+By calling `chksum()` on an object you can add a checksum, what this method does is to compute the checksum if already in the catalog, otherwise to compute and store it.
 
 ```py
 >>> obj = session.data_objects.get("/yourZone/home/userName/test.txt")
@@ -301,7 +301,7 @@ If you check a file that no metadata attached to, then you will see an empty lis
 []
 ```
 
-You can add metadata in an AVU format as many as you want. You can associate more than one valu to an attribute. Let's add AVUs to the `test.txt` data object:  
+You can add metadata in an AVU format as many as you want. You can associate more than one value to an attribute. Let's add AVUs to the `test.txt` data object:  
 
 ```py
 >>> obj.metadata.add('key1', 'value1', 'unit1')
@@ -348,7 +348,7 @@ However, if you want to remove all existing metadata on an object at once, then 
 
 ### Atomic operations on metadata
 
-The PRC allows a group of metadata add and remove operations to be performed transactionally, within a single call to the server. This does mean you can apply atomic operations on metadata. In onther words, you can add more than one AVU and also remove metadat at the same operation. One important thing to know is that the list of operations will be applied in the order given.
+The PRC allows a group of metadata add and remove operations to be performed transactionally, within a single call to the server. This does mean you can apply atomic operations on metadata. In other words, you can add more than one AVU and also remove metadata at the same operation. One important thing to know is that the list of operations will be applied in the order given.
 
 To be able to work with atomic operations, you should import relevant classes:
 
@@ -424,7 +424,7 @@ First we will make a general query based on collection and data object classes:
 /yourZone/trash/home/userName/test1.txt size=12
 ```
 
-Let's now make a query based on some criterias that we know already with the metadata assuming provided earlier. FIrst we have to import relevant sub modules. We will make our query based on collection and collection metadata. Also we will filter according to the criterias that we specify:
+Let's now make a query based on some criteria that we know already with the metadata assuming provided earlier. FIrst we have to import relevant sub modules. We will make our query based on collection and collection metadata. Also we will filter according to the criteria that we specify:
 
 ```py
 >>> from irods.column import Criterion
