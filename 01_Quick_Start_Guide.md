@@ -102,7 +102,7 @@ sudo apt install irods-icommands=4.2.10
 > **Version warning:**  
 > The most recent version of iCommands is 4.3.0.    
 > However, our iRODS zones still run on iRODS 4.2.10.    
-> In case you have a Linux version (e.g. Ubuntu 20) for which iCommands 4.2.10 or 4.2.11 are not available, please contact rdm-icts@kuleuven.be.  
+> In case you have a Linux version (e.g. Ubuntu 20) for which iCommands 4.2.10 is not available, please contact rdm-icts@kuleuven.be.  
 
 ### How to Use Miniconda on Your Linux OS with PRC (Optional)
 
