@@ -139,6 +139,10 @@ The following would print the contents of the file test1 to the terminal:
 istream read test1
 ```
 
+>   
+> **Warning:** Currently, the `istream` command is not working in our iRODS zones.
+> 
+
 ### Functional iCommands
 With the commands in this section, we will do functional data operations like data uploading/downloading, access control and verifying/synchronizing data.
 This constitutes the basis of data management in iRODS.
