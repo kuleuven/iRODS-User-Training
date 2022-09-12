@@ -67,7 +67,8 @@ Alternatively, you can clone the repository from the command line.
 - Upload inflation.txt to the collection 'earth_science'.
 - You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Move the file to that collection.
 - Move into the 'economy' collection and check whether the file is actually there.
-- Move one level back and remove the 'earth_science' collection.
+- Move one level back and remove the 'earth_science' collection.  
+- You can now also delete the 'inflation.txt' file in your local directory.  
 
 
 
@@ -87,25 +88,32 @@ You start this exercise in the 'collections' tab.
 - Click on the tickbox next to the 'earth_science' and choose 'delete' from the action menu.
 
 
+
 </details>       
 
   
-**Exercise 2: Editing and downloading**
+**Exercise 2: Downloading, overwriting and previewing**
 
-- You realise there is a mistake in the uploaded data object inflation.txt. 
-  Edit the data object so the inflation for 2021 is 1.4%. 
-- Rename the data object to 'inflation_corrected.txt'.
-- Download the edited file from iRODS.
+- Inspect the contents of inflation.txt in Metalnx  
+- You realise there is a mistake in the uploaded data object.   
+  Download the file and edit it so the inflation for 2021 is 1.4%.
+- Upload the new version of the file, overwriting the previous one.
+- Rename the data object to 'inflation_corrected.txt'.  
 
 
 <details>
     <summary>Solution</summary>
 You start this exercise in the 'collections' tab.  
 
-- Go to the economy folder and click on 'view info' next to inflation.txt. 
-- Click the 'preview' tab. There, you can edit the file and save your changes.
-- Select 'rename' on the action dropdown, and type 'inflation_corrected.txt'.
-- Click on the download button (rightmost button in the top right corner).
+- Click on the 'economy' collection.   
+- Click on the 'view info' button next to 'inflation.txt'. On the next page, select the tab 'preview'.  
+- In the breadcrumb menu just above the filename, select 'economy' to go back to the economy collection.   
+- Click on the checkbox next to 'inflation.txt', then click on the 'action' menu and select the option 'download'.  
+- Make your changes locally (the file should be in your downloads folder.)
+- Back in Metalnx, click on the upload button, and select the file you just edited.   
+  Make sure the checkmark next to 'overwrite duplicate files' is checked. 
+- Click on the checkbox next to 'inflation.txt', then click on the 'action' menu and select the option 'rename', and type 'inflation_corrected.txt'.
+
 
 </details>
 
