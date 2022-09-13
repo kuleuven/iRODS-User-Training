@@ -89,27 +89,8 @@ You start this exercise in the 'collections' tab.
 
 </details>       
 
-  
-**Exercise 2: Editing and downloading**
 
-- You realise there is a mistake in the uploaded data object inflation.txt. 
-  Edit the data object so the inflation for 2021 is 1.4%. 
-- Rename the data object to 'inflation_corrected.txt'.
-- Download the edited file from iRODS.
-
-
-<details>
-    <summary>Solution</summary>
-You start this exercise in the 'collections' tab.  
-
-- Go to the economy folder and click on 'view info' next to inflation.txt. 
-- Click the 'preview' tab. There, you can edit the file and save your changes.
-- Select 'rename' on the action dropdown, and type 'inflation_corrected.txt'.
-- Click on the download button (rightmost button in the top right corner).
-
-</details>
-
-**Exercise 3: managing permissions**  
+**Exercise 2: managing permissions**  
 Download the files patient1.csv and anonymized.csv from data/lifescience.  
 
 - Make a collection called 'lifescience' in your home and upload both files to it.
@@ -142,7 +123,7 @@ You start this exercise in the 'collections' tab.
 </details>
 
 
-**Exercise 4: working with metadata**  
+**Exercise 3: working with metadata**  
 Download the files corpus1.txt, corpus2.txt and corpus3.txt from data/languages.  
 - Make a collection called 'languages' and upload the files to it.
 - Add the following AVU's to the files:
@@ -175,7 +156,7 @@ You start this exercise in the 'collections' tab.
 
 </details>
 
-**Exercise 5: metadata templates**
+**Exercise 4: metadata templates**
 
 - Download the file biology/bird.JPG and upload it on Metalnx.  
 - Create a private metadata template with the name 'Biology_images_<your_name>'. Give it an appropriate description.  
