@@ -145,7 +145,7 @@ pip install python-irodsclient
 > ```
 >   
 
-Instead of installing the PRC via pip, you can do it by conda using environment.yml file. Copy this file to your project directory and update the last part, 'prefix' to your conda environments. And lastly execute the command below.
+Instead of installing the PRC via pip, you can do it by conda using the environment.yml file. Copy [this file](https://github.com/kuleuven/iRODS-User-Training/blob/main/environment.yml) to your project directory and update the last part, 'prefix' to your conda environments. And lastly execute the command below.
 
 ```sh
 conda env create --file environment.yml
