@@ -118,6 +118,7 @@ You start this exercise in the 'collections' tab.
 </details>
 
 **Exercise 3: managing permissions**  
+
 Download the files patient1.csv and anonymized.csv from data/lifescience.  
 
 - Make a collection called 'lifescience' in your home and upload both files to it.
@@ -150,7 +151,7 @@ You start this exercise in the 'collections' tab.
 </details>
 
 
-**Exercise 4: working with metadata**  
+**Exercise 3: working with metadata**  
 Download the files corpus1.txt, corpus2.txt and corpus3.txt from data/languages.  
 - Make a collection called 'languages' and upload the files to it.
 - Add the following AVU's to the files:
@@ -183,7 +184,7 @@ You start this exercise in the 'collections' tab.
 
 </details>
 
-**Exercise 5: metadata templates**
+**Exercise 4: metadata templates**
 
 - Download the file biology/bird.JPG and upload it on Metalnx.  
 - Create a private metadata template with the name 'Biology_images_<your_name>'. Give it an appropriate description.  
