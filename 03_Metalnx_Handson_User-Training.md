@@ -67,7 +67,8 @@ Alternatively, you can clone the repository from the command line.
 - Upload inflation.txt to the collection 'earth_science'.
 - You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Move the file to that collection.
 - Move into the 'economy' collection and check whether the file is actually there.
-- Move one level back and remove the 'earth_science' collection.
+- Move one level back and remove the 'earth_science' collection.  
+- You can now also delete the 'inflation.txt' file in your local directory.  
 
 
 
@@ -87,10 +88,37 @@ You start this exercise in the 'collections' tab.
 - Click on the tickbox next to the 'earth_science' and choose 'delete' from the action menu.
 
 
+
 </details>       
 
+  
+**Exercise 2: Downloading, overwriting and previewing**
 
-**Exercise 2: managing permissions**  
+- Inspect the contents of inflation.txt in Metalnx  
+- You realise there is a mistake in the uploaded data object.   
+  Download the file and edit it so the inflation for 2021 is 1.4%.
+- Upload the new version of the file, overwriting the previous one.
+- Rename the data object to 'inflation_corrected.txt'.  
+
+
+<details>
+    <summary>Solution</summary>
+You start this exercise in the 'collections' tab.  
+
+- Click on the 'economy' collection.   
+- Click on the 'view info' button next to 'inflation.txt'. On the next page, select the tab 'preview'.  
+- In the breadcrumb menu just above the filename, select 'economy' to go back to the economy collection.   
+- Click on the checkbox next to 'inflation.txt', then click on the 'action' menu and select the option 'download'.  
+- Make your changes locally (the file should be in your downloads folder.)
+- Back in Metalnx, click on the upload button, and select the file you just edited.   
+  Make sure the checkmark next to 'overwrite duplicate files' is checked. 
+- Click on the checkbox next to 'inflation.txt', then click on the 'action' menu and select the option 'rename', and type 'inflation_corrected.txt'.
+
+
+</details>
+
+**Exercise 3: managing permissions**  
+
 Download the files patient1.csv and anonymized.csv from data/lifescience.  
 
 - Make a collection called 'lifescience' in your home and upload both files to it.
