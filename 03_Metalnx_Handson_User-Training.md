@@ -161,7 +161,8 @@ In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.tx
     - Attrbute 'language' and value 'french' to corpus2.txt
     - Attrbute 'language' and value 'latin' to corpus3.txt
 - Oops, we made a mistake! Open the file corpus2.txt, and look what the language is.   
-  Overwrite the current AVU with one with the correct value.
+  Overwrite the current AVU with one with the correct value.  
+- Go to the 'search' tab and search for all files with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.
 
 
 <details>
@@ -181,7 +182,12 @@ You start this exercise in the 'collections' tab.
 - Go back to the 'view info' page of corpus2.txt.  
   Click on the 'preview' tab to see which language corpus2.txt is written in (English).  
   On the metadata tab, you'll see the avu 'Language: French'.   
-  Click on the 'edit' button to change this to 'English' and then save.
+  Click on the 'edit' button to change this to 'English' and then save.  
+- Click on the search tab.    
+- Click on '+criteria'  
+- Type/select the following values in these two lines:  
+   - Line 1: 'Metadata Attribute Name', 'is (equals)', 'language'  
+   - Line 2: 'Metadata Attribute Value', 'is (equals)', 'latin'  
 
 
 </details>
