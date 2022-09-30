@@ -62,7 +62,8 @@ Alternatively, you can clone the repository from the command line.
 
 **Exercise 1: uploading and organizing**
 
-- Download the file inflation.txt from data/economy
+In this exercise, you will use the file inflation.txt from data/economy. 
+
 - Create two collections called 'earth_science' and 'economy'.
 - Upload inflation.txt to the collection 'earth_science'.
 - You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Move the file to that collection.
@@ -119,7 +120,7 @@ You start this exercise in the 'collections' tab.
 
 **Exercise 3: managing permissions**  
 
-Download the files patient1.csv and anonymized.csv from data/lifescience.  
+In this exercise, you will use the files patient1.csv and anonymized.csv from data/lifescience.  
 
 - Make a collection called 'lifescience' in your home and upload both files to it.
 - Give your group read access to the collection lifescience, recursively.
@@ -152,7 +153,8 @@ You start this exercise in the 'collections' tab.
 
 
 **Exercise 4: working with metadata**  
-Download the files corpus1.txt, corpus2.txt and corpus3.txt from data/languages.  
+In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.txt from data/languages.  
+
 - Make a collection called 'languages' and upload the files to it.
 - Add the following AVU's to the files:
     - Attrbute 'language' and value 'dutch' to corpus1.txt
@@ -186,7 +188,9 @@ You start this exercise in the 'collections' tab.
 
 **Exercise 5: metadata templates**
 
-- Download the file biology/bird.JPG and upload it on Metalnx.  
+In this exercise, you will use the file bird.jpg from data/biology.  
+
+- Upload bird.JPG to Metalnx.  
 - Create a private metadata template with the name 'Biology_images_<your_name>'. Give it an appropriate description.  
   It should contain the following attributes:  
     -Type, with default value 'plant/animal'  
