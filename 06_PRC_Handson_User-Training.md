@@ -52,14 +52,6 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
 
 ### Using PRC on a Windows Machine
 
->   
-> **Version warning:**: Version 1.1.2 and 1.1.3 of the PRC are not compatible with Windows.    
-> If you want to use the PRC on Windows, you can install an older version as follows: 
-> ```sh
-> pip install python-irodsclient==1.1.1
-> ```
->   
-
 If you are using a pure Windows machine (no available Linux OS via VMs and WSL2), there are two options that you can follow.
 
 The first option:
@@ -82,7 +74,7 @@ The second option:
 
 - You will be forwarded to your default screen to be notified about that 'You have successfully authenticated' in addition to some information,
 
-- So that you will have created a temporary password that will expire 7 days later and once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS,
+- So that you will have created a temporary password that will expire 60 hours later and once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS,
 
 - The popped-up terminal will disappear in 8 seconds.
 

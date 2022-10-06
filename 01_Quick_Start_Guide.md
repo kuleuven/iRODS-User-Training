@@ -137,14 +137,6 @@ To install with pip:
 pip install python-irodsclient
 ```
 
->   
-> **Version warning:**: Version 1.1.2 and 1.1.3 of the PRC are not compatible with Windows.    
-> If you want to use the PRC on Windows, you can install an older version as follows: 
-> ```sh
-> pip install python-irodsclient==1.1.1
-> ```
->   
-
 Instead of installing the PRC via pip, you can do it by conda using the environment.yml file. Copy [this file](https://github.com/kuleuven/iRODS-User-Training/blob/main/environment.yml) to your project directory and update the last part, 'prefix' to your conda environments. And lastly execute the command below.
 
 ```sh
