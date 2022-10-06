@@ -52,14 +52,6 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
 
 ### Using PRC on a Windows Machine
 
->   
-> **Version warning:**: Version 1.1.2 and 1.1.3 of the PRC are not compatible with Windows.    
-> If you want to use the PRC on Windows, you can install an older version as follows: 
-> ```sh
-> pip install python-irodsclient==1.1.1
-> ```
->   
-
 If you are using a pure Windows machine (no available Linux OS via VMs and WSL2), there are two options that you can follow.
 
 The first option:
