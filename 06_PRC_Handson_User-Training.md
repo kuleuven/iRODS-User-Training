@@ -74,7 +74,7 @@ The second option:
 
 - You will be forwarded to your default screen to be notified about that 'You have successfully authenticated' in addition to some information,
 
-- So that you will have created a temporary password that will expire 7 days later and once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS,
+- So that you will have created a temporary password that will expire 60 hours later and once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS,
 
 - The popped-up terminal will disappear in 8 seconds.
 
