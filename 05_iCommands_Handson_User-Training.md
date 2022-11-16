@@ -101,6 +101,9 @@ ils
   C- /yourZone/home/u0XXXXXX/test
 ```
 
+`ils` shows you the contents of a collection, but not of its subcollections.   
+If you want to see the contents of the current collection and all it's subcollections, you can use the command `itree` instead. 
+
 To go to the collection that you want, you would use `icd` with an absolute path or a relative path.
 In other words, to navigate around folder(s) of iRODS, we use it. Let's go inside the 'test' collection:
 
@@ -139,9 +142,14 @@ The following would print the contents of the file test1 to the terminal:
 istream read test1
 ```
 
->   
-> **Warning:** Currently, the `istream` command is not working in our iRODS zones.
-> 
+The same command can be used to redirect standard input and add it to a data object in iRODS.
+For example, to append the word 'hello' to the end of our file 'test1':
+
+```sh
+echo 'hello' | istream write -a test1 
+```
+
+
 
 ### Functional iCommands
 With the commands in this section, we will do functional data operations like data uploading/downloading, access control and verifying/synchronizing data.
