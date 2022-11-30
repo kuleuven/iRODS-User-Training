@@ -8,6 +8,18 @@ The Mango portal is a web interface for iRODS, developed at ICTS KU Leuven.
 
 ## Logging in
 
+You can visit the Mango portal by following ~~this link~~  (redacted).
+
+There, you will be asked to choose the institute you are affiliated to:
+
+<img align="center" src="img/mango_portal_login_institute.png" width="600px">
+
+Choosing 'KU Leuven' will direct you to the KU Leuven login page, unless you already were logged in in another tab, in which case this step is skipped.  
+On the next page, select your iRODS zone.   
+You should be redirected to the main page of the Mango portal:
+
+<img align="center" src="img/mango_portal_main_page.png" width="600px">
+
 
 ## The collections tab
 
@@ -53,6 +65,7 @@ Alternatively, you can clone the repository from the command line.
 
 
 **Exercise 1: uploading and organizing**
+
 
 
 <details>
