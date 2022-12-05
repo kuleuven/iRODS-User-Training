@@ -10,21 +10,21 @@ This tutorial introduces iCommands, which give users a command-line interface to
 ## Goal of the Training
 
 The aim of the training is to explain the following topics by using the command line tool-iCommands:
-- uploading/downloading data
-- adding metadata to data objects/collections
-- querying based on metadata
-- deleting data objects/collections
-- synchronization of data
-- ACLs to data objects/collections
+- [uploading](#data-upload)/[downloading](#data-download) data
+- [adding metadata to data objects/collections](#create-avus-triples)
+- [querying based on metadata](#queries-for-data)
+- [deleting data objects/collections](#unix-like-icommands-basics)
+- [synchronization of data](#data-synchronization)
+- [ACLs to data objects/collections](#access-control-and-data-sharing)
 
 ## Categorizing iCommands
 
 As a command line user interface to iRODS, more than 50 iCommands exist. However a regular user may use only a few of them for his/her daily needs. We can categorize them in the following groups:
 
-- Informative iCommands
-- Unix-like iCommands
-- Functional iCommands
-- Metadata related iCommands
+- [Informative iCommands](#informative-icommands)
+- [Unix-like iCommands](#unix-like-icommands-basics)
+- [Functional iCommands](#functional-icommands)
+- [Metadata related iCommands](#metadata)
 - Administrative iCommands
 
 ### Configuration of the iRODS connection
@@ -79,7 +79,7 @@ Typically we don’t use these commands very often.
 ### Unix like iCommands (Basics)
 These commands exactly work as what Unix based commands do.
 
-To identify the current working collection (directory) you can use the `ipwd` command. Basically this command tells you where you are in iRODS:
+To identify the current working collection (iRODS directory) you can use the `ipwd` command. Basically this command tells you where you are in iRODS:
 
 ```sh
 ipwd
@@ -92,7 +92,7 @@ Let’s create a collection in iRODS and name it “test”.
 imkdir test
 ```
 
-To see the content of our current collection(directory), we can use `ils`. It lists collections (directories) and data objects (files).
+To see the content of our current collection (iRODS directory), we can use `ils`. It lists collections (directories) and data objects (files).
 And we see that we have successfully created our “test” collection.
 
 ```sh
@@ -102,7 +102,7 @@ ils
 ```
 
 `ils` shows you the contents of a collection, but not of its subcollections.   
-If you want to see the contents of the current collection and all it's subcollections, you can use the command `itree` instead. 
+If you want to see the contents of the current collection and all its subcollections, you can use the command `itree` instead. 
 
 To go to the collection that you want, you would use `icd` with an absolute path or a relative path.
 In other words, to navigate around folder(s) of iRODS, we use it. Let's go inside the 'test' collection:
@@ -149,14 +149,13 @@ For example, to append the word 'hello' to the end of our file 'test1':
 echo 'hello' | istream write -a test1 
 ```
 
-
-
 ### Functional iCommands
+
 With the commands in this section, we will do functional data operations like data uploading/downloading, access control and verifying/synchronizing data.
 This constitutes the basis of data management in iRODS.
 
 #### Data Upload
-We can store a file into iRODS.  If the destination data object or collection are not provided, the current iRODS directory and the input file name are used.
+We can store a file into iRODS. If the destination data object or collection are not provided, the current iRODS collection and the input file name are used.
 
 To upload data into iRODS we should have a data object in our VSC system. Thus we should first create a data file in our Linux home directory. 
 
@@ -178,7 +177,7 @@ We now upload the data to the iRODS.
 iput -K example.txt
 ```
 
-*The flag -K triggers iRODS to create a checksum and store this checksum in the iCAT metadata catalogue.*
+*The flag -K triggers iRODS to create a checksum and store this [checksum in the iCAT metadata catalogue](#checking-data-integrity).*
 
 Let’s remove the original file.
 
@@ -187,7 +186,7 @@ rm example.txt
 ls
 ```
 
-The file is now only available on the iRODS server not in our client directory.
+The file is now only available on the iRODS server, not in our client directory.
 
 ```sh
 ils
@@ -200,6 +199,7 @@ ils
 As we have seen before, data can be deleted by `irm (-f) example.txt`. But we will not do it now.
 
 #### Connection between logical and physical namespace
+
 iRODS provides an abstraction from the physical location of the files. ` /yourZone/home/u0XXXXXX/example.txt` is the logical path which only iRODS knows.
 But where is the file actually located on the server?
 
@@ -215,6 +215,7 @@ Let’s try to understand what this means. The example.txt that we uploaded to i
 “default:netapp” represents the storage resource name. The size of the file is 29KB. The file is stored with a time stamp and a checksum. `/netapp/home/u0XXXXXX/test/example.txt` is the physical path of the file.
 
 #### Data Download
+
 We can get data objects or collections from iRODS, and place them either in the specified local area or the current working directory. Let's download data files from iRODS to our current VSC location.
 
 To download or to restore the file (copy it from iRODS to your VSC home):
@@ -223,7 +224,7 @@ To download or to restore the file (copy it from iRODS to your VSC home):
 iget -K example.txt example-restore.txt
 ```
 
-We download the iRODS file example.txt as a new file called example-restore.txt in our linux home directory. Here the flag -K triggers iRODS to verify the checksum. Checksums are used to verify data integrity upon data moving.
+We download the iRODS file example.txt as a new file called example-restore.txt in our linux home directory. Here the flag -K triggers iRODS to verify the checksum. Checksums are used to verify [data integrity](#checking-data-integrity) upon data moving.
 
 *To get the progress feedback, we can use -P flag.*
 
@@ -231,22 +232,22 @@ We download the iRODS file example.txt as a new file called example-restore.txt 
 
 #### Access control and data sharing
 Collections in the iRODS logical namespace have an attribute named Inheritance. `ichmod` can be used to manipulate this attribute on a per-Collection level.
-ils -A displays ACLs and the inheritance status of the current working iRODS directory. iRODS has ACL with read, write and own rights.
+ils -A displays ACLs and the inheritance status of the current working iRODS collection. iRODS has ACL with read, write and own rights.
 
 You can check the current access of your data with:
 
 ```sh
 ils -r -A
 /yourZone/home/u0XXXXXX/test:
-        ACL - u0XXXXXX#icts_demo:own
+        ACL - u0XXXXXX#yourZone:own
         Inheritance - Disabled
   example.txt
-        ACL - u0XXXXXX#icts_demo:own
+        ACL - u0XXXXXX#yourZone:own
 ```
 
 After 'ACL' it shows which user has what rights, e.g. <u0XXXXXX> owns all files listed. No one else has access rights.
 
-Collections have a flag 'Inheritance'. If this flag is set to true, all content of the folder will inherit the accession rights from the folder.
+Collections have a flag 'Inheritance'. If this flag is set to true, all content of the folder will inherit the access rights from the folder.
 
 Let's create a new collection called 'shared'
 
@@ -254,7 +255,7 @@ Let's create a new collection called 'shared'
 imkdir shared
 ```
 
-Let us change the accession rights of 'shared'. You can choose another user who you want to give access:
+Let us change the access rights of 'shared'. You can choose another user who you want to give access:
 
 ```sh
 ichmod read u0YYYYYY shared
@@ -304,7 +305,7 @@ So we can confirm that this data object/file is the same and we don’t detect a
 #### Data Synchronization
 To synchronize the data between a local copy (local file system) and the copy stored in iRODS or between two iRODS copies, we can use ` irsync`. The command and its mode can be determined by the way the sourceFile|sourceDirectory and targetFile|targetDirectory are specified.
 
-Files and directories prepended with 'i:' are iRODS files and collections. Local files and directories are specified without any prefix.
+Files and directories prepended with 'i:' are (iRODS) data objects and collections. Local files and directories are specified without any prefix.
 
 For example, the command:
 
@@ -312,28 +313,28 @@ For example, the command:
 irsync -r foo1 i:foo2
 ```
 
-synchronizes recursively the data from the local directory foo1 to the iRODS collection foo2 and the command:
+synchronizes recursively the data from the local directory foo1 to the iRODS collection `foo2` and the command:
 
 ```sh
  irsync -r i:foo1 foo2
  ```
 
-synchronizes recursively the data from the iRODS collection foo1 to the local directory foo2.
+synchronizes recursively the data from the iRODS collection `foo1` to the local directory `foo2`.
 
 ```sh
  irsync -r i:foo1 i:foo2
  ```
 
-synchronizes recursively the data from the iRODS collection foo1 to another iRODS collection foo2.
+synchronizes recursively the data from the iRODS collection `foo1` to another iRODS collection `foo2`.
 
 How does this command work? The command compares the checksum values and file sizes of the source and target files to determine whether synchronization is needed. 
 
 #### File Bundling
 To upload and download structured files such as tar files to/from iRODS, we can use `ibun` command.
 
-A tar file containing many small files can be created with normal unix tar command on our local machine . We can then upload the tar file to the iRODS server as a normal iRODS file. Furthermore, `ibun -x` command can be used to extract/untar the uploaded tar file. The extracted subfiles and subdirectories will then be appeared as normal iRODS files and sub-collections.
+A tar file containing many small files can be created with normal unix tar command on our local machine . We can then upload the tar file to the iRODS server as a normal iRODS file. Furthermore, `ibun -x` command can be used to extract/untar the uploaded tar file. The extracted subfiles and subdirectories will then be appeared as normal iRODS data objects and sub-collections.
 
-As a good practice we can tag the tar file using the -Dtar flag when uploading the file with iput. The dataType tag can be added later with the isysmeta command. For example:
+As a good practice we can tag the tar file using the -Dtar flag when uploading the file with `iput`. The dataType tag can be added later with the isysmeta command. For example:
 isysmeta mod /kuleuven_tier1_pilot/home/vsc33586/mydir.tar datatype 'tar file'
 
 ```sh
@@ -353,7 +354,7 @@ Metadata is often called data about data and is used to facilitate data discover
 
 Metadata attribute-value-units triples (AVUs) consist of an Attribute-Name, Attribute-Value, and an optional Attribute-Units.  They can be added via the 'add' command (and in other ways), and then queried to find matching objects.
 
-For each command, -d, -C, -R, or -u is used to specify which type of object to work with: dataobjs (iRODS files), collections, resources, or users.
+For each command, -d, -C, -R, or -u is used to specify which type of object to work with: data objects (iRODS files), collections, resources, or users.
 
 These triples are added to a database and are searchable so that we will explore how to create these AVUs triples for which we can search later.
 
@@ -506,7 +507,7 @@ iget inflation.txt
 
 - Create a collection in iRODS called 'molecules'.
 - Sync the local directory data/molecules with the collection 'molecules' in iRODS.
-- Chack whether all files have been uploaded to iRODS.
+- Check whether all files have been uploaded to iRODS.
 - Count how many carbon (C) atoms there are in all molecules combined.
 - Create a file called 'carbon_count.txt' in the data/molecules directory, with this number as contents.
 - Sync the local directory data/molecules with the collection 'molecules' again.
@@ -534,7 +535,7 @@ ils molecules
 </details>
 
 **Exercise 4: managing permissions**
-- Go to data/lifesciences. You will there find the files patient1.csv and anonymized.csv. 
+- Go to data/lifescience. You will there find the files patient1.csv and anonymized.csv. 
 - Make a folder called 'lifescience' in your home and upload both files to it.
 - Give your group read access to the folder lifescience, recursively.
 - Oh no, we forgot something! While the data in anonymized.csv is anonymized, the other file contains sensitive data!
@@ -573,7 +574,7 @@ ils -A lifescience
 - Upload the tar file to iRODS. Make sure it has the right data type.
 - Make a collection called 'archive'.
 - Unbundle the tar file in iRODS in this collection.
-- Bundle the 'molecules' directory in iRODS and download it. 
+- Bundle the 'molecules' collection in iRODS and download it. 
 
 
 <details>
@@ -596,9 +597,9 @@ iget molecules.tar
   These are so called 'text corpora', featuring a set of texts in a certain language.
 - Make a collection called 'languages' and upload the files to it.
 - Add the following AVU's to the files:
-    - Attrbute 'language' and value 'dutch' to corpus1.txt
-    - Attrbute 'language' and value 'french' to corpus2.txt
-    - Attrbute 'language' and value 'latin' to corpus3.txt
+    - Attribute 'language' and value 'dutch' to corpus1.txt
+    - Attribute 'language' and value 'french' to corpus2.txt
+    - Attribute 'language' and value 'latin' to corpus3.txt
 - Oops, we made a mistake! Open the file corpus2.txt, and look what the language is. 
   Overwrite the current AVU with one with the correct value (tip: check the documentation of imeta with `imeta -h`).
 - Execute a query which searches all files which contain Dutch text.
