@@ -63,19 +63,49 @@ You can find the files used for the exercises in the [git repository](https://gi
 You can download the repository as a Zip-file by clicking on the green 'code' button and selecting 'Download ZIP'.
 Alternatively, you can clone the repository from the command line.
 
-
 **Exercise 1: uploading and organizing**
+
+In this exercise, you will use the file inflation.txt from data/economy.
+
+- Create two collections called 'earth_science' and 'economy'.
+- Upload inflation.txt to the collection 'earth_science'.
+- You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Remove the file you just uploaded.
+- Move into the 'economy' collection and reupload the file there. 
+- Remove the 'earth_science' collection.
+- You can now also delete the 'inflation.txt' file in your local directory.
 
 
 
 <details>
   <summary>Solution</summary>
 
-You start this exercise in the 'collections' tab.
+You start this exercise in the 'collections' tab.  
+Before starting, navigate to your home collection by clicking on it.  
+
+- Use the 'Add collection' button to create the collection 'earth_science'.  
+  Make the collection 'economy' in the same way.
+- Click on the newly made 'earth_science' collection.
+- Click on the 'upload files' button.
+  You have two ways to do this:
+    1. Open your local file explorer, and drag file to 'Drop files here to upload'
+    2. Click on 'Drop files here to upload'   
+       In the popup that opens, you can search the inflation.txt file on your local pc.
+    Click on 'submit files'.
+- Click on inflation.txt. 'Then, select 'delete'.  
+- Move back to your home collection via the breadcrumb menu above.  
+- Click on 'economy' and repeat the step of uploading inflation.txt.
+- Move back to your home collection via the breadcrumb menu above. 
+- Click on the 'earth_science' collection.
+- Click on 'delete'. 
 
 </details>
 
-**Exercise 2: downloading, overwriting and previewing**
+**Exercise 2: downloading and overwriting**
+
+- Inspect the contents of inflation.txt by previewing it. 
+- You realise there is a mistake in the uploaded data object.
+  Download the file and edit it so the inflation for 2021 is 1.4%.
+- Upload the new version of the file, overwriting the previous one.
 
 
 <details>
@@ -87,6 +117,16 @@ You start this exercise in the 'collections' tab.
 
 **Exercise 3: managing permissions**
 
+In this exercise, you will use the files patient1.csv and anonymized.csv from data/lifescience.
+
+- Make a collection called 'lifescience' in your home and upload both files to it.  
+- Give your group read access to the collection lifescience, recursively.  
+- Oh no, we forgot something! While the data in anonymized.csv is anonymized, the other file contains sensitive data!  
+  Remove the read permissions for the group from patient1.csv.  
+- Later, your colleagues mention they need to upload some new files to the lifescience collection.  
+  Give your group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
+
+
 
 <details>
   <summary>Solution</summary>
@@ -97,6 +137,17 @@ You start this exercise in the 'collections' tab.
 
 **Exercise 4: working with metadata**
 
+In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.txt from data/languages.
+
+- Make a collection called 'languages' and upload the files to it.  
+- Add the following AVU's to the files:  
+    - Attrbute 'language' and value 'dutch' to corpus1.txt  
+    - Attrbute 'language' and value 'french' to corpus2.txt  
+    - Attrbute 'language' and value 'latin' to corpus3.txt  
+- Oops, we made a mistake! Open the file corpus2.txt, and look what the language is.  
+  Overwrite the current AVU with one with the correct value.  
+- Go to the 'search' tab and search for all files with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.  
+
 
 <details>
   <summary>Solution</summary>
@@ -105,8 +156,27 @@ You start this exercise in the 'collections' tab.
 
 </details>
 
-**Exercise 5: metadata templates**
+**Exercise 5: metadata schemas**
 
+In this exercise, you will use the file bird.JPG from data/biology, which depicts a nice specimen of the 'European roller'.
+
+- Make a Metadata schema with the name 'animals'.
+  This schema should contain the following:
+
+  - A 'name' field where the user can type the name of the animal
+  - A 'type' field, with the following options:
+    - 'Mammal'
+    - 'Bird'
+    - 'Fish'
+  - A 'flies' field, with the following options:
+    - 'Yes'
+    - 'No'
+    - 'Only on weekdays'
+
+  All fields should be required. 
+
+- Create a collection called 'biology' and upload bird.JPG to it.
+- Apply the template to bird.JPG.
 
 <details>
   <summary>Solution</summary>
