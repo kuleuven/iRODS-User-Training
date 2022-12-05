@@ -8,9 +8,9 @@ The Mango portal is a web interface for iRODS, developed at ICTS KU Leuven.
 
 ## Logging in
 
-You can visit the Mango portal by following ~~this link~~  (redacted).
+You will receive the link of the ManGO portal during the training.  
 
-There, you will be asked to choose the institute you are affiliated to:
+On this page, you will be asked to choose the institute you are affiliated to:
 
 <img align="center" src="img/mango_portal_login_institute.png" width="600px">
 
