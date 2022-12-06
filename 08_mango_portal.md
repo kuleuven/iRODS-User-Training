@@ -23,14 +23,62 @@ You should be redirected to the main page of the ManGO portal:
 
 ## The collections tab
 
-- Navigating
-- Creating collections
-- Uploading files
-- Downloading files
-- Deleting files
+### Navigating
 
-- TODO: add note on copy/move and rename actions (not available at time of writing)
+When you log in, you can see a menu on the left side of the page, with the different tabs.  
+The **Collections** tab allows you to navigate and organize your data in the central pane.
 
+<img align="center" src="img/mango_portal_collections.png" width="600px">
+
+By default, you start in the 'home' collection. There you should see: 
+- Your home collection 
+- The collection of your group 
+- The public collection
+
+To navigate to a collection, you just click on it.
+Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections:
+
+To create a collection, you click on the blue 'add collection' button, and specify a name.
+
+**Note** If the 'Add collection' and 'Upload files ...' buttons are missing, that means you don't have permissions to write to the collection you are currently in. 
+
+### Uploading and downloading files
+
+To upload one or multiple files, click on the 'Upload files... button'.  
+From here, there are two ways to upload files:
+  1. Open your local file explorer, and drag file to 'Drop files here to upload'
+  2. Click on 'Drop files here to upload' and browse your pc
+Note that you can upload multiple files in one go. 
+
+After this step, you will see the file as data object in your collection:   
+
+<img align="center" src="img/mango_portal_data_object.png" width="600px">
+
+
+To download a data object, click on the blue download icon on the right of it.  
+It will end up in your local Downloads directory.  
+
+
+### Moving, copying and renaming data
+
+These actions are planned to be added in a later version.  
+
+
+### Deleting data
+
+To delete a collection, click on it to show that collection's page.  
+You can find the red 'Delete' button in the lower left corner.   
+The same method applies for data object.  
+
+<img align="center" src="img/mango_portal_delete.png" width="600px">
+
+Any data you delete gets sent to your 'trash' collection.    
+For example, if you remove the file with path `/<zone>/home/<username>/research/results.txt`, it will end up at `/<zone>/trash/home/<username>/research/results.txt`.  
+You can reach the trash collection by clickin on the 'trash' tab on the left of the screen.   
+There it stays for 15 days, after which it is automatically deleted.  
+
+If you want to recover data you deleted within this period, please contact the administrators via rdm-icts@kuleuven.be.  
+In later versions, you will be able to move deleted data back to your home directory.  
 
 
 ## A deeper look
@@ -40,6 +88,8 @@ You should be redirected to the main page of the ManGO portal:
 - Permissions
 - Previews
 - TIKA parser
+
+## Searching 
 
 
 ## Metadata templates
