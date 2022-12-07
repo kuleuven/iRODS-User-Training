@@ -259,7 +259,6 @@ Before starting, navigate to your home collection by clicking on it.
 
 **Exercise 2: downloading and overwriting**
 
-- Inspect the contents of inflation.txt by previewing it. 
 - You realise there is a mistake in the uploaded data object.
   Download the file and edit it so the inflation for 2021 is 1.4%.
 - Upload the new version of the file, overwriting the previous one.
