@@ -99,7 +99,7 @@ You can also search for data objects based on this information in the search tab
 
 ### Metadata
 
-ManGO allows you to add metadata (data about data) to both collections and data objects, in the form of Attribute-Value-Units triples (AVU's).
+ManGO allows you to user metadata (data about data) to both collections and data objects, in the form of Attribute-Value-Units triples (AVU's).
 These labels allow you:
   - To add contextual information to your data
   - To search your data via the search tab (see [Searching](#searching))
@@ -174,6 +174,29 @@ These will then pop up on in the metadata tab under the 'analysis' subtab.
 
 
 ## Searching 
+
+In the search tab, you can search for collections or data objects based on system properties, like name and creation date, and based on user-added metadata.  
+To search for a collection or data object, select the right type under 'Type'.  
+You can specify a collection to search in under 'collection (subtree)', but this is not mandatory.   
+Then, you fill in the criteria you want to look for and click on 'Search'.
+
+<img align="center" src="img/mango_portal_search.png" width="600px">
+
+This gives you a list of all relevant collections/data objects (if any).  
+To go to any collection/data object in the results, just click on the link (which should be in blue).
+
+<img align="center" src="img/mango_portal_search_result.png" width="600px">  
+
+
+
+> **Note:** There is also a search bar at the top of the page.  
+> It is meant to provide a more freeform search, like Google, in later versions of the portal.    
+> Since this feature is not available yet, the search bar is blocked for now.  
+
+
+
+
+
 
 
 ## Metadata schema's
