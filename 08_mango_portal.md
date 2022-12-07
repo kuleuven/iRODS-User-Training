@@ -24,6 +24,8 @@ The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven.
     + [Analysis (data objects)](#analysis--data-objects-)
   * [Searching](#searching)
   * [Metadata schema's](#metadata-schema-s)
+    + [Creating a schema](#creating-a-schema)
+    + [Applying a schema](#applying-a-schema)
 - [Exercises](#exercises)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -114,6 +116,7 @@ We'll discuss them one by one:
 
 Under 'Contents', you can see the subcollections and data objects inside a collection.
 This has been discussed in the previous chapter.
+For now, you can work around this (at least for data objects) by (removing and) reuploading files, optionally with a new name and/or location.  
 
 ### System properties (data objects)
 
@@ -210,28 +213,68 @@ To go to any collection/data object in the results, just click on the link (whic
 
 <img align="center" src="img/mango_portal_search_result.png" width="600px">  
 
-
-
 > **Note:** There is also a search bar at the top of the page.  
 > It is meant to provide a more freeform search, like Google, in later versions of the portal.    
 > Since this feature is not available yet, the search bar is blocked for now.  
 
-
-
-
-
-
-
 ## Metadata schema's
 
-- Creating templates
-- Applying templates
+Earlier, we showed how you can apply metadata manually.   
+Another option is to apply metadata via predefined schema's.  
+This has two advantages:  
+- It's harder to make mistakes 
+- It saves time
+
+### Creating a schema
 
 
+To create a new schema, click on the tab 'Metadata schema's' on the right, and then on 'Create new template' at the bottom.  
+In the following popup, give a name to your schema.  
+Then, you can start adding elements:  
+
+<img align="center" src="img/mango_portal_new_template.png" width="300px">  
+
+A new popup will open, where you can choose between kinds of elements to add to your template:  
+- Text input  
+- Select: selecting one option from a dropdown list (of at least 5 elements)  
+- Checkboxes: selecting one/multiple options from a list
+- Radio buttons: selecting one option from a list
+- Object: create a combination of fields
+  - For example, you can create an 'author' object with a text field for first name and a dropdown for selecting their institute  
+
+Click on any of these options and you will be asked for an ID and a name for the label.  
+The ID should be something descriptive, in lowercase, without spaces.  
+The label is what the user will see.
+After that, you will need to specify what kind of input the user can give (differs per element type).  
+Click on 'submit' to verify the creation of your element.
+
+<img align="center" src="img/mango_portal_template_radio_button.png" width="600px">  
+
+You can keep creating elements until you are happy with your schema.  
+If an element should be mandatory, don't forget to tick the 'required' checkbox.  
+When you are ready, click on 'submit template'
+
+If you want to make changes later, you can always return to the metadata schema tab and edit your schema.  
+Deleting a schema will be possible in later versions.  
 
 
+### Applying a schema
 
+To apply a schema, go to the collection tab and browse to the collection/data object you would like to apply it to.  
+Then, go to the metadata tab of that collection/data object.  
+Under 'Edit/add metadata via schema', select your schema and click on 'Edit'.  
 
+<img align="center" src="img/mango_portal_apply_schema_1.png" width="600px">   
+
+This will create a pop-up where you can fill in all metadata.  
+After you click on 'save', the metadata tab of your collection/data object will have an extra tab with the name of your schema. 
+
+<img align="center" src="img/mango_portal_apply_schema_2.png" width="600px">  
+
+In the search tab, you can now also search based on the schema of the metadata.  
+However, instead of typing the attribute name, under 'Attribute name' you type `mg.<schema_name>.<element-identifier>`:   
+
+<img align="center" src="img/mango_portal_search_schema_metadata.png" width="600px">  
 
 # Exercises
 
