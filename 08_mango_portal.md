@@ -35,15 +35,15 @@ The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven.
 
 You will receive the link of the ManGO portal during the training.  
 
-On this page, you will be asked to choose the institute you are affiliated to:
+On this page, you will be asked to choose the institute you are affiliated to:  
 
-<img align="center" src="img/mango_portal_login_institute.png" width="600px">
+<img align="center" src="img/mango_portal_login_institute.png" width="600px">  
 
-Choosing 'KU Leuven' will direct you to the KU Leuven login page, unless you already were logged in in another tab, in which case this step is skipped.  
+Choosing 'KU Leuven' will direct you to the KU Leuven login page, unless you already were logged in in another tab, in which case this step is skipped.    
 On the next page, select your iRODS zone.   
-You should be redirected to the main page of the ManGO portal:
+You should be redirected to the main page of the ManGO portal:  
 
-<img align="center" src="img/mango_portal_main_page.png" width="600px">  
+<img align="center" src="img/mango_portal_main_page.png" width="600px">    
 
 
 ## The collections tab
@@ -51,7 +51,7 @@ You should be redirected to the main page of the ManGO portal:
 ### Navigating
 
 When you log in, you can see a menu on the left side of the page, with the different tabs.  
-The **Collections** tab allows you to navigate and organize your data in the central pane.
+The **Collections** tab allows you to navigate and organize your data in the central pane.  
 
 <img align="center" src="img/mango_portal_collections.png" width="600px">  
 
@@ -60,90 +60,90 @@ By default, you start in the 'home' collection. There you should see:
 - The collection of your group 
 - The public collection
 
-To navigate to a collection, you just click on it.
-Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections:
+To navigate to a collection, you just click on it.  
+Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections:  
 
-To create a collection, you click on the blue 'add collection' button, and specify a name.
+To create a collection, you click on the blue 'add collection' button, and specify a name.  
 
-**Note** If the 'Add collection' and 'Upload files ...' buttons are missing, that means you don't have permissions to write to the collection you are currently in. 
+**Note:** If the 'Add collection' and 'Upload files ...' buttons are missing, that means you don't have permissions to write to the collection you are currently in. 
 
 ### Uploading and downloading files
 
 To upload one or multiple files, click on the 'Upload files... button'.  
-From here, there are two ways to upload files:
-  1. Open your local file explorer, and drag file to 'Drop files here to upload'
-  2. Click on 'Drop files here to upload' and browse your pc
-Note that you can upload multiple files in one go. 
+From here, there are two ways to upload files:  
+  1. Open your local file explorer, and drag file to 'Drop files here to upload'  
+  2. Click on 'Drop files here to upload' and browse your pc  
+Note that you can upload multiple files in one go.   
 
-After this step, you will see the file as data object in your collection:   
+After this step, you will see the file as data object in your collection:    
 
 <img align="center" src="img/mango_portal_data_object.png" width="600px">  
 
 
-To download a data object, click on the blue download icon on the right of it.  
-It will end up in your local Downloads directory.  
+To download a data object, click on the blue download icon on the right of it.    
+It will end up in your local Downloads directory.    
 
 
 ### Moving, copying and renaming data
 
-These actions are planned to be added in a later version. 
-At the moment, you can work around this by (removing and) reuploading data objects with the correct name/destination.  
+These actions are planned to be added in a later version.   
+At the moment, you can work around this by (removing and) reuploading data objects with the correct name/destination.    
 
 
 ### Deleting data
 
-To delete a collection, click on it to show that collection's page.  
+To delete a collection, click on it to show that collection's page.    
 You can find the red 'Delete' button in the lower left corner.   
 The same method applies for data object.  
 
 <img align="center" src="img/mango_portal_delete.png" width="600px">
 
-Any data you delete gets sent to your 'trash' collection.    
-For example, if you remove the file with path `/<zone>/home/<username>/research/results.txt`, it will end up at `/<zone>/trash/home/<username>/research/results.txt`.  
-You can reach the trash collection by clickin on the 'trash' tab on the left of the screen.   
+Any data you delete gets sent to your 'trash' collection.      
+For example, if you remove the file with path `/<zone>/home/<username>/research/results.txt`, it will end up at `/<zone>/trash/home/<username>/research/results.txt`.    
+You can reach the trash collection by clickin on the 'trash' tab on the left of the screen.     
 There it stays for 15 days, after which it is automatically deleted.  
 
-If you want to recover data you deleted within this period, please contact the administrators via rdm-icts@kuleuven.be.  
-In later versions, you will be able to move deleted data back to your home directory.  
+If you want to recover data you deleted within this period, please contact the administrators via rdm-icts@kuleuven.be.    
+In later versions, you will be able to move deleted data back to your home directory.    
 
 
 ## A deeper look
 
-If you click on the name of a collection or data object, you go to a page with more info about that object.
-These pages are split in different tabs.  
-We'll discuss them one by one:  
+If you click on the name of a collection or data object, you go to a page with more info about that object.  
+These pages are split in different tabs.    
+We'll discuss them one by one:    
 
 ### Contents (collections)
 
-Under 'Contents', you can see the subcollections and data objects inside a collection.
-This has been discussed in the previous chapter.
-For now, you can work around this (at least for data objects) by (removing and) reuploading files, optionally with a new name and/or location.  
+Under 'Contents', you can see the subcollections and data objects inside a collection.  
+This has been discussed in the previous chapter.  
+For now, you can work around this (at least for data objects) by (removing and) reuploading files, optionally with a new name and/or location.    
 
 ### System properties (data objects)
 
-This tab shows you some basic information that the system has about a data object, like its owner or the time it was last modified.  
+This tab shows you some basic information that the system has about a data object, like its owner or the time it was last modified.    
 You can also search for data objects based on this information in the search tab (see [Searching](#searching)).  
 
 ### Metadata
 
-ManGO allows you to user metadata (data about data) to both collections and data objects, in the form of Attribute-Value-Units triples (AVU's).
-These labels allow you:
+ManGO allows you to user metadata (data about data) to both collections and data objects, in the form of Attribute-Value-Units triples (AVU's).  
+These labels allow you:  
   - To add contextual information to your data
   - To search your data via the search tab (see [Searching](#searching))
   - In some cases, it can even be used to automate processes.  
 
-For example, you could add the attribute 'instrument' and value 'microscope A' to indicate the data has been generated by microscope A.  
-The unit field is meant to indicate units like meters, hours, ... where necessary (e.g. 'time', '20', 'days'), but units are not mandatory.  
+For example, you could add the attribute 'instrument' and value 'microscope A' to indicate the data has been generated by microscope A.    
+The unit field is meant to indicate units like meters, hours, ... where necessary (e.g. 'time', '20', 'days'), but units are not mandatory.    
 
-In this tab, you can add metadata manually per AVU, or you can apply a metadata schema (see [Metadata schema's](#metadata-schemas)). 
+In this tab, you can add metadata manually per AVU, or you can apply a metadata schema (see [Metadata schema's](#metadata-schemas)).   
 
 To add an AVU manually, click on the blue 'add metadata' button.  
-Fill in your AVU in the popup that appears.  
-Once you save, you will see this AVU appear in the metadata menu.  
+Fill in your AVU in the popup that appears.   
+Once you save, you will see this AVU appear in the metadata menu.   
 
 <img align="center" src="img/mango_portal_manual_metadata.png" width="600px">  
 
-You can edit any AVU you add later by clicking on the pencil next to it.  
+You can edit any AVU you add later by clicking on the pencil next to it.    
 To delete an AVU, click on the red trashbin next to it.  
 
 
@@ -170,7 +170,7 @@ This way, we avoid cases where no one owns a data object/collection.
 **Note**: When giving permissions to groups, always consider whether the users can browse to the data.  
 For example, if a data object is located at `/<zone>/home/<your_home>/research`, a group needs at least read access to your home and the research collection.  
 Some other clients, like iCommands and the Python-iRODSclient allow users to go straight to a path instead of browsing.  
-However, even in these cases, users need at least read access to the parent directory 
+However, even in these cases, users need at least read access to the parent directory  
 
 For collections, this tab also allows you to set or unset inheritance.  
 If you activate inheritance, every collection or data object created under it will inherit the permissions of this collection.  
@@ -189,13 +189,13 @@ For example, the header of a foto might contain data on when the picture was tak
 
 The analysis tab allows you to extract this information with [Apache Tika](https://tika.apache.org/).  
 To start, indicate whether you want OCR (Optical Character Recognition) or not, and click on 'Analyze with Tika Inspector'.  
-This generates a list of all the metadata that the analyzer can find inside the file, and optionally the text of the file (depending on the file type.)    
+This generates a list of all the metadata that the analyzer can find inside the file, and optionally the text of the file (depending on the file type).     
 
 <img align="center" src="img/mango_portal_tika.png" width="600px">
 
-Next to each metadata item, you have a checkbox.  
+Next to each metadata item, you have a checkbox.    
 You can click the checkboxes of metadata items you find useful (which are likely not all) and click on 'Add selected metadata items as regular metadata'.  
-These will then pop up on in the metadata tab under the 'analysis' subtab. 
+These will then pop up on in the metadata tab under the 'analysis' subtab.  
 
 <img align="center" src="img/mango_portal_tika_metadata.png" width="600px">
 
@@ -205,12 +205,12 @@ These will then pop up on in the metadata tab under the 'analysis' subtab.
 In the search tab, you can search for collections or data objects based on system properties, like name and creation date, and based on user-added metadata.  
 To search for a collection or data object, select the right type under 'Type'.  
 You can specify a collection to search in under 'collection (subtree)', but this is not mandatory.   
-Then, you fill in the criteria you want to look for and click on 'Search'.
+Then, you fill in the criteria you want to look for and click on 'Search'.  
 
 <img align="center" src="img/mango_portal_search.png" width="600px">
 
 This gives you a list of all relevant collections/data objects (if any).  
-To go to any collection/data object in the results, just click on the link (which should be in blue).
+To go to any collection/data object in the results, just click on the link (which should be in blue).  
 
 <img align="center" src="img/mango_portal_search_result.png" width="600px">  
 
@@ -221,7 +221,7 @@ To go to any collection/data object in the results, just click on the link (whic
 ## Metadata schema's
 
 Earlier, we showed how you can apply metadata manually.   
-Another option is to apply metadata via predefined schema's.  
+Another option is to apply metadata via predefined schema's.   
 This has two advantages:  
 - It's harder to make mistakes 
 - It saves time
@@ -245,15 +245,15 @@ A new popup will open, where you can choose between kinds of elements to add to 
 
 Click on any of these options and you will be asked for an ID and a name for the label.  
 The ID should be something descriptive, in lowercase, without spaces.  
-The label is what the user will see.
+The label is what the user will see.  
 After that, you will need to specify what kind of input the user can give (differs per element type).  
-Click on 'submit' to verify the creation of your element.
+Click on 'submit' to verify the creation of your element.  
 
 <img align="center" src="img/mango_portal_template_radio_button.png" width="600px">  
 
 You can keep creating elements until you are happy with your schema.  
 If an element should be mandatory, don't forget to tick the 'required' checkbox.  
-When you are ready, click on 'submit template'
+When you are ready, click on 'submit template'.  
 
 If you want to make changes later, you can always return to the metadata schema tab and edit your schema.  
 Deleting a schema will be possible in later versions.  
