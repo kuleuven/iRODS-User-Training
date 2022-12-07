@@ -6,6 +6,27 @@
 
 The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven. 
 
+## Table of contents
+
+- [ManGO portal](#mango-portal)
+  * [Logging in](#logging-in)
+  * [The collections tab](#the-collections-tab)
+    + [Navigating](#navigating)
+    + [Uploading and downloading files](#uploading-and-downloading-files)
+    + [Moving, copying and renaming data](#moving--copying-and-renaming-data)
+    + [Deleting data](#deleting-data)
+  * [A deeper look](#a-deeper-look)
+    + [Contents (collections)](#contents--collections-)
+    + [System properties (data objects)](#system-properties--data-objects-)
+    + [Metadata](#metadata)
+    + [Permissions](#permissions)
+    + [Preview (data objects)](#preview--data-objects-)
+    + [Analysis (data objects)](#analysis--data-objects-)
+  * [Searching](#searching)
+  * [Metadata schema's](#metadata-schema-s)
+- [Exercises](#exercises)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 ## Logging in
