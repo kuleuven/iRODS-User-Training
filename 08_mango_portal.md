@@ -86,7 +86,8 @@ It will end up in your local Downloads directory.
 
 ### Moving, copying and renaming data
 
-These actions are planned to be added in a later version.  
+These actions are planned to be added in a later version. 
+At the moment, you can work around this by (removing and) reuploading data objects with the correct name/destination.  
 
 
 ### Deleting data
@@ -298,44 +299,12 @@ In this exercise, you will use the file inflation.txt from data/economy.
 - You can now also delete the 'inflation.txt' file in your local directory.
 
 
-
-<details>
-  <summary>Solution</summary>
-
-You start this exercise in the 'collections' tab.  
-Before starting, navigate to your home collection by clicking on it.  
-
-- Use the 'Add collection' button to create the collection 'earth_science'.  
-  Make the collection 'economy' in the same way.
-- Click on the newly made 'earth_science' collection.
-- Click on the 'upload files' button.
-  You have two ways to do this:
-    1. Open your local file explorer, and drag file to 'Drop files here to upload'
-    2. Click on 'Drop files here to upload'   
-       In the popup that opens, you can search the inflation.txt file on your local pc.
-    Click on 'submit files'.
-- Click on inflation.txt. 'Then, select 'delete'.  
-- Move back to your home collection via the breadcrumb menu above.  
-- Click on 'economy' and repeat the step of uploading inflation.txt.
-- Move back to your home collection via the breadcrumb menu above. 
-- Click on the 'earth_science' collection.
-- Click on 'delete'. 
-
-</details>
-
 **Exercise 2: downloading and overwriting**
 
 - You realise there is a mistake in the uploaded data object.
   Download the file and edit it so the inflation for 2021 is 1.4%.
 - Upload the new version of the file, overwriting the previous one.
 
-
-<details>
-  <summary>Solution</summary>
-
-You start this exercise in the 'collections' tab.
-
-</details>
 
 **Exercise 3: managing permissions**
 
@@ -348,14 +317,6 @@ In this exercise, you will use the files patient1.csv and anonymized.csv from da
 - Later, your colleagues mention they need to upload some new files to the lifescience collection.  
   Give your group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
 
-
-
-<details>
-  <summary>Solution</summary>
-
-You start this exercise in the 'collections' tab.
-
-</details>
 
 **Exercise 4: working with metadata**
 
@@ -370,13 +331,6 @@ In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.tx
   Overwrite the current AVU with one with the correct value.  
 - Go to the 'search' tab and search for all files with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.  
 
-
-<details>
-  <summary>Solution</summary>
-
-You start this exercise in the 'collections' tab.
-
-</details>
 
 **Exercise 5: metadata schemas**
 
@@ -399,11 +353,4 @@ In this exercise, you will use the file bird.JPG from data/biology, which depict
 
 - Create a collection called 'biology' and upload bird.JPG to it.
 - Apply the template to bird.JPG.
-
-<details>
-  <summary>Solution</summary>
-
-
-</details>
-
 
