@@ -1,10 +1,10 @@
 # Introduction to Python iRODS Client (PRC) and VSC-PRC tools
 
 *Prerequisites:*  
-*-A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones*  
-*-Basic knowledge of Python*    
+- *A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones*  
+- *Basic knowledge of Python*    
 
-This training introduces you to the basics of using the iRODS client API implemented in Python. The Python iRODS Client (PRC) is a programming client of iRODS. The main goal of PRC is to offer researchers means to manage their data in python. With the help of this client, users can manage their research data. Currently supported operations with PRC are quite various and enough to interact with iRODS without requiring any other tools.
+This training introduces you to the basics of using the iRODS client API implemented in Python. The Python iRODS Client (PRC) is a programming client of iRODS. The main goal of PRC is to offer researchers means to manage their data in Python. Currently supported operations with PRC are varied and powerful enough to interact with iRODS without requiring any other tools.
 
 ## Goal of this training
 
@@ -15,8 +15,8 @@ The following functionalities will be covered:
 - Uploading and downloading data collections
 - Working with file-like objects
 - Adding and editing metadata
-- Managing persmissions for data objects and collections
-- Querying for data using user defined metadata
+- Managing permissions for data objects and collections
+- Querying for data using user-defined metadata
 
 ## Configuration of the iRODS connection
 
@@ -24,15 +24,13 @@ We will use the environment file of iRODS to have a secure and longer session in
 
 ### Using PRC on a Linux Machine
 
-If you are using a Linux machine (including VMs and WSL2) you first need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and please follow relevant instructions there as you will see more explicitly here:
+If you are using a Linux machine (including VMs and WSL2) you first need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there:
 
 - Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal,
 
-- Open your terminal, paste and execute the copied snippet,
+- Open your terminal, paste and execute the copied snippet.
 
-- So that you will have created a temporary password that will expire 7 days later and once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS,
-
-- You can initiate an iRODS session in a secure way with the PRC by using the code snippet below.
+This way you will have created a temporary password that will expire 7 days later; once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS. You can initiate an iRODS session in a secure way with the PRC by using the code snippet below in your Python script or interactive session.
 
 ```py
 import os
@@ -58,27 +56,23 @@ The first option:
 
 - Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal,
 
-- If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the copied snippet,
+    - If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the copied snippet,
 
-- If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the copied snippet.
+    - If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the copied snippet.
 
 The second option:
 
-- Click the link here https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe to download the 'iinit.exe' file,
+- Download the [https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe](iinit.exe) file; you will find this file -- with a green iRODS icon -- in your 'Downloads' folder.
+    
+- Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows PC that doesn't require an admin right,
 
-- You will find this file -green iRODS icon- in your 'Downloads' folder. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows pc which doesnt require an admin right,
+- Double clicking `iinit.exe` will pop up an terminal screen and will ask you to enter your 'Zone' name,
 
-- Double clicking `iinit.exe` will pop up an terminal screen and will ask you to enter your 'zone' name,
+- Once you type your zone name correctly, hit the enter button: you will be forwarded to your default screen to be notified that 'You have successfully authenticated' in addition to some information. The popped-up terminal will disappear in 8 seconds.
 
-- Once you type your zone name correctly, hit the enter button,
+This way you will have created a temporary password that will expire 60 hours later; once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS.
 
-- You will be forwarded to your default screen to be notified about that 'You have successfully authenticated' in addition to some information,
-
-- So that you will have created a temporary password that will expire 60 hours later and once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS,
-
-- The popped-up terminal will disappear in 8 seconds.
-
-- Each time you dont have to follow all steps. After you download `iinit.exe`, you can use it when you need to renew your password.
+You don't have to follow all these steps every time: after you download `iinit.exe`, you can use it when you need to renew your password.
 
 After you are authenticated to iRODS, you can initiate an iRODS session in a secure way with the PRC by using the code snippet below.
 
@@ -90,42 +84,44 @@ with iRODSSession(irods_env_file=env_file) as session:
     [your code here]
 ```
 
-We recommend you to use the second option since it seems more user-friendly and fault tolerant.
+We recommend you to use the second option, since it seems more user-friendly and fault tolerant.
 
-### How to work with the PRC
+## How to work with the PRC
 
-As a best practice we recommend you to work with a virtual environment. There are several ways to create a virtual environment. You can choose one of them besides what we offered - conda - in the Quick Start Guide.
+As a best practice we recommend you to work with a virtual environment. There are several ways to create a virtual environment: you can choose any of them besides what we offered -- conda -- in the Quick Start Guide.
 
-To be able to call python codes during the traing and the exercises, you can choose one of the ways below:
+To be able to call Python code during the training and the exercises, you can choose one of the ways below:
 
-- Make python scripts by using your favourite editor (vi, nano,...) and execute them with `python3 <filename>`. 
-- Add the shebang line in your script file and make your file executable (chmod +x) and execute the file `./filename`.
-- Alternatively, you can open the python interpreter and work interactively.
-- Or you can use IPython (Interactive Python) which is a command shell for interactive programming in python. (The iPython is not installed by default, so you will need to install it using pip: e.g: pip install --user ipython)
+- Make python scripts by using your favourite editor (vi, nano,...)
+    - Execute them with `python3 <filename>` or
+    - Add the shebang line in your script file to make it file executable (chmod +x) and execute it with `./filename`.
+- Work interactively
+    - With the default Python interpreter or
+    - With IPython, a command shell for interactive programming in Python. (IPython is not installed by default, so you might need to install it using pip: e.g: `pip install --user ipython`).
 
-**Note1:** The shebang line in any script determines the script's ability to be executed like a standalone executable without typing 'python' beforehand in the terminal. In other words, the shebang
-line specifies exactly how to run a script. You can put this `#!/usr/bin/env python3` as a first line in your PRC script file.
+**Note1:** The shebang line in any script determines the script's ability to be executed like a standalone executable without typing 'python' beforehand in the terminal.
+In other words, the shebang line specifies exactly how to run a script. You can put `#!/usr/bin/env python3` as a first line in your PRC script file.
 
-**Note2:** You can use python builtin `dir()` function to know about all available attributes and methods that you may use. For instance, `[ x for x in dir(col) if not x.startswith('__') ]` snippet gives you the methods of 'coll' instance.
+**Note2:** You can use python builtin `dir()` function to know about all available attributes and methods that you may use. For instance, `[x for x in dir(coll) if not x.startswith('__') ]` gives you the methods of 'coll' instance.
 
 ## Working with Collections
 
-You can connect to a specific iRODS collection, this could be your home collection, project collection or any other sub-collection. After you instantiate the collection you prefer, you can see some basic information of this collection. You can list the sub-collections and data objects of this instantiated collection. Also you can do some certain operations (create, move, remove etc.) with collections' methods.
+You can connect to a specific iRODS collection with `session.collections.get("/path/to/collection")`; this could be your home collection, project collection or any other sub-collection. After you instantiate the collection you prefer, you can see some basic information about it. The `subcollections` and `data_objects` attributes return lists of the sub-collections and data objects of this instantiated collection. Methods that will be discussed below allow you to create, move and remove the collection as well.
 
-You can instantiate a collection you want:
+Lets retrieve our existing home collection:
 
 ```py
 >>> coll = session.collections.get("/yourZone/home/userName")
 ```
 
-You can look into the information that you can acquire:
+The `path` attribute shows where the collection is stored, which equals the path given to access the collection.
 
 ```py
 >>> coll.path
-/tempZone/home/rods
+/yourZone/home/rods
 ```
 
-You can see the subcollections and data objects of your instantiated collection:
+You can see the subcollections and data objects of your instantiated collection as lists returned by the `subcollections` and `data_objects` attributes.
 
 ```py
 >>> for col in coll.subcollections:
@@ -141,7 +137,7 @@ You can see the subcollections and data objects of your instantiated collection:
 <iRODSDataObject /yourZone/home/userName/file2.txt>
 ```
 
-You can use `walk()` method to generate a collection tree. You can use this method to be able to see all content of a requested collection:
+You can also use the `walk()` method to generate a collection tree and thus see all content of a requested collection:
 
 ```py
 >>> for item in coll.walk():
@@ -149,48 +145,46 @@ You can use `walk()` method to generate a collection tree. You can use this meth
 < your collection tree >
 ```
 
-You can create a new collection by specifying its absolute iRODS path:
+A new collection can be created by specifying its absolute iRODS path:
 
 ```py
 >>> coll = session.collections.create("/yourZone/home/userName/newCollection")
 <iRODSCollection 10180 b'newCollection'>
 ```
 
-**Note3:** If a collection you want to create already exists, the PRC doesn't do anything, neither complains nor overwrites on the existed collection. Also, you can create a collection recursively.
+**Note3:** If a collection you want to create already exists, `session.collections.create()` doesn't do anything: neither complains nor overwrites the existing collection. Also, you can create a collection recursively.
 
 ## Working with Data Objects
 
-You can more or less achieve all data object related operations via the PRC. Some of these operations are creating a new data object, deleting a data object, uploading/downloading a data object, copying or moving a data object.
+PRC allows you to achieve pretty much any data object related operations, such as creating, deleting, uploading, downloading, copying and moving data objects. This is done via various methods of the `session.data_objects` object.
 
-To create a new data object, you can use the code snippet below:
+You can create a new data object with `session.data_objects.create()`:
 
 ```py
 >>> obj = session.data_objects.create("/yourZone/home/userName/test_data")
 <iRODSDataObject /yourZone/home/userName/test_date>
 ```
 
-You can upload a data object to iRODS:
+The `put()` and `get()` methods allow you to upload data objects to or download them from iRODS.
 
 ```py
 >>> session.data_objects.put("test.txt","/yourZone/home/userName/test.txt")
 ```
-
-You can download a data object:
 
 ```py
 >>> session.data_objects.get("/yourZone/home/userName/test.txt", "/yourLocalPath/test.txt")
 <iRODSDataObject 10193 test.txt>
 ```
 
-**Note4:** Data object transfers using put() and get() spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
+**Note4:** Data object transfers using `put()` and `get()` spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
 
-If you want to completely delete a data object you can use the code snippet below. Unless you don't provide the keyword argument `force=True`, you in fact move the data object you want to delete to the trash collection.
+If you want to completely delete a data object you can use the `unlink()` method. Unless you don't provide the argument `force=True`, you in fact move the data object to the trash collection.
 
 ```py
 >>> session.data_objects.unlink("/yourZone/home/userName/test.txt", force=True)
 ```
 
-From one collection to another one you can copy a data object:
+Copying a data object from one collection to another with the `copy()` method:
 
 ```py
 >>> session.data_objects.copy("/yourZone/home/userName/test.txt", "/yourZone/home/userName/test1/test.txt")
@@ -206,7 +200,7 @@ For the python object having the `__dict__` attribute, you can use the builtin `
 
 ### Getting and Setting Permissions
 
-The PRC make it possible to work with ACLs (Access Control Lists). You can list given permissions on a collection or on a data object. Also, adding a new ACL and modifying an existing one on a collection/data object in iRODS via the PRC is possible.
+Via `session.permissions` and the `iRODSAccess` class, the PRC makes it possible to work with ACLs (Access Control Lists). You can list given permissions on a collection or on a data object as well as adding, modifying and removing ACLs.
 
 Let's now create a new collection:
 
@@ -216,7 +210,7 @@ Let's now create a new collection:
 '/yourZone/home/userName/permission'
 ```
 
-You can list given permissions for a collection:
+You can list given permissions for a collection by providing it to `session.permissions.get()`:
 
 ```py
 >>> acl_coll = session.permissions.get(coll)[0]
@@ -224,7 +218,7 @@ You can list given permissions for a collection:
 <iRODSAccess own /yourZone/home/userName/permission u0137480 yourZone>
 ```
 
-You can add a new permission or change the existing one. To be able to add/modify ACLs, you should import relevant classes:
+In order to add or modify ACLs, you need to create an instance of the `iRODSAccess` class, which you should import first. When initializing an `iRODSAccess` object, you provide first the ACL ("own", "read" or "write") followed by the path to the data object or collection, the user or group, and finally the zone. Then this object is provided to `session.permissions.set()`.
 
 ```py
 >>> from irods.access import iRODSAccess
