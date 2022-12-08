@@ -231,6 +231,14 @@ This has two advantages:
 
 To create a new schema, click on the tab 'Metadata schema's' on the right, and then on 'Create new template' at the bottom.  
 In the following popup, give a name to your schema.  
+
+> **Note:** Currently, all schema's are shared publicly.    
+> This means that two people cannot create schema's with the same name.    
+> Be sure to choose a unique name for your schema's.    
+> Permissions for schema's will be added in a later version.  
+
+
+
 Then, you can start adding elements:  
 
 <img align="center" src="img/mango_portal_new_template.png" width="300px">  
@@ -336,7 +344,7 @@ In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.tx
 
 In this exercise, you will use the file bird.JPG from data/biology, which depicts a nice specimen of the 'European roller'.
 
-- Make a Metadata schema with the name 'animals'.
+- Make a Metadata schema with the name 'animals-', followed by your u- or b-number.
   This schema should contain the following:
 
   - A 'name' field where the user can type the name of the animal
