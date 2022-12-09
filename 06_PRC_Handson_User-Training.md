@@ -386,9 +386,16 @@ It is also possible to read metadata from a JSON file and apply them with `apply
 
 ## How to make queries
 
-The PRC offers different query options that you can use based on your need. You may use these queries in your script to easily manage your research data.
+Different attributes of your objects, including the metadata, can be used to perform queries on your research data. This can be done with `session.query()` and a number of PRC classes imported from the `irods.models` module.
 
-First we will make a general query based on collection and data object classes:
+Class | Information about | Useful attributes
+---- | ------ | ----------
+`Collection` | A collection | `name`, `path`, `owner_name` ...
+`DataObject` | A data object | `name`, `path`, `size`, `owner_name`, `id` ...
+`CollectionMeta` | The metadata of a collection | `name`, `value`, `units`
+`DataObjectMeta` | The metadata of a data object | `name`, `value`, `units`
+
+The `session.query()` calls takes as argument the different kinds of information you want to be able to extract, such as `Collection.name` for the name of a collection or `Collection` to have all the collection's information available (not its metadata, though). Its output is a generator of results from which we can extract the different columns.
 
 ```py
 >>> from irods.models import Collection, DataObject
@@ -409,11 +416,13 @@ First we will make a general query based on collection and data object classes:
 /yourZone/trash/home/userName/test1.txt size=12
 ```
 
-Let's now make a query based on some criteria that we know already with the metadata assuming provided earlier. FIrst we have to import relevant sub modules. We will make our query based on collection and collection metadata. Also we will filter according to the criteria that we specify:
+An important feature when querying is to be able to filter the results based on some criteria. For this purpose we also have to import the `Criterion` class from the `irods.column` module. We then create criteria by instantiating the `Criterion` class with an operator (such as "=" or "like") and the elements under comparison, and provide them to the `filter()` method of the results.
+
+For example, `Criterion('=', CollectionMeta.name, 'type')` will filter the results that have an AVU with "type" as the attribute name. Notice that the classes used in the `Criterion()` instances do not need to be used in the `query()` call.
 
 ```py
 >>> from irods.column import Criterion
->>> from irods.models import DataObject, DataObjectMeta, Collection, CollectionMeta
+>>> from irods.models import Collection, CollectionMeta
 
 >>> results = session.query(Collection, CollectionMeta).filter( \
 ... Criterion('=', CollectionMeta.name, 'type')).filter( \
@@ -424,7 +433,8 @@ Let's now make a query based on some criteria that we know already with the meta
 /yourZone/home/userName/training type training iRODS
 ```
 
-For instance, you can query the data size and and quantity of the data object you are owner of.
+Other SQL-like functions are also available as methods of the results generator, such as `count()` and `sum()`, which also take the column classes discussed above as arguments.
+For instance, the code below queries the data size and number of data objects you are owner of. It first initiates a query that will extract the `DataObject.owner_name` column, uses `count(DataObject.id)` to count the number of unique data objects, and finishes by computing the sum of the `DataObject.size` column. `print(query.execute())` will print a table with the results.
 
 ```py
 >>> query = session.query(DataObject.owner_name).count(DataObject.id).sum(DataObject.size)
