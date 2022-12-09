@@ -459,7 +459,7 @@ You will find files for the exercises in the 'data' directory.
 Make a script that does the following:
 
 - Make a collection in your home called 'molecules'  
-Tip: if you already had this folder from another training session, you can remove it via the command line with `irm -r molecules`
+Tip: if you already had this folder from another training session, you can remove it via the command line with `irm -r molecules` or from Python with `os.rmdir(os.getcwd() + "molecules")`.
 - Upload all files from the molecules directory
 - Add the AVU 'kind: organic' to any organic molecules.
 - Add the AVU 'kind: inorganic' to any inorganic molecules.  
