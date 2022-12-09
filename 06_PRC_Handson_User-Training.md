@@ -152,7 +152,7 @@ A new collection can be created by specifying its absolute iRODS path:
 <iRODSCollection 10180 b'newCollection'>
 ```
 
-**Note3:** If a collection you want to create already exists, `session.collections.create()` doesn't do anything: neither complains nor overwrites the existing collection. Also, you can create a collection recursively.
+**Note3:** If a collection you want to create already exists, `session.collections.create()` doesn't do anything: neither complains nor overwrites the existing collection.
 
 ## Working with Data Objects
 
@@ -200,6 +200,8 @@ For the python object having the `__dict__` attribute, you can use the builtin `
 
 ### Getting and Setting Permissions
 
+<!-- Maybe this should be in a common section or at the end of the "Working with collections" section, since it applies to both types of items -->
+
 Via `session.permissions` and the `iRODSAccess` class, the PRC makes it possible to work with ACLs (Access Control Lists). You can list given permissions on a collection or on a data object as well as adding, modifying and removing ACLs.
 
 Let's now create a new collection:
@@ -232,43 +234,41 @@ In order to add or modify ACLs, you need to create an instance of the `iRODSAcce
 
 ### Reading and Writing Files
 
-The PRC provides us working with file-like objects. A file object in python is an object exposing an API having methods for performing operations typically done on files, such as read() or write(). So that we can read or write on a data object in iRODS.
-
-You can read a data object:
+Data objects in the PRC are represented by the `iRODSDataObject` class, which can be instantiated with the `.get()` and `.create()` methods of `session.data_objects`:
 
 ```py
 >>> obj = session.data_objects.get("/yourZone/home/userName/test.txt")
->>> with obj.open('r+') as f:
-...     f.read()
-...
-b'This a test file.\n'
 ```
 
-You can write on a data object:
+This class has an `.open()` method that enables operations typically performed on files, such as reading and writing.
+For example, let's write something in `obj`:
 
 ```py
->>> obj = session.data_objects.get("/yourZone/home/userName/test1.txt")
 >>> with obj.open('r+') as f:
 ...     f.write(b'Hello\nWorld\n')
-...     for line in f:
-...         print(line)
-b'Hello\n'
-b'World\n'
 ```
+
+And now read its contents.
+
+```py
+>>> with obj.open('r+') as f:
+...     f.read()
+b'Hello\nWorld\n'
+```
+<!-- Or maybe we have to assign it to a variable and print it outside... -->
 
 ### Computing and Retrieving Checksums
 
-You can associate a checksum on the object in question. Checksums are used to verify data integrity upon data moving.
+An object can be associated with checksum, which is used to verify data integrity. In other words, you can compare the checksums of two data objects or a data object and a local file to make sure that the files are identical.
 
-By calling `chksum()` on an object you can add a checksum, what this method does is to compute the checksum if already in the catalog, otherwise to compute and store it.
+The `chksum()` method retrieves the checksum of an object if it is already in the iCAT catalogue, otherwise computes it and sotres it.
 
 ```py
->>> obj = session.data_objects.get("/yourZone/home/userName/test.txt")
 >>> obj.chksum()
 'sha2:1j7C8s/wkIVp7pYG9ndGKhU2fjqW+6BNG+vz+fSDPYM='
 ```
 
-If a checksum already is associated to the data object at stake, then you can use `checksum` attribute to see it.
+If a checksum already is associated to a data object, you can use the `checksum` attribute to see it.
 
 ```py
 >>> obj.checksum
@@ -277,17 +277,16 @@ If a checksum already is associated to the data object at stake, then you can us
 
 ## Working with metadata
 
-iRODS offers a possibility to add metadata to iRODS objects (collection, data object, user, resource) in the form of tuples or triples (Attribute-Value-[Unit]), also called AVUs. You can add, manipulate and remove metadata via the PRC. 
+iRODS offers the possibility to add metadata to iRODS objects (collections, data objects, users or resources) in the form of tuples or triples of Attributes, Values and (optionally) Units, also called AVUs. The metadata of an object is represented by its `metadata` attribute, which you can manipulate in order to add, modify and remove metadata.
 
-If you check a file that no metadata attached to, then you will see an empty list. You can check all associated metadata with `items()` method:
+The list of all the metadata associated to a given data object can be retrieved via the `items()` method. This still works even if there is no metadata yet: it just returns an empty list.
 
 ```py
->>> obj = session.data_objects.get("/yourZone/home/userName/test.txt")
->>> print(obj.metadata.items())
+obj.metadata.items()
 []
 ```
 
-You can add metadata in an AVU format as many as you want. You can associate more than one value to an attribute. Let's add AVUs to the `test.txt` data object:  
+AVUs can be added via the `add()` method, providing the attribute name, value and, optionally, unit. It is allowed to associate more than one value to an attribute of an object. Let's add AVUs to `obj`: 
 
 ```py
 >>> obj.metadata.add('key1', 'value1', 'unit1')
@@ -295,28 +294,28 @@ You can add metadata in an AVU format as many as you want. You can associate mor
 >>> obj.metadata.add('key2', 'value3')
 >>> obj.metadata.add('key2', 'value3', 'unit3')
 >>> obj.metadata.add('key3', 'value4')
->>> print(obj.metadata.items())
+>>> obj.metadata.items()
 [<iRODSMeta 10220 key1 value1 unit1>, <iRODSMeta 10221 key1 value2 None>, <iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key3 value4 None>]
 ```
 
-You can also use Python's item indexing syntax to perform the equivalent of an `imeta set`, e.g. overwriting all AVU's with a name field of "key1" in a single update. However, we have to first import a relevant module:
+As you can see from the output, each AVU is represented by an `iRODSMeta` object. We can instantiate the class with `iRODSMeta(name, value[, unit])` after importing it from `irods.meta`. This is useful if we want to assign the same AVU to several objects or, for example, replace all the AVUs of `obj` with the same attribute name so they all have the same value and units. This can be done by subsetting `obj.metadata` with the name of the attribute, as shown below.
 
 ```py
 >>> from irods.meta import iRODSMeta
 >>> new_meta = iRODSMeta('key1','value5','units2')
 >>> obj.metadata[new_meta.name] = new_meta
->>> print(obj.metadata.items())
+>>> obj.metadata.items()
 [<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10227 key2 value3 unit3, <iRODSMeta 10223 key3 value4 None>, <iRODSMeta 10226 key1 value5 units2>]
 ```
 
-It is possible to get all metadata given with a unique attribute by `get_all()` method. 
+It is possible to get all metadata with a given attribute name via the `get_all()` method. 
 
 ```py
 >>> obj.metadata.get_all('key2')
 [<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10227 key2 value3 unit3>]
 ```
 
-You can delete an attached metadata by `remove()` method. You should here specify the AVU you want to remove:
+In order to remove an AVU, we can call the `remove()` method: we use the same arguments as in `add()`:
 
 ```py
 >>> obj.metadata.remove('key1', 'value5', 'units2')
@@ -324,7 +323,7 @@ You can delete an attached metadata by `remove()` method. You should here specif
 [<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key3 value4 None>, <iRODSMeta 10227 key2 value3 unit3>]
 ```
 
-However, if you want to remove all existing metadata on an object at once, then you can use `remove_all()` method without an argument:
+If you want to remove all the existing metadata of an object at once, then you can use `remove_all()` method:
 
 ```py
 >>> obj.metadata.remove_all()
@@ -334,9 +333,10 @@ However, if you want to remove all existing metadata on an object at once, then 
 
 ### Atomic operations on metadata
 
-The PRC allows a group of metadata add and remove operations to be performed transactionally, within a single call to the server. This does mean you can apply atomic operations on metadata. In other words, you can add more than one AVU and also remove metadata at the same operation. One important thing to know is that the list of operations will be applied in the order given.
+The PRC allows you to add and remove metadata in sequence with a single operation, i.e., a single call to the server. The `apply_atomic_operations()` method takes a series of `AVUOperation` objects as arguments and implements them in the order given. To the `AVUOperation()` call we specify the kind of operation ("remove" or "add") and the AVU involved as an `iRODSMeta` object.
+Let's remove and add some AVUs in one single call.
 
-To be able to work with atomic operations, you should import relevant classes:
+<!-- Below, should we also asume iRODSMeta was already imported? -->
 
 ```py
 >>> from irods.meta import iRODSMeta, AVUOperation
@@ -348,31 +348,30 @@ To be able to work with atomic operations, you should import relevant classes:
 [<iRODSMeta 10229 attr3 val3 None>]
 ```
 
-You have noticed that a "remove" operation will be ignored if the AVU value given does not exist on the target object at that point in the sequence of operations.
+As you may have noticed, a "remove" operation will be ignored if the AVU provided does not exist as metadata of the target object yet.
 
-You can also use a pre-built list of AVUOperations using Python's f(*args_list) syntax. For example, this function uses the atomic metadata API to very quickly remove all AVUs from an object:
+This is particularly useful if you want to apply a pre-built list of `AVUOperation`s with Python's `*args` syntax. For example, below we can implement this technique in order to remove all AVUs with the "attr2" attribute name:
 
 ```py
->>> obj.metadata.apply_atomic_operations(AVUOperation(operation='add', avu=iRODSMeta('attr1','val1')), AVUOperation(operation='add', avu=iRODSMeta('attr2','val2','unit2')), )
+>>> obj.metadata.apply_atomic_operations(AVUOperation(operation='add', avu=iRODSMeta('attr1','val1')),
+...                                      AVUOperation(operation='add', avu=iRODSMeta('attr2','val2','unit2')),
+...                                      AVUOperation(operation='add', avu=iRODSMeta('attr2','val3','unit2')) )
 >>> obj.metadata.items()
-[<iRODSMeta 10228 attr2 val2 unit2>, <iRODSMeta 10230 attr1 val1 None>]
+[<iRODSMeta 10226 attr2 val3 unit2>, <iRODSMeta 10228 attr2 val2 unit2>, <iRODSMeta 10230 attr1 val1 None>]
 >>> avus_on_object = obj.metadata.items()
->>> obj.metadata.apply_atomic_operations( *[AVUOperation(operation='remove', avu=i) for i in avus_on_object] )
+>>> obj.metadata.apply_atomic_operations( *[AVUOperation(operation='remove', avu=i) for i in avus_on_object if i.name == 'attr2'] )
 >>> obj.metadata.items()
 []
 ```
 
-It is possible to read a json object both on your local machine and iRODS and add these keys/values as metadata to an iRODS object (file/folder).
-
-You can read a json file on your local pc and attach these keys and values as metadata to your data object:
+It is also possible to read metadata from a JSON file and apply them with `apply_atomic_operations()`. The code below opens "metadata_example.json", which is stored as a dictionary with attribute names as keys and values as values, and adds them via this technique.
 
 ```py
 >>> import json
 >>> with open("your/path/to/metadata_example.json") as jsonFile:
 ...    jsonObject = json.load(jsonFile)
 ...    avus = [item for item in jsonObject.items()]
-...    obj.metadata.apply_atomic_operations(*[AVUOperation(operation='add', avu=iRODSMeta("{}".format(str(meta[0]))
-...    , "{}".format(str(meta[1])))) for meta in avus])
+...    obj.metadata.apply_atomic_operations(*[AVUOperation(operation='add', avu=iRODSMeta(str(meta[0]), str(meta[1]))) for meta in avus])
 >>> obj.metadata.items()
 [<iRODSMeta 11883 reviewerID A30TL5EWN6DFXT None>,
  <iRODSMeta 11884 asin 120401325X None>,
