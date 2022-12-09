@@ -118,7 +118,7 @@ The `path` attribute shows where the collection is stored, which equals the path
 
 ```py
 >>> coll.path
-/yourZone/home/rods
+'/yourZone/home/userName'
 ```
 
 You can see the subcollections and data objects of your instantiated collection as lists returned by the `subcollections` and `data_objects` attributes.
@@ -126,15 +126,15 @@ You can see the subcollections and data objects of your instantiated collection 
 ```py
 >>> for col in coll.subcollections:
 >>>   print(col)
-<iRODSCollection /yourZone/home/userName/subcol1>
-<iRODSCollection /yourZone/home/userName/subcol2>
+<iRODSCollection 10010 b'subcol1'>
+<iRODSCollection 10012 b'subcol2'>
 ```
 
 ```py
 >>> for obj in coll.data_objects:
 >>>   print(obj)
-<iRODSDataObject /yourZone/home/userName/file1.txt>
-<iRODSDataObject /yourZone/home/userName/file2.txt>
+<iRODSDataObject 10022 file1.txt>
+<iRODSDataObject 10023 file2.txt>
 ```
 
 You can also use the `walk()` method to generate a collection tree and thus see all content of a requested collection:
@@ -142,13 +142,15 @@ You can also use the `walk()` method to generate a collection tree and thus see 
 ```py
 >>> for item in coll.walk():
 >>>   print(item)
-< your collection tree >
+(<iRODSCollection 10001 B'userName'>, [<iRODSCollection 10010 b'subcol1'>, <iRODSCollection 10012 b'subcol2'>], [<iRODSDataObject 10022 file1.txt>, <iRODSDataObject 10023 file2.txt>])
+(<iRODSCollection 10001 B'subcol1'>, [<iRODSCollection 10014 b'subsubcol1'>], [<iRODSDataObject 10031 subfile1.txt>])
+(<iRODSCollection 10001 B'subcol2'>, [], [])
 ```
 
 A new collection can be created by specifying its absolute iRODS path:
 
 ```py
->>> coll = session.collections.create("/yourZone/home/userName/newCollection")
+>>> session.collections.create("/yourZone/home/userName/newCollection")
 <iRODSCollection 10180 b'newCollection'>
 ```
 
@@ -161,19 +163,22 @@ PRC allows you to achieve pretty much any data object related operations, such a
 You can create a new data object with `session.data_objects.create()`:
 
 ```py
->>> obj = session.data_objects.create("/yourZone/home/userName/test_data")
-<iRODSDataObject /yourZone/home/userName/test_date>
+>>> obj = session.data_objects.create("/yourZone/home/userName/test.txt")
+>>> obj
+<iRODSDataObject 20223 test.txt>
 ```
 
 The `put()` and `get()` methods allow you to upload data objects to or download them from iRODS.
 
 ```py
->>> session.data_objects.put("test.txt","/yourZone/home/userName/test.txt")
+>>> session.data_objects.get("/yourZone/home/userName/test.txt", "downloaded.txt")
+<iRODSDataObject 20223 test.txt>
 ```
 
 ```py
->>> session.data_objects.get("/yourZone/home/userName/test.txt", "/yourLocalPath/test.txt")
-<iRODSDataObject 10193 test.txt>
+>>> session.data_objects.put("downloaded.txt", "/yourZone/home/userName/uploaded.txt")
+coll.data_objects[-1]
+<iRODSDataObject 20233 uploaded.txt>
 ```
 
 **Note4:** Data object transfers using `put()` and `get()` spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
@@ -181,10 +186,10 @@ The `put()` and `get()` methods allow you to upload data objects to or download 
 If you want to completely delete a data object you can use the `unlink()` method. Unless you don't provide the argument `force=True`, you in fact move the data object to the trash collection.
 
 ```py
->>> session.data_objects.unlink("/yourZone/home/userName/test.txt", force=True)
+>>> session.data_objects.unlink("/yourZone/home/userName/uploaded.txt", force=True)
 ```
 
-Copying a data object from one collection to another with the `copy()` method:
+Copying a data object from one collection to another can be done with the `copy()` method:
 
 ```py
 >>> session.data_objects.copy("/yourZone/home/userName/test.txt", "/yourZone/home/userName/test1/test.txt")
@@ -207,17 +212,17 @@ Via `session.permissions` and the `iRODSAccess` class, the PRC makes it possible
 Let's now create a new collection:
 
 ```py
->>> coll = session.collections.create("/yourZone/home/userName/permission")
->>> coll.path
+>>> perm = session.collections.create("/yourZone/home/userName/permission")
+>>> perm.path
 '/yourZone/home/userName/permission'
 ```
 
 You can list given permissions for a collection by providing it to `session.permissions.get()`:
 
 ```py
->>> acl_coll = session.permissions.get(coll)[0]
+>>> acl_coll = session.permissions.get(perm)[0]
 >>> acl_coll
-<iRODSAccess own /yourZone/home/userName/permission u0137480 yourZone>
+<iRODSAccess own /yourZone/home/userName/permission userName yourZone>
 ```
 
 In order to add or modify ACLs, you need to create an instance of the `iRODSAccess` class, which you should import first. When initializing an `iRODSAccess` object, you provide first the ACL ("own", "read" or "write") followed by the path to the data object or collection, the user or group, and finally the zone. Then this object is provided to `session.permissions.set()`.
@@ -252,7 +257,8 @@ And now read its contents.
 
 ```py
 >>> with obj.open('r+') as f:
-...     f.read()
+...     content = f.read()
+>>> print(content)
 b'Hello\nWorld\n'
 ```
 <!-- Or maybe we have to assign it to a variable and print it outside... -->
@@ -268,7 +274,7 @@ The `chksum()` method retrieves the checksum of an object if it is already in th
 'sha2:1j7C8s/wkIVp7pYG9ndGKhU2fjqW+6BNG+vz+fSDPYM='
 ```
 
-If a checksum already is associated to a data object, you can use the `checksum` attribute to see it.
+If a checksum already was associated to a data object, you can use the `checksum` attribute to see it. It won't be available if you only just set it with the `checksum()` method.
 
 ```py
 >>> obj.checksum
@@ -291,28 +297,39 @@ AVUs can be added via the `add()` method, providing the attribute name, value an
 ```py
 >>> obj.metadata.add('key1', 'value1', 'unit1')
 >>> obj.metadata.add('key1', 'value2')
->>> obj.metadata.add('key2', 'value3')
 >>> obj.metadata.add('key2', 'value3', 'unit3')
+>>> obj.metadata.add('key2', 'value3')
 >>> obj.metadata.add('key3', 'value4')
 >>> obj.metadata.items()
-[<iRODSMeta 10220 key1 value1 unit1>, <iRODSMeta 10221 key1 value2 None>, <iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key3 value4 None>]
+[<iRODSMeta 10220 key1 value1 unit1>,
+<iRODSMeta 10221 key1 value2 None>,
+<iRODSMeta 10222 key2 value3 unit3,
+<iRODSMeta 10223 key2 value3 None>,
+<iRODSMeta 10224 key3 value4 None>]
 ```
 
 As you can see from the output, each AVU is represented by an `iRODSMeta` object. We can instantiate the class with `iRODSMeta(name, value[, unit])` after importing it from `irods.meta`. This is useful if we want to assign the same AVU to several objects or, for example, replace all the AVUs of `obj` with the same attribute name so they all have the same value and units. This can be done by subsetting `obj.metadata` with the name of the attribute, as shown below.
 
 ```py
 >>> from irods.meta import iRODSMeta
->>> new_meta = iRODSMeta('key1','value5','units2')
+>>> new_meta = iRODSMeta('key1','value5','unit2')
+>>> new_meta
+<iRODSMeta None key2 value5 unit2>
+>>> new_meta.name
+'key1'
 >>> obj.metadata[new_meta.name] = new_meta
 >>> obj.metadata.items()
-[<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10227 key2 value3 unit3, <iRODSMeta 10223 key3 value4 None>, <iRODSMeta 10226 key1 value5 units2>]
+[<iRODSMeta 10222 key2 value3 None>,
+<iRODSMeta 10223 key2 value3 unit3,
+<iRODSMeta 10224 key3 value4 None>,
+<iRODSMeta 10226 key1 value5 units2>]
 ```
 
 It is possible to get all metadata with a given attribute name via the `get_all()` method. 
 
 ```py
 >>> obj.metadata.get_all('key2')
-[<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10227 key2 value3 unit3>]
+[<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key2 value3 unit3>]
 ```
 
 In order to remove an AVU, we can call the `remove()` method: we use the same arguments as in `add()`:
@@ -320,7 +337,7 @@ In order to remove an AVU, we can call the `remove()` method: we use the same ar
 ```py
 >>> obj.metadata.remove('key1', 'value5', 'units2')
 >>> obj.metadata.items()
-[<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key3 value4 None>, <iRODSMeta 10227 key2 value3 unit3>]
+[<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key2 value3 unit3>, <iRODSMeta 10224 key3 value4 None>]
 ```
 
 If you want to remove all the existing metadata of an object at once, then you can use `remove_all()` method:
