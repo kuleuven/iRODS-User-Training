@@ -44,7 +44,7 @@ The command that will print out all commands with their explanation is:
 ihelp
 ```
 
-To get help on a specific command, usch as `iuserinfo`:
+To get help on a specific command, such as `iuserinfo`:
 `ihelp iuserinfo` or `iuserinfo -h`
 
 If you would like to know the setting details you can execute the following command:
@@ -161,7 +161,7 @@ This constitutes the **basis of data management in iRODS**.
 
 We can store a file into iRODS with `iput local [irods]`: If the destination data object or collection (`irods`) are not provided, the current iRODS collection and the input file name are used.
 
-To upload data into iRODS we should have a data object in our VSC system. For example, let's create a data file in our Linux home directory. 
+To upload data into iRODS we should have a data object in our local system. For example, let's create a data file in our current directory. 
 
 ```sh
 nano example.txt
@@ -361,6 +361,7 @@ They can be manipulated via the `imeta` command, followed by:
 - `add` to add a new AVU;
 - `ls` to list existing AVUs;
 - `mod` to modify an existing AVU;
+- `set` to modify the value(s) (and units) of AVUs with the same attribute name.
 - `rm` to remove an existing AVU.
 
 They can also be queried to find matching data, as shown [below](#queries-for-data).
