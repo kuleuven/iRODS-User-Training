@@ -407,12 +407,12 @@ Different attributes of your objects, including the metadata, can be used to per
 
 Class | Information about | Useful attributes
 ---- | ------ | ----------
-`Collection` | A collection | `name`, `path`, `owner_name` ...
+`Collection` | A collection | `name`, `owner_name` ...
 `DataObject` | A data object | `name`, `path`, `size`, `owner_name`, `id` ...
 `CollectionMeta` | The metadata of a collection | `name`, `value`, `units`
 `DataObjectMeta` | The metadata of a data object | `name`, `value`, `units`
 
-The `session.query()` calls takes as argument the different kinds of information you want to be able to extract, such as `Collection.name` for the name of a collection or `Collection` to have all the collection's information available (not its metadata, though). Its output is a generator of results from which we can extract the different columns.
+The `session.query()` calls takes as argument the different kinds of information you want to be able to extract, such as `Collection.name` for the *path to* a collection or `Collection` to have all the collection's information available (not its metadata, though). Its output is a generator of results from which we can extract the different columns.
 
 ```py
 >>> from irods.models import Collection, DataObject
@@ -462,6 +462,8 @@ For instance, the code below queries the data size and number of data objects yo
 | userName     | 11        | 157312    |
 +--------------+-----------+-----------+
 ```
+
+**Note**: There is a small discrepancy between some of the attributes used in queries and outside of them. First, `Collection.name` will return the *path* to a collection (`Collection.path` does not exist). Given a collection `col`, this is the same as printing `col.path`. In contrast, `col.name` will print the name of the collection, e.g. if `col.path` is "/yourZone/home/userName/training", `col.name` is "training". Second, `DataObject.path` will return the location where the data object is *physically stored*, whereas `obj.path` will return the path of the parent collection followed by `obj.name`. Therefore, in order to obtain the path to a data object via a query, you should **not** extract `DataObject.path` but `Collection.name + '/' + DataObject.name`.
 
 #  Exercises
 
