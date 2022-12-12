@@ -26,11 +26,13 @@ We will use the environment file of iRODS to have a secure and longer session in
 
 If you are using a Linux machine (including VMs and WSL2) you first need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there:
 
-- Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal,
+- Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal.
 
 - Open your terminal, paste and execute the copied snippet.
 
-This way you will have created a temporary password that will expire 7 days later; once this password is expired, you will need to repeat whole procedure to be able reconnect to iRODS. You can initiate an iRODS session in a secure way with the PRC by using the code snippet below in your Python script or interactive session.
+This way you will have created a temporary password that will expire 7 days later; once this password is expired, you will need to repeat the whole procedure to be able reconnect to iRODS.
+
+You can initiate an iRODS session in a secure way with the PRC by using the code snippet below in your Python script or interactive session.
 
 ```py
 import os
@@ -48,27 +50,39 @@ with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
     [your code here]
 ```
 
+In an interactive session, for example, to follow the examples shown in this document, you might want to replace the `with` statement above with:
+
+```py
+session = iRODSSession(irods_env_file=env_file, **ssl_settings)
+```
+
+And at the end of your session clean up with:
+
+```py
+session.cleanup()
+```
+
 ### Using PRC on a Windows Machine
 
 If you are using a pure Windows machine (no available Linux OS via VMs and WSL2), there are two options that you can follow.
 
 The first option:
 
-- Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal,
+- Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal.
 
-    - If you want to use conda environment, open your 'Anaconda Prompt', paste and execute the copied snippet,
+    - If you want to use a conda environment, open your 'Anaconda Prompt', paste and execute the copied snippet.
 
-    - If you want to use non-conda installed python release, then open your 'Windows PowerShell', paste and execute the copied snippet.
+    - If you want to use a non-conda installed python release, then open your 'Windows PowerShell', paste and execute the copied snippet.
 
 The second option:
 
-- Download the [https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe](iinit.exe) file; you will find this file -- with a green iRODS icon -- in your 'Downloads' folder.
+1. Download the [https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe](iinit.exe) file; you will find this file &mdash; with a green iRODS icon &mdash; in your 'Downloads' folder.
     
-- Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your windows PC that doesn't require an admin right,
+2. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your Windows PC that doesn't require administrator rights
 
-- Double clicking `iinit.exe` will pop up an terminal screen and will ask you to enter your 'Zone' name,
+3. Double click `iinit.exe` and enter your 'Zone' name in the pop-up terminal screen.
 
-- Once you type your zone name correctly, hit the enter button: you will be forwarded to your default screen to be notified that 'You have successfully authenticated' in addition to some information. The popped-up terminal will disappear in 8 seconds.
+4. Once you type your zone name correctly, hit the enter button: you will be forwarded to your default screen to be notified that 'You have successfully authenticated' in addition to some information. The popped-up terminal will disappear in 8 seconds.
 
 This way you will have created a temporary password that will expire 60 hours later; once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS.
 
@@ -88,7 +102,7 @@ We recommend you to use the second option, since it seems more user-friendly and
 
 ## How to work with the PRC
 
-As a best practice we recommend you to work with a virtual environment. There are several ways to create a virtual environment: you can choose any of them besides what we offered -- conda -- in the Quick Start Guide.
+As a best practice we recommend you to work with a virtual environment. There are several ways to create a virtual environment: you can choose any of them besides what we offered &mdash; conda &mdash; in the Quick Start Guide.
 
 To be able to call Python code during the training and the exercises, you can choose one of the ways below:
 
@@ -102,19 +116,19 @@ To be able to call Python code during the training and the exercises, you can ch
 **Note1:** The shebang line in any script determines the script's ability to be executed like a standalone executable without typing 'python' beforehand in the terminal.
 In other words, the shebang line specifies exactly how to run a script. You can put `#!/usr/bin/env python3` as a first line in your PRC script file.
 
-**Note2:** You can use python builtin `dir()` function to know about all available attributes and methods that you may use. For instance, `[x for x in dir(coll) if not x.startswith('__') ]` gives you the methods of 'coll' instance.
+**Note2:** You can use the python builtin `dir()` function to know about all available attributes and methods for a given object. For instance, `[x for x in dir(coll) if not x.startswith('__') ]` gives you the methods of the 'coll' instance.
 
 ## Working with Collections
 
 You can connect to a specific iRODS collection with `session.collections.get("/path/to/collection")`; this could be your home collection, project collection or any other sub-collection. After you instantiate the collection you prefer, you can see some basic information about it. The `subcollections` and `data_objects` attributes return lists of the sub-collections and data objects of this instantiated collection. Methods that will be discussed below allow you to create, move and remove the collection as well.
 
-Lets retrieve our existing home collection:
+Let's retrieve our existing home collection:
 
 ```py
 >>> coll = session.collections.get("/yourZone/home/userName")
 ```
 
-The `path` attribute shows where the collection is stored, which equals the path given to access the collection.
+The `path` attribute shows where the collection is stored, which is the same as the path given to access the collection.
 
 ```py
 >>> coll.path
@@ -168,7 +182,7 @@ You can create a new data object with `session.data_objects.create()`:
 <iRODSDataObject 20223 test.txt>
 ```
 
-The `put()` and `get()` methods allow you to upload data objects to or download them from iRODS.
+The `put()` and `get()` methods allow you to upload data objects to iRODS or download them.
 
 ```py
 >>> session.data_objects.get("/yourZone/home/userName/test.txt", "downloaded.txt")
@@ -183,7 +197,7 @@ coll.data_objects[-1]
 
 **Note4:** Data object transfers using `put()` and `get()` spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
 
-If you want to completely delete a data object you can use the `unlink()` method. Unless you don't provide the argument `force=True`, you in fact move the data object to the trash collection.
+If you want to completely delete a data object you can use the `unlink()` method. Unless you provide the argument `force=True`, you are only moving the data object to the trash collection.
 
 ```py
 >>> session.data_objects.unlink("/yourZone/home/userName/uploaded.txt", force=True)
@@ -195,12 +209,36 @@ Copying a data object from one collection to another can be done with the `copy(
 >>> session.data_objects.copy("/yourZone/home/userName/test.txt", "/yourZone/home/userName/test1/test.txt")
 ```
 
-For the python object having the `__dict__` attribute, you can use the builtin `vars()` function to see many useful information about the object you instantiated.
+For any python object having a `__dict__` attribute, you can use the builtin `vars()` function to see useful information about the object.
 
 ```py
->>> b=session.data_objects.get("/yourZone/home/userName/test1/test.txt", "/yourLocalPath/test.txt")
+>>> b = session.data_objects.get("/yourZone/home/userName/test1/test.txt", "/yourLocalPath/test.txt")
 >>> vars(b)
-{'manager': <irods.manager.data_object_manager.DataObjectManager object at 0x7f534659ef10>, 'collection': <iRODSCollection 10183 b'test1'>, 'id': 10198, 'collection_id': 10183, 'name': 'test.txt', 'replica_number': 0, 'version': None, 'type': 'generic', 'size': 25, 'resource_name': 'netapp', 'path': '/yourZone/home/userName/test1/test.txt', 'owner_name': 'userName', 'owner_zone': 'yourZone', 'replica_status': '1', 'status': None, 'checksum': None, 'expiry': '00000000000', 'map_id': 0, 'comments': None, 'create_time': datetime.datetime(2021, 10, 20, 20, 39, 45), 'modify_time': datetime.datetime(2021, 10, 20, 20, 59), 'resc_hier': 'default;netapp', 'resc_id': '10014', 'replicas': [<irods.data_object.iRODSReplica netapp>], '_meta': None}
+{'manager': <irods.manager.data_object_manager.DataObjectManager object at 0x7f534659ef10>,
+'collection': <iRODSCollection 10183 b'test1'>,
+'id': 10198,
+'collection_id': 10183,
+'name': 'test.txt',
+'replica_number': 0,
+'version': None,
+'type': 'generic',
+'size': 25,
+'resource_name': 'netapp',
+'path': '/yourZone/home/userName/test1/test.txt',
+'owner_name': 'userName',
+'owner_zone': 'yourZone',
+'replica_status': '1',
+'status': None,
+'checksum': None,
+'expiry': '00000000000',
+'map_id': 0,
+'comments': None,
+'create_time': datetime.datetime(2021, 10, 20, 20, 39, 45),
+'modify_time': datetime.datetime(2021, 10, 20, 20, 59),
+'resc_hier': 'default;netapp',
+'resc_id': '10014',
+'replicas': [<irods.data_object.iRODSReplica netapp>],
+'_meta': None}
 ```
 
 ### Getting and Setting Permissions
@@ -253,7 +291,7 @@ For example, let's write something in `obj`:
 ...     f.write(b'Hello\nWorld\n')
 ```
 
-And now read its contents.
+And now let's read its contents.
 
 ```py
 >>> with obj.open('r+') as f:
@@ -261,20 +299,19 @@ And now read its contents.
 >>> print(content)
 b'Hello\nWorld\n'
 ```
-<!-- Or maybe we have to assign it to a variable and print it outside... -->
 
 ### Computing and Retrieving Checksums
 
-An object can be associated with checksum, which is used to verify data integrity. In other words, you can compare the checksums of two data objects or a data object and a local file to make sure that the files are identical.
+An object can be associated with a checksum, which is used to verify data integrity. In other words, you can compare the checksums of two data objects or a data object and a local file to make sure that the files are identical.
 
-The `chksum()` method retrieves the checksum of an object if it is already in the iCAT catalogue, otherwise computes it and sotres it.
+The `chksum()` method retrieves the checksum of an object if it is already in the iCAT catalogue, otherwise computes it and stores it.
 
 ```py
 >>> obj.chksum()
 'sha2:1j7C8s/wkIVp7pYG9ndGKhU2fjqW+6BNG+vz+fSDPYM='
 ```
 
-If a checksum already was associated to a data object, you can use the `checksum` attribute to see it. It won't be available if you only just set it with the `checksum()` method.
+If a checksum already was associated to a data object, you can use the `checksum` attribute to see it. It won't be available if you only just set it with the `chksum()` method.
 
 ```py
 >>> obj.checksum
@@ -340,7 +377,7 @@ In order to remove an AVU, we can call the `remove()` method: we use the same ar
 [<iRODSMeta 10222 key2 value3 None>, <iRODSMeta 10223 key2 value3 unit3>, <iRODSMeta 10224 key3 value4 None>]
 ```
 
-If you want to remove all the existing metadata of an object at once, then you can use `remove_all()` method:
+In order to remove all the existing metadata of an object at once, you can use `remove_all()` method:
 
 ```py
 >>> obj.metadata.remove_all()
@@ -350,13 +387,12 @@ If you want to remove all the existing metadata of an object at once, then you c
 
 ### Atomic operations on metadata
 
-The PRC allows you to add and remove metadata in sequence with a single operation, i.e., a single call to the server. The `apply_atomic_operations()` method takes a series of `AVUOperation` objects as arguments and implements them in the order given. To the `AVUOperation()` call we specify the kind of operation ("remove" or "add") and the AVU involved as an `iRODSMeta` object.
+The PRC allows you to add and remove metadata in sequence with a single operation, i.e., a single call to the server. The `apply_atomic_operations()` method takes a series of `AVUOperation` objects as arguments and implements them in the order given. To the `AVUOperation()` call we specify the kind of operation ("remove" or "add") and the AVU involved as an `iRODSMeta` object. Therefore, we need to import both the `iRODSMeta` class (already imported above) and `AVUOperation`.
+
 Let's remove and add some AVUs in one single call.
 
-<!-- Below, should we also asume iRODSMeta was already imported? -->
-
 ```py
->>> from irods.meta import iRODSMeta, AVUOperation
+>>> from irods.meta import AVUOperation
 >>> obj.metadata.apply_atomic_operations( AVUOperation(operation='remove', avu=iRODSMeta('attr1','val1','unit1')),
 ...                                       AVUOperation(operation='add', avu=iRODSMeta('attr3','val3')),
 ...                                       AVUOperation(operation='add', avu=iRODSMeta('attr2','val2','unit2')),
@@ -407,18 +443,18 @@ Different attributes of your objects, including the metadata, can be used to per
 
 Class | Information about | Useful attributes
 ---- | ------ | ----------
-`Collection` | A collection | `name`, `owner_name` ...
+`Collection` | A collection | `name`, `owner_name`, `id` ...
 `DataObject` | A data object | `name`, `path`, `size`, `owner_name`, `id` ...
-`CollectionMeta` | The metadata of a collection | `name`, `value`, `units`
-`DataObjectMeta` | The metadata of a data object | `name`, `value`, `units`
+`CollectionMeta` | The metadata of a collection | `name`, `value`, `units`, ...
+`DataObjectMeta` | The metadata of a data object | `name`, `value`, `units`, ...
 
-The `session.query()` calls takes as argument the different kinds of information you want to be able to extract, such as `Collection.name` for the *path to* a collection or `Collection` to have all the collection's information available (not its metadata, though). Its output is a generator of results from which we can extract the different columns.
+The `session.query()` calls takes as argument the different kinds of information you want to be able to extract, such as `Collection.name` for the *path* of a collection or `Collection` to have all the collection's information available (not its metadata, though). Its output is a generator of results from which we can extract these different columns.
 
 ```py
 >>> from irods.models import Collection, DataObject
 >>> query = session.query(Collection.name, DataObject.name, DataObject.size)
 >>> for result in query:
-...     print('{}/{} size={}'.format(result[Collection.name], result[DataObject.name], result[DataObject.size]))
+...     print(f'{result[Collection.name]}/{result[DataObject.name]} size={result[DataObject.size]}')
 ...
 /yourZone/home/userName/1GB.bin size=0
 /yourZone/home/userName/test.txt size=18
@@ -435,7 +471,7 @@ The `session.query()` calls takes as argument the different kinds of information
 
 An important feature when querying is to be able to filter the results based on some criteria. For this purpose we also have to import the `Criterion` class from the `irods.column` module. We then create criteria by instantiating the `Criterion` class with an operator (such as "=" or "like") and the elements under comparison, and provide them to the `filter()` method of the results.
 
-For example, `Criterion('=', CollectionMeta.name, 'type')` will filter the results that have an AVU with "type" as the attribute name. Notice that the classes used in the `Criterion()` instances do not need to be used in the `query()` call.
+For example, `Criterion('=', CollectionMeta.name, 'type')` below will filter the results that have an AVU with "type" as the attribute name; the subsequent call `Criterion('like', CollectionMeta.value, 'train%')` will further filter the results that have an AVU with the attribute value starting with "train". Notice that the classes used in the `Criterion()` instances do not need to be used in the `query()` call.
 
 ```py
 >>> from irods.column import Criterion
@@ -463,7 +499,7 @@ For instance, the code below queries the data size and number of data objects yo
 +--------------+-----------+-----------+
 ```
 
-**Note**: There is a small discrepancy between some of the attributes used in queries and outside of them. First, `Collection.name` will return the *path* to a collection (`Collection.path` does not exist). Given a collection `col`, this is the same as printing `col.path`. In contrast, `col.name` will print the name of the collection, e.g. if `col.path` is "/yourZone/home/userName/training", `col.name` is "training". Second, `DataObject.path` will return the location where the data object is *physically stored*, whereas `obj.path` will return the path of the parent collection followed by `obj.name`. Therefore, in order to obtain the path to a data object via a query, you should **not** extract `DataObject.path` but `Collection.name + '/' + DataObject.name`.
+**Note5:** There is a small discrepancy between some of the attributes used in queries and outside of them. First, `Collection.name` will return the *path* to a collection (`Collection.path` does not exist). Given a collection `col`, this is the same as printing `col.path`. In contrast, `col.name` will print the name of the collection, e.g. if `col.path` is "/yourZone/home/userName/training", `col.name` is "training". Second, `DataObject.path` will return the location where the data object is *physically stored*, whereas `obj.path` will return the path of the parent collection followed by `obj.name`. Therefore, in order to obtain the path to a data object via a query, you should **not** extract `DataObject.path` but `Collection.name + '/' + DataObject.name`.
 
 #  Exercises
 
