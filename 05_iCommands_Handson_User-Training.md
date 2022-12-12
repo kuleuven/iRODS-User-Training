@@ -385,6 +385,7 @@ We can also annotate a collection with `imeta add -C path 'attribute-name' 'attr
 imeta add -C shared 'training' 'irods' 'online'
 ```
 
+<!-- NOTE the quotation marks are optional. The same for `set` and `mod`. -->
 #### List Metadata
 
 To list metadata we run `imeta ls...`:
@@ -396,6 +397,17 @@ imeta ls -C shared
 
 With `imeta ls`, we can retrieve the AVUs when given a file or collection name, but we could also retrieve the data object and collection names when given an attribute or value with [queries](#queries-for-data).
 
+
+#### Modify metadata
+
+Metadata of a data object can be modified with `imeta set -d path 'attribute-name' 'new-attribute-value' ['new-attribute-units']`. For example, the code below will change the value of the 'author' attribute of "example.txt" to 'Alex'.
+
+```sh
+imeta set -d example.txt author 'Alex'
+```
+
+Note that, if "example.txt" had multiple AVUs with the name 'author', `imeta set` will replace them all with the new AVU with value 'Alex'. For more specific manipulation of AVUs, you may use `imeta mod`.
+
 #### Queries for data
 
 For simple queries we can use `imeta qu`. For example, we can obtain the files with "distance" as an attribute and "10" as a value with:
@@ -404,7 +416,7 @@ For simple queries we can use `imeta qu`. For example, we can obtain the files w
 imeta qu -d distance = 10
 ```
 
-However, we will probably be more interested in most sophisticated search. For that purpose we can use `iquest` followed by an SQL-like query. For example, we can fetch items with an attribute named "author" with:
+However, we will probably be more interested in most sophisticated search. For that purpose we can use `iquest` followed by an SQL-like query. For example, we can fetch items with an attribute named 'author' with:
 
 ```sh
 iquest "select COLL_NAME, DATA_NAME, META_DATA_ATTR_VALUE where \
@@ -461,7 +473,7 @@ The same is true in iCommands.
   Also remember that you can use 'ils' and 'ipwd' between other commands to check where you are.
 
 
-  ```
+  ```sh
   imkdir earth_science
   imkdir economy
   
@@ -488,7 +500,7 @@ The same is true in iCommands.
 <details>
     <summary>Solution</summary>
     
-```    
+```sh 
 rm inflation.txt
 
 icd economy
@@ -512,14 +524,14 @@ iget inflation.txt
     
 
 
-```
+```sh
 imkdir molecules
 cd data
 irsync -r molecules i:molecules
 ils molecules
 ```
 
-```
+```sh
 echo 14 > molecules/carbon_count.txt
 irsync -r molecules i:molecules
 ils molecules
@@ -543,7 +555,7 @@ ils molecules
 <details>
     <summary>Solution</summary>
     
-```
+```sh
 cd data/lifescience
 
 imkdir lifescience
@@ -574,7 +586,7 @@ ils -A lifescience
 <details>
     <summary>Solution</summary>
     
-```
+```sh
 tar -cf lifescience.tar lifescience
 iput -Dtar lifescience.tar
 imkdir archive
@@ -604,11 +616,11 @@ iget molecules.tar
 <details>
     <summary>Solution</summary>
     
-```
+```sh
 cd  data/languages
 ```
 
-```
+```sh
 imkdir languages
 iput corpus1.txt languages 
 iput corpus2.txt languages
@@ -616,26 +628,32 @@ iput corpus3.txt languages
 ```
 alternatively, you could have used:
 
-```
+```sh
 iput -r languages
 ```
 Let's continue:
-```
+```sh
 icd languages
 imeta add -d corpus1.txt language dutch
 imeta add -d corpus2.txt language french
 imeta add -d corpus3.txt language latin
+imeta set -d corpus2.txt language english
+```
+
+An alternative to the `imeta set` call is:
+
+```sh
 imeta mod -d corpus2.txt language french v:english
 ```
 
 The query can be executed with `iquest` or `imeta qu`:
 
-```
+```sh
 iquest "SELECT DATA_NAME where META_DATA_ATTR_NAME = 'language' and META_DATA_ATTR_VALUE = 'dutch'"
 
 imeta qu -d language = dutch
 ```
-```
+```sh
 imeta addw 
 ```
 
