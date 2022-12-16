@@ -4,7 +4,7 @@
 - *A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones*  
 - *Basic knowledge of Python*    
 
-This training introduces you to the basics of using the iRODS client API implemented in Python. The Python iRODS Client (PRC) is a programming client of iRODS. The main goal of PRC is to offer researchers means to manage their data in Python. Currently supported operations with PRC are varied and powerful enough to interact with iRODS without requiring any other tools.
+This training introduces you to the basics of using the iRODS client API implemented in Python. The Python iRODS Client (PRC) is a programming client of iRODS. The main goal of the PRC is to offer researchers means to manage their data in Python. Currently supported operations with  PRC are varied and powerful enough to interact with iRODS without requiring any other tools.
 
 ## Goal of this training
 
@@ -20,9 +20,9 @@ The following functionalities will be covered:
 
 ## Configuration of the iRODS connection
 
-We will use the environment file of iRODS to have a secure and longer session in PRC. 
+We will use the environment file of iRODS to have a secure and longer session in the PRC. 
 
-### Using PRC on a Linux Machine
+### Using the PRC on a Linux Machine
 
 If you are using a Linux machine (including VMs and WSL2) you first need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there:
 
@@ -62,7 +62,7 @@ And at the end of your session clean up with:
 session.cleanup()
 ```
 
-### Using PRC on a Windows Machine
+### Using the PRC on a Windows Machine
 
 If you are using a pure Windows machine (no available Linux OS via VMs and WSL2), there are two options that you can follow.
 
@@ -108,15 +108,15 @@ To be able to call Python code during the training and the exercises, you can ch
 
 - Make python scripts by using your favourite editor (vi, nano,...)
     - Execute them with `python3 <filename>` or
-    - Add the shebang line in your script file to make it file executable (chmod +x) and execute it with `./filename`.
+    - Add the shebang line in your script file, make it executable with `chmod +x` and then execute it with `./filename`.
 - Work interactively
     - With the default Python interpreter or
     - With IPython, a command shell for interactive programming in Python. (IPython is not installed by default, so you might need to install it using pip: e.g: `pip install --user ipython`).
 
-**Note1:** The shebang line in any script determines the script's ability to be executed like a standalone executable without typing 'python' beforehand in the terminal.
+**Note:** The shebang line in any script determines the script's ability to be executed like a standalone executable without typing 'python' beforehand in the terminal.
 In other words, the shebang line specifies exactly how to run a script. You can put `#!/usr/bin/env python3` as a first line in your PRC script file.
 
-**Note2:** You can use the python builtin `dir()` function to know about all available attributes and methods for a given object. For instance, `[x for x in dir(coll) if not x.startswith('__') ]` gives you the methods of the 'coll' instance.
+**Note:** You can use the python builtin `dir()` function to know about all available attributes and methods for a given object. For instance, `[x for x in dir(coll) if not x.startswith('__')]` returns a list of the attributes and methods of the 'coll' instance.
 
 ## Working with Collections
 
@@ -168,11 +168,11 @@ A new collection can be created by specifying its absolute iRODS path:
 <iRODSCollection 10180 b'newCollection'>
 ```
 
-**Note3:** If a collection you want to create already exists, `session.collections.create()` doesn't do anything: neither complains nor overwrites the existing collection.
+**Note:** If a collection you want to create already exists, `session.collections.create()` doesn't do anything: neither complains nor overwrites the existing collection.
 
 ## Working with Data Objects
 
-PRC allows you to achieve pretty much any data object related operations, such as creating, deleting, uploading, downloading, copying and moving data objects. This is done via various methods of the `session.data_objects` object.
+The PRC allows you to achieve pretty much any data object related operations, such as creating, deleting, uploading, downloading, copying and moving data objects. This is done via various methods of the `session.data_objects` object.
 
 You can create a new data object with `session.data_objects.create()`:
 
@@ -195,7 +195,7 @@ coll.data_objects[-1]
 <iRODSDataObject 20233 uploaded.txt>
 ```
 
-**Note4:** Data object transfers using `put()` and `get()` spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
+**Note:** Data object transfers using `put()` and `get()` spawn a number of threads in order to optimize performance for file sizes larger than a default threshold value of 32 Megabytes. In other word, you are transferring in parallell if your transfer is bigger than 32 Megabytes.
 
 If you want to completely delete a data object you can use the `unlink()` method. Unless you provide the argument `force=True`, you are only moving the data object to the trash collection.
 
@@ -387,7 +387,9 @@ In order to remove all the existing metadata of an object at once, you can use `
 
 ### Atomic operations on metadata
 
-The PRC allows you to add and remove metadata in sequence with a single operation, i.e., a single call to the server. The `apply_atomic_operations()` method takes a series of `AVUOperation` objects as arguments and implements them in the order given. To the `AVUOperation()` call we specify the kind of operation ("remove" or "add") and the AVU involved as an `iRODSMeta` object. Therefore, we need to import both the `iRODSMeta` class (already imported above) and `AVUOperation`.
+The PRC allows you to add and remove metadata in sequence with a single operation, i.e., a single call to the server. The `apply_atomic_operations()` method takes a series of `AVUOperation` objects as arguments and implements them in the order given. Because they are all implemented with a single server call, the operation is much faster than a sequence of individual `add()` and `remove()` calls.
+
+To the `AVUOperation()` call we specify the kind of operation ("remove" or "add") and the AVU involved as an `iRODSMeta` object. Therefore, we need to import both the `iRODSMeta` class (already imported above) and `AVUOperation`.
 
 Let's remove and add some AVUs in one single call.
 
@@ -439,7 +441,7 @@ It is also possible to read metadata from a JSON file and apply them with `apply
 
 ## How to make queries
 
-Different attributes of your objects, including the metadata, can be used to perform queries on your research data. This can be done with `session.query()` and a number of PRC classes imported from the `irods.models` module.
+Different attributes of your objects, including the metadata, can be used when performing queries on your research data. This can be done with `session.query()` and a number of PRC classes imported from the `irods.models` module.
 
 Class | Information about | Useful attributes
 ---- | ------ | ----------
@@ -499,7 +501,7 @@ For instance, the code below queries the data size and number of data objects yo
 +--------------+-----------+-----------+
 ```
 
-**Note5:** There is a small discrepancy between some of the attributes used in queries and outside of them. First, `Collection.name` will return the *path* to a collection (`Collection.path` does not exist). Given a collection `col`, this is the same as printing `col.path`. In contrast, `col.name` will print the name of the collection, e.g. if `col.path` is "/yourZone/home/userName/training", `col.name` is "training". Second, `DataObject.path` will return the location where the data object is *physically stored*, whereas `obj.path` will return the path of the parent collection followed by `obj.name`. Therefore, in order to obtain the path to a data object via a query, you should **not** extract `DataObject.path` but `Collection.name + '/' + DataObject.name`.
+**Note:** There is a small discrepancy between some of the attributes used in queries and outside of them. First, `Collection.name` will return the *path* to a collection (`Collection.path` does not exist). Given a collection `col`, this is the same as printing `col.path`. In contrast, `col.name` will print the name of the collection, e.g. if `col.path` is "/yourZone/home/userName/training", `col.name` is "training". Second, `DataObject.path` will return the location where the data object is *physically stored*, whereas `obj.path` will return the path of the parent collection followed by `obj.name`. Therefore, in order to obtain the path to a data object via a query, you should **not** extract `DataObject.path` but `Collection.name + '/' + DataObject.name`.
 
 #  Exercises
 
