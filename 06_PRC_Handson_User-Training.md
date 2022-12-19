@@ -108,7 +108,7 @@ To be able to call Python code during the training and the exercises, you can ch
 
 - Make python scripts by using your favourite editor (vi, nano,...)
     - Execute them with `python3 <filename>` or
-    - Add the shebang line in your script file, make it executable with `chmod +x` and then execute it with `./filename`.
+    - Add the shebang line in your script file, make it executable with `chmod +x` and then execute it with `./filename` from the command line.
 - Work interactively
     - With the default Python interpreter or
     - With IPython, a command shell for interactive programming in Python. (IPython is not installed by default, so you might need to install it using pip: e.g: `pip install --user ipython`).
@@ -128,7 +128,7 @@ Let's retrieve our existing home collection:
 >>> coll = session.collections.get("/yourZone/home/userName")
 ```
 
-The `path` attribute shows where the collection is stored, which is the same as the path given to access the collection.
+The `path` attribute shows the path to access a collection.
 
 ```py
 >>> coll.path
@@ -250,17 +250,17 @@ Via `session.permissions` and the `iRODSAccess` class, the PRC makes it possible
 Let's now create a new collection:
 
 ```py
->>> perm = session.collections.create("/yourZone/home/userName/permission")
->>> perm.path
-'/yourZone/home/userName/permission'
+>>> coll_permissions = session.collections.create("/yourZone/home/userName/test")
+>>> coll_permissions.path
+'/yourZone/home/userName/test'
 ```
 
 You can list given permissions for a collection by providing it to `session.permissions.get()`:
 
 ```py
->>> acl_coll = session.permissions.get(perm)[0]
+>>> acl_coll = session.permissions.get(coll_permissions)[0]
 >>> acl_coll
-<iRODSAccess own /yourZone/home/userName/permission userName yourZone>
+<iRODSAccess own /yourZone/home/userName/test userName yourZone>
 ```
 
 In order to add or modify ACLs, you need to create an instance of the `iRODSAccess` class, which you should import first. When initializing an `iRODSAccess` object, you provide first the ACL ("own", "read" or "write") followed by the path to the data object or collection, the user or group, and finally the zone. Then this object is provided to `session.permissions.set()`.
