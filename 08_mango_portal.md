@@ -21,7 +21,7 @@ The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven.
     + [Metadata](#metadata)
     + [Permissions](#permissions)
     + [Preview (data objects)](#preview--data-objects-)
-    + [Analysis (data objects)](#analysis--data-objects-)
+    + [Metadata inspection and extraction (data objects)](#metadata-inspection-and-extraction--data-objects-)
   * [Searching](#searching)
   * [Metadata schema's](#metadata-schema-s)
     + [Creating a schema](#creating-a-schema)
@@ -182,12 +182,12 @@ Please note that this is just a preview, and not a full rendering of the content
 The previews are currently available for a select number of file types (for example PDFs and PNG images).  
 
 
-### Analysis (data objects)
+### Metadata inspection and extraction (data objects)
 
 A lot of file formats nowadays contain some metadata about the file itself in its header.  
 For example, the header of a foto might contain data on when the picture was taken.  
 
-The analysis tab allows you to extract this information with [Apache Tika](https://tika.apache.org/).  
+This tab allows you to extract this information with [Apache Tika](https://tika.apache.org/).  
 To start, indicate whether you want OCR (Optical Character Recognition) or not, and click on 'Analyze with Tika Inspector'.  
 This generates a list of all the metadata that the analyzer can find inside the file, and optionally the text of the file (depending on the file type).     
 
