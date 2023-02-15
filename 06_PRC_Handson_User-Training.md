@@ -28,7 +28,6 @@ There are three ways to authenticate to the PRC:
 - Copy the snippet on the section 'Python Client on Windows' on the [KU Leuven ManGO portal](https://mango.kuleuven.be/) > 'How to Connect'.  
 - Open a Python interpreter in your terminal/Powershell, or in Anaconda Prompt if you are using Anaconda, and past and execute the snippet in it.  
 
-
 2. Using iinit.exe (for Windows)
 
     1. Download the [iinit.exe](https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe) file; you will find this file &mdash; with a green iRODS icon &mdash; in your 'Downloads' folder.
