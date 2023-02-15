@@ -1,4 +1,4 @@
-# Introduction to Python iRODS Client (PRC) and VSC-PRC tools
+# Introduction to Python iRODS Client (PRC) 
 
 *Prerequisites:*  
 - *A KU Leuven account (u- or b-account) to access the KU Leuven iRODS zones*  
@@ -18,37 +18,56 @@ The following functionalities will be covered:
 - Managing permissions for data objects and collections
 - Querying for data using user-defined metadata
 
-## Configuration of the iRODS connection
 
-We will use the environment file of iRODS to have a secure and longer session in the PRC. 
+## Authenticating to the PRC
 
-### Using the PRC on a Linux Machine
+There are three ways to authenticate to the PRC:
 
-If you are using a Linux machine (including VMs and WSL2) you first need to connect to the KU Leuven iRODS portal (https://{yourZone}.irods.icts.kuleuven.be) and follow relevant instructions there:
+1. Using the code snippet on the ManGO portal
 
-- Copy the snippet on the section 'iCommands Client on Linux' of the KU Leuven iRODS portal.
+- Copy the snippet on the section 'Python Client on Windows' on the [KU Leuven ManGO portal](https://mango.kuleuven.be/) > 'How to Connect'.  
+- Open a Python interpreter in your terminal/Powershell, or in Anaconda Prompt if you are using Anaconda, and past and execute the snippet in it.  
 
-- Open your terminal, paste and execute the copied snippet.
 
-This way you will have created a temporary password that will expire 7 days later; once this password is expired, you will need to repeat the whole procedure to be able reconnect to iRODS.
+2. Using iinit.exe (for Windows)
 
-You can initiate an iRODS session in a secure way with the PRC by using the code snippet below in your Python script or interactive session.
+    1. Download the [iinit.exe](https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe) file; you will find this file &mdash; with a green iRODS icon &mdash; in your 'Downloads' folder.
+    
+    2. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your Windows PC that doesn't require administrator rights
+
+    3. Double click `iinit.exe` and enter your 'Zone' name in the pop-up terminal screen.
+
+    4. Once you type your zone name correctly, hit the enter button: you will be forwarded to your default screen to be notified that 'You have successfully authenticated' in addition to some information. The popped-up terminal will disappear in 8 seconds.
+
+    This way you will have created a temporary password that will expire 60 hours later; once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS.
+
+    You don't have to follow all these steps every time: after you download `iinit.exe`, you can use it when you need to renew your password.
+
+
+3. Using the PRC together with iCommands
+
+    If you want to use the PRC on Linux, chances are you have also installed [iCommands](05_iCommands_Handson_User-Training.md).  
+    In the past, whenever you logged in to iCommands, you were also logged in for the PRC by default.  
+    However, since the latest update, the python-irodsclient depends on a slightly different version of the configuration file 
+
+    If you want to use both the iCommands and PRC, you can do so as follows:
+
+    1. Follow the instructions on the [KU Leuven ManGO portal](https://mango.kuleuven.be/) > 'How to Connect' > 'iCommands Client on Linux' to log in with the iCommands.  
+    2. Make a second version of the configuration file for the PRC: `cp ~/.irods/irods_environment.json ~/.irods/irods_environment_python.json`
+    3. Replace 'pam_password' with 'PAM' in the new configuration file: `sed -i 's/pam_password/PAM/g'  ~/.irods/irods_environment_python.json`
+
+
+After you are authenticated to iRODS with any of these three options, you can initiate an iRODS session in a secure way with the PRC by using the code snippet below.
 
 ```py
-import os
-import ssl
+import os, os.path
 from irods.session import iRODSSession
-
-try:
-    env_file = os.environ['IRODS_ENVIRONMENT_FILE']
-except KeyError:
-    env_file = os.path.expanduser('~/.irods/irods_environment.json')
-
-ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH, cafile=None, capath=None, cadata=None)
-ssl_settings = {'ssl_context': ssl_context}
-with iRODSSession(irods_env_file=env_file, **ssl_settings) as session:
+env_file = os.getenv('IRODS_ENVIRONMENT_FILE', os.path.expanduser('~/.irods/irods_environment.json'))
+with iRODSSession(irods_env_file=env_file) as session:
     [your code here]
 ```
+
+**Note:** If you used the third method, replace '~/.irods/irods_environment.json' with '~/.irods/irods_environment_python.json'.
 
 In an interactive session, for example, to follow the examples shown in this document, you might want to replace the `with` statement above with:
 
@@ -61,44 +80,6 @@ And at the end of your session clean up with:
 ```py
 session.cleanup()
 ```
-
-### Using the PRC on a Windows Machine
-
-If you are using a pure Windows machine (no available Linux OS via VMs and WSL2), there are two options that you can follow.
-
-The first option:
-
-- Copy the snippet on the section 'Python Client on Windows' of the KU Leuven iRODS portal.
-
-    - If you want to use a conda environment, open your 'Anaconda Prompt', paste and execute the copied snippet.
-
-    - If you want to use a non-conda installed python release, then open your 'Windows PowerShell', paste and execute the copied snippet.
-
-The second option:
-
-1. Download the [iinit.exe](https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe) file; you will find this file &mdash; with a green iRODS icon &mdash; in your 'Downloads' folder.
-    
-2. Copy the 'iinit.exe' file in 'Downloads' and paste it inside a folder on your Windows PC that doesn't require administrator rights
-
-3. Double click `iinit.exe` and enter your 'Zone' name in the pop-up terminal screen.
-
-4. Once you type your zone name correctly, hit the enter button: you will be forwarded to your default screen to be notified that 'You have successfully authenticated' in addition to some information. The popped-up terminal will disappear in 8 seconds.
-
-This way you will have created a temporary password that will expire 60 hours later; once this password is expired, you will need to repeat whole procedure (either all steps in the first option or only execute `iinit.exe` again) to be able reconnect to iRODS.
-
-You don't have to follow all these steps every time: after you download `iinit.exe`, you can use it when you need to renew your password.
-
-After you are authenticated to iRODS, you can initiate an iRODS session in a secure way with the PRC by using the code snippet below.
-
-```py
-import os, os.path
-from irods.session import iRODSSession
-env_file = os.getenv('IRODS_ENVIRONMENT_FILE', os.path.expanduser('~/.irods/irods_environment.json'))
-with iRODSSession(irods_env_file=env_file) as session:
-    [your code here]
-```
-
-We recommend you to use the second option, since it seems more user-friendly and fault tolerant.
 
 ## How to work with the PRC
 

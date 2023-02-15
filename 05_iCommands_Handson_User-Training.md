@@ -29,9 +29,10 @@ As a command line user interface to iRODS, more than 50 iCommands exist. However
 
 ### Configuration of the iRODS connection
 
-Connect to the KU Leuven iRODS portal (https://{YOURZONE}.irods.icts.kuleuven.be) and follow the instructions of the section iRODS Linux Client.
+Log in to the [KU Leuven ManGO portal](https://mango.kuleuven.be/) and click on 'How to connect'.  
+Then, follow the instructions under 'iCommands Client on Linux'.
 
-You will then start an iRODS session that will last 7 days.
+You will then start an iRODS session that will last 7 days.  
 After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
 
 ### Informative iCommands
