@@ -5,11 +5,11 @@
 
 WebDAV stands for Web Distributed Authoring and Versioning, which is an extension to HTTP, the protocol that web-browsers and webservers use to communicate with each other. In other words, WebDAV is a method for remotely managing files over the internet. With WebDAV, we can access files stored in the KU Leuven iRODS repository by using the same interface as we do with our local files.
 
-The module that we use for our iRODS connection is called [Davrods](https://github.com/UtrechtUniversity/davrods). Davrods is an Apache WebDAV interface to iRODS developed by the University of Utrech and it provides access to iRODS servers using the WebDAV protocol. It is a bridge between the WebDAV protocol and iRODS.
+The module that we use for our iRODS connection is called [Davrods](https://github.com/UtrechtUniversity/davrods). Davrods is an Apache WebDAV interface to iRODS developed by the University of Utrecht and it provides access to iRODS servers using the WebDAV protocol. It is a bridge between the WebDAV protocol and iRODS.
 
 ## Web Browser-Directory Index
 
-A connection through Davrods is available at https://{YOURZONE}.irods.icts.kuleuven.be:8443/  address. After you click the link you can log in using your u-account and the temporary password that is displayed when you connect to the [KU Leuven iRODS login page]: (https://{YOURZONE}.irods.icts.kuleuven.be/)
+A connection through Davrods is available at https://{YOURZONE}.irods.icts.kuleuven.be:8443/  address. After you click the link you can log in using your u-account and the temporary password that is displayed when you connect to the [KU Leuven ManGO portal]: (https://mango.kuleuven.be/) and click the button "How to connect" on the landing page, or if you are logged in via the profile menu in the upper right.
 
 
 <img align="center" src="img/WebDav-login.PNG" width="400px">
