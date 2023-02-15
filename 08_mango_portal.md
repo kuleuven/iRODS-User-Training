@@ -33,14 +33,14 @@ The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven.
 
 ## Logging in
 
-You will receive the link of the ManGO portal during the training.  
+You can reach the ManGO portal [here](https://mango.kuleuven.be/).    
 
 On this page, you will be asked to choose the institute you are affiliated to:  
 
 <img align="center" src="img/mango_portal_login_institute.png" width="600px">  
 
 Choosing 'KU Leuven' will direct you to the KU Leuven login page, unless you already were logged in in another tab, in which case this step is skipped.    
-On the next page, select your iRODS zone.   
+On the next page, click on 'Enter portal' next to the zone you want to log in to.  
 You should be redirected to the main page of the ManGO portal:  
 
 <img align="center" src="img/mango_portal_main_page.png" width="600px">    

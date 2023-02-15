@@ -42,7 +42,7 @@ In order to configure your iRODS connection for the first time, you should compl
 
 - Click a generic profile template provided at [connection profile](miscellaneous/yourZoneName.cyberduckprofile) to copy its content.
 - Paste the copied content in your `yourZoneName.cyberduckprofile` file.
-- Connect to your zone front page https://{YOURZONE}.irods.icts.kuleuven.be/ to get required information.
+- You can get the required information on the [KU Leuven ManGO portal](https://mango.kuleuven.be/) > 'How to Connect'.  
 
 <img align="center" src="img/cduck3.png" width="400px">
 
