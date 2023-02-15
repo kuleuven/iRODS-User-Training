@@ -28,7 +28,6 @@ There are three ways to authenticate to the PRC:
 - Copy the snippet on the section 'Python Client on Windows' on the [KU Leuven ManGO portal](https://mango.kuleuven.be/) > 'How to Connect'.  
 - Open a Python interpreter in your terminal/Powershell, or in Anaconda Prompt if you are using Anaconda, and past and execute the snippet in it.  
 
-
 2. Using iinit.exe (for Windows)
 
     1. Download the [iinit.exe](https://rdmrepo-proxy.icts.kuleuven.be/artifactory/coz-p-foz-generic-public/iinit.exe) file; you will find this file &mdash; with a green iRODS icon &mdash; in your 'Downloads' folder.
@@ -67,7 +66,7 @@ with iRODSSession(irods_env_file=env_file) as session:
     [your code here]
 ```
 
-**Note:** If you used the third method, replace '~/.irods/irods_environment.json' with '~/.irods/irods_environment_python.json'.
+**Note:** If you used the third method, replace `~/.irods/irods_environment.json` with `~/.irods/irods_environment_python.json`.
 
 In an interactive session, for example, to follow the examples shown in this document, you might want to replace the `with` statement above with:
 
