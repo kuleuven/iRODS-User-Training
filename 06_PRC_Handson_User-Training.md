@@ -66,7 +66,7 @@ with iRODSSession(irods_env_file=env_file) as session:
     [your code here]
 ```
 
-**Note:** If you used the third method, replace '~/.irods/irods_environment.json' with '~/.irods/irods_environment_python.json'.
+**Note:** If you used the third method, replace `~/.irods/irods_environment.json` with `~/.irods/irods_environment_python.json`.
 
 In an interactive session, for example, to follow the examples shown in this document, you might want to replace the `with` statement above with:
 
