@@ -1,5 +1,9 @@
 # Metalnx Portal Client for KU Leuven Users
 
+> **Warning:** We will stop supporting Metalnx by the end of March 2023.  
+> If you like using a graphical user interface, we would advice switching to the [ManGO Portal](08_mango_portal.md) instead.
+>
+
 *Prerequisites:*  
 *-A KU Leuven u-account*  
 
