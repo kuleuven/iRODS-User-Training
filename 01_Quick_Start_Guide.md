@@ -4,7 +4,7 @@ A 'zone' in iRODS is an independent iRODS system consisting of various servers a
 
 You will be provided with your zone name and an URL to access to that in the training session. Also once your iRODS account is activated, you will be notified by an email about how to access to your zone.
 
-For now, we don’t have any federated zones. However, we can federate zones in the future to facilitate data transfer between zones.
+For now, we don't have any federated zones. However, we can federate zones in the future to facilitate data transfer between zones.
 
 For your all questions and requests you can send an email to our service desk. The service desk email address is rdm-icts@kuleuven.be.
 
@@ -236,14 +236,14 @@ conda activate prc-irods
 |Module|Description|Notes|
 |----  |-----------|-----|
 |02_Introduction_to_iRODS.pdf|Explains all information about iRODS in general as well as the KU Leuven iRODS architecture in particular. Also it contains some hands-on part with logging a hands-on tutorial on how to log in to the KU Leuven portal|This module is valid for users of all available zones|
-|03_Metalnx_Handson_User-Training.md|Contains descriptive information about iRODS' graphical user interface client and also hands-on training|This module is mostly for the users and zones that use a portal based GUI client|
+|03_ManGO_Portal_Handson_User-Training.md|Contains a guide for the graphical user interface to ManGO, the ManGO portal |This module is mostly for the users that use a portal based GUI client|
 |04_WebDav_Handson.md|Explains the WebDav interface, which provides local filesytem type access to data and teaches you how to use it|This module is mostly for the users and zones that use a desktop based GUI client|
 |05_iCommands_Handson_User-Training.md|Explains how to use the command line client of iRODS|This module is mostly for the users and zones that work with command line interface - terminal|
 |06_PRC_Handson_User-Training.md|Explains how to use the programming client - the Python iRODS client (PRC) to iRODS|This module is mostly for the users and zones that want to interact with python|
 |07_Cyberduck_Handson.md|Explains how to download and configure cyberduck client and teaches how to use it|This module is mostly for the users and zones that want to use a desktop application to interact with iRODS|
 |/img (folder)|Place for images of the tutorials||
 |/data (folder)|Place for data objects (files)|will be used in the PRC|
-|/miscellaneous (folder)|Place for supporting documentation. It keeps a jupyter notebook for PRC training, some practical information about permission management etc.|useful for the PRC, iCommands and Metalnx clients|
+|/miscellaneous (folder)|Place for supporting documentation. It keeps a jupyter notebook for PRC training, some practical information about permission management etc.|useful for the PRC, iCommands and ManGO portal clients|
 |environment.yml|Contains a list of dependencies to install|for the users who want to use PRC|
 |README.md|Explains the goals and structure of this training repository||
 

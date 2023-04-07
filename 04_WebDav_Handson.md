@@ -1,5 +1,10 @@
 # Webdav client for iRODS
 
+
+> **Warning**: Support for the Webdav protocol as client to iRODS will end soon
+
+
+
 *Prerequisites:*  
 *-A KU Leuven u-account*  
 
@@ -54,7 +59,7 @@ How to access iRODS using WebDAV on a Windows 10 pc:
 
 <img align="center" src="img/WebDav-network-drive-mounted.png" width="400px">
 
-Once you’ve connected, the WebDAV directory is mounted in your local pc. After you click on your driver you will see your iRODS collections and data objects. You can now start adding, editing, deleting files in this directory from the comfort of your computer.
+Once you've connected, the WebDAV directory is mounted in your local pc. After you click on your driver you will see your iRODS collections and data objects. You can now start adding, editing, deleting files in this directory from the comfort of your computer.
 
 ## Other WebDav clients
 
