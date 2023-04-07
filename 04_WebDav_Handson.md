@@ -1,7 +1,8 @@
 # Webdav client for iRODS
 
 
-> **Warning**: Support for the Webdav protocol as client to iRODS will end soon
+> **Warning**: Support for the Webdav protocol as client to iRODS will end soon.
+> Instead, we will adopt a new protocol, which will be added to this training repository. 
 
 
 
