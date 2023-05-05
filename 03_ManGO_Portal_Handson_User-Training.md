@@ -296,8 +296,8 @@ In this exercise, you will use the file inflation.txt from data/economy.
 
 - Create two collections called 'earth_science' and 'economy'.
 - Upload inflation.txt to the collection 'earth_science'.
-- You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Remove the file you just uploaded.
-- Move into the 'economy' collection and reupload the file there. 
+- You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'!
+  Move the file to the collection 'economy'
 - Remove the 'earth_science' collection.
 - You can now also delete the 'inflation.txt' file in your local directory.
 
@@ -313,12 +313,12 @@ In this exercise, you will use the file inflation.txt from data/economy.
 
 In this exercise, you will use the files patient1.csv and anonymized.csv from data/lifescience.
 
-- Make a collection called 'lifescience' in your home and upload both files to it.  
-- Give your group read access to the collection lifescience, recursively.  
+- Make a collection called 'lifescience' and upload both files to it.  
+- Give one of your groups read access to the collection lifescience, recursively.  
 - Oh no, we forgot something! While the data in anonymized.csv is anonymized, the other file contains sensitive data!  
   Remove the read permissions for the group from patient1.csv.  
-- Later, your colleagues mention they need to upload some new files to the lifescience collection.  
-  Give your group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
+- Later, some colleagues mention they need to upload some new files to the lifescience collection.  
+  Give another group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
 
 
 **Exercise 4: working with metadata**
