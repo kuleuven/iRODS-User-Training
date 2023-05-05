@@ -35,11 +35,7 @@ The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven.
 
 You can reach the ManGO portal [here](https://mango.kuleuven.be/).    
 
-On this page, you will be asked to choose the institute you are affiliated to:  
-
-<img align="center" src="img/mango_portal_login_institute.png" width="600px">  
-
-Choosing 'KU Leuven' will direct you to the KU Leuven login page, unless you already were logged in in another tab, in which case this step is skipped.    
+Unless you were already logged in on another tab, you will be directed to the KU Leuven login page.   
 On the next page, click on 'Enter portal' next to the zone you want to log in to.  
 You should be redirected to the main page of the ManGO portal:  
 
@@ -56,12 +52,11 @@ The **Collections** tab allows you to navigate and organize your data in the cen
 <img align="center" src="img/mango_portal_collections.png" width="600px">  
 
 By default, you start in the 'home' collection. There you should see: 
-- Your home collection 
 - The collection of your group 
 - The public collection
 
 To navigate to a collection, you just click on it.  
-Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections:  
+Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections. 
 
 To create a collection, you click on the blue 'add collection' button, and specify a name.  
 
