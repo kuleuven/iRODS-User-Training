@@ -35,11 +35,7 @@ The ManGO portal is a web interface for iRODS, developed at ICTS KU Leuven.
 
 You can reach the ManGO portal [here](https://mango.kuleuven.be/).    
 
-On this page, you will be asked to choose the institute you are affiliated to:  
-
-<img align="center" src="img/mango_portal_login_institute.png" width="600px">  
-
-Choosing 'KU Leuven' will direct you to the KU Leuven login page, unless you already were logged in in another tab, in which case this step is skipped.    
+Unless you were already logged in on another tab, you will be directed to the KU Leuven login page.   
 On the next page, click on 'Enter portal' next to the zone you want to log in to.  
 You should be redirected to the main page of the ManGO portal:  
 
@@ -56,12 +52,11 @@ The **Collections** tab allows you to navigate and organize your data in the cen
 <img align="center" src="img/mango_portal_collections.png" width="600px">  
 
 By default, you start in the 'home' collection. There you should see: 
-- Your home collection 
 - The collection of your group 
 - The public collection
 
 To navigate to a collection, you just click on it.  
-Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections:  
+Just under the search bar, there is a handy breadcrumb menu, which allows you to go back to previous collections. 
 
 To create a collection, you click on the blue 'add collection' button, and specify a name.  
 
@@ -301,8 +296,8 @@ In this exercise, you will use the file inflation.txt from data/economy.
 
 - Create two collections called 'earth_science' and 'economy'.
 - Upload inflation.txt to the collection 'earth_science'.
-- You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'! Remove the file you just uploaded.
-- Move into the 'economy' collection and reupload the file there. 
+- You suddenly relialize that what you just did doesn't make sense. This file belongs in 'economy'!
+  Move the file to the collection 'economy'
 - Remove the 'earth_science' collection.
 - You can now also delete the 'inflation.txt' file in your local directory.
 
@@ -318,12 +313,12 @@ In this exercise, you will use the file inflation.txt from data/economy.
 
 In this exercise, you will use the files patient1.csv and anonymized.csv from data/lifescience.
 
-- Make a collection called 'lifescience' in your home and upload both files to it.  
-- Give your group read access to the collection lifescience, recursively.  
+- Make a collection called 'lifescience' and upload both files to it.  
+- Give one of your groups read access to the collection lifescience, recursively.  
 - Oh no, we forgot something! While the data in anonymized.csv is anonymized, the other file contains sensitive data!  
   Remove the read permissions for the group from patient1.csv.  
-- Later, your colleagues mention they need to upload some new files to the lifescience collection.  
-  Give your group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
+- Later, some colleagues mention they need to upload some new files to the lifescience collection.  
+  Give another group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
 
 
 **Exercise 4: working with metadata**
