@@ -79,12 +79,6 @@ To download a data object, click on the blue download icon on the right of it.
 It will end up in your local Downloads directory.    
 
 
-### Moving, copying and renaming data
-
-These actions are planned to be added in a later version.   
-At the moment, you can work around this by (removing and) reuploading data objects with the correct name/destination.    
-
-
 ### Deleting data
 
 To delete a collection, click on it to show that collection's page.    
@@ -276,7 +270,7 @@ After you click on 'save', the metadata tab of your collection/data object will 
 <img align="center" src="img/mango_portal_apply_schema_2.png" width="600px">  
 
 In the search tab, you can now also search based on the schema of the metadata.  
-However, instead of typing the attribute name, under 'Attribute name' you type `mg.<schema_name>.<element-identifier>`:   
+However, instead of typing the attribute name, under 'Attribute name' you type `mgs.<schema_name>.<element-identifier>`:   
 
 <img align="center" src="img/mango_portal_search_schema_metadata.png" width="600px">  
 
