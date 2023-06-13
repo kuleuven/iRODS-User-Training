@@ -1,6 +1,6 @@
 # Quick Start Guidance
 
-A 'zone' in iRODS is an independent iRODS system consisting of various servers and clients. A zone can be dedicated to a single user group or several groups can use the same zone. Currently there are five independent zones for the KU Leuven iRODS projects. Based on your project you will be using one of these zones. Since we operate more than one zone, we have different URLs to reach those zones. Throughout this training you will see links like this: https://{YOURZONE}.irods.icts.kuleuven.be to show you these link can work with your zone name. Whenever you see YOURZONE placeholder, please use your zone name there.
+A 'zone' in iRODS is an independent iRODS system consisting of various servers and clients. A zone can be dedicated to a single user group or several groups can use the same zone. Currently there are five independent zones for the KU Leuven iRODS projects. Based on your project you will be using one of these zones. Since we operate more than one zone, we have different URLs to reach those zones. Throughout this training you will see links like this: https://{YOURZONE}.irods.icts.kuleuven.be to show you these link can work with your zone name. Whenever you see YOURZONE placeholder, please use your zone name there. Or alternatively, simply use the updated https://mango.kuleuven.be to login.
 
 You will be provided with your zone name and an URL to access to that in the training session. Also once your iRODS account is activated, you will be notified by an email about how to access to your zone.
 
