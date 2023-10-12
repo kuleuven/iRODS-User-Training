@@ -71,7 +71,7 @@ with iRODSSession(irods_env_file=env_file) as session:
 In an interactive session, for example, to follow the examples shown in this document, you might want to replace the `with` statement above with:
 
 ```py
-session = iRODSSession(irods_env_file=env_file, **ssl_settings)
+session = iRODSSession(irods_env_file=env_file)
 ```
 
 And at the end of your session clean up with:
