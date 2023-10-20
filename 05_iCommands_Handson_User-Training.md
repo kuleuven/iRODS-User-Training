@@ -30,7 +30,7 @@ As a command line user interface to iRODS, more than 50 iCommands exist. However
 ### Configuration of the iRODS connection
 
 Log in to the [KU Leuven ManGO portal](https://mango.kuleuven.be/) and click on 'How to connect'.  
-Then, follow the instructions under 'iCommands Client on Linux'.
+Then, follow the instructions under 'iCommands on Linux'.
 
 You will then start an iRODS session that will last 7 days.  
 After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
@@ -131,7 +131,7 @@ imv test1 test/
 ```
 
 To remove one or more data objects or collections from iRODS space we use `irm` (again, with the `-r` for collections). However, once we execute this command the items are by default moved first to the trash collection (/yourZone/trash) unless the `-f` option is used.
-Let's can remove test1 collection.
+Let's remove test1 collection.
 
 ```sh
 irm -r test1
@@ -280,7 +280,7 @@ ils -A -r shared
 
 #### Checking data integrity
 
-For confirming data integrity, the checksum of a data object or a collection can be checked both in our local client and iRODS: if two items have the same checksum, they are the identical.
+For confirming data integrity, the checksum of a data object or a collection can be checked both in our local client and iRODS: if two items have the same checksum, they are identical.
 Let's first check the checksum of the `shared` collection in iRODS.
 
 ```sh
@@ -296,7 +296,7 @@ We can reproduce the same digits of the checksum with `sha256sum ${FILENAME} | a
 For example, to check the checksum of the local counterpart of `example1.txt`:
 
 ```sh
-sha256sum example-restored.txt | awk '{print $1}' | xxd -r -p | base64
+sha256sum example-restore.txt | awk '{print $1}' | xxd -r -p | base64
 # MGYDAyYBfv49YHkGxNBYQ4sZLE2dxR+yLGhvRjCH4pE=
 ```
 
@@ -655,7 +655,7 @@ iquest "SELECT DATA_NAME where META_DATA_ATTR_NAME = 'language' and META_DATA_AT
 imeta qu -d language = dutch
 ```
 ```sh
-imeta addw 
+imeta addw -d corpus_.txt type text
 ```
 
 </details>
