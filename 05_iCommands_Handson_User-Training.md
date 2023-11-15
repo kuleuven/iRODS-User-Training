@@ -610,8 +610,6 @@ iget molecules.tar
 - Oops, we made a mistake! Open the file corpus2.txt, and look what the language is. 
   Overwrite the current AVU with one with the correct value (tip: check the documentation of imeta with `imeta -h`).
 - Execute a query which searches all files which contain Dutch text.
-- Give all three files the AVU 'type:text', only using one command. 
-  You can search for ways to do this in the documentation of imeta.
 
 
 <details>
@@ -653,9 +651,6 @@ The query can be executed with `iquest` or `imeta qu`:
 iquest "SELECT DATA_NAME where META_DATA_ATTR_NAME = 'language' and META_DATA_ATTR_VALUE = 'dutch'"
 
 imeta qu -d language = dutch
-```
-```sh
-imeta addw -d corpus_.txt type text
 ```
 
 </details>

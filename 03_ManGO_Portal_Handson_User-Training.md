@@ -326,7 +326,7 @@ In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.tx
     - Attribute name 'language' and value 'latin' to corpus3.txt  
 - Oops, we made a mistake! Open the file corpus2.txt locally, and look what the language is.  
   Overwrite the current AVU with one with the correct value.  
-- Go to the 'search' tab and search for all objects with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.  
+- Go to the 'search' tab and search for all data objects with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.  
 
 
 **Exercise 5: metadata schemas**
