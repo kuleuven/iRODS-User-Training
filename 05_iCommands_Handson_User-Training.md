@@ -134,7 +134,7 @@ To remove one or more data objects or collections from iRODS space we use `irm` 
 Let's remove test1 collection.
 
 ```sh
-irm -r test1
+irm -r test/test1
 ```
 
 **Note:** All the collections and data objects that are deleted move to the trash collection. They are permanently cleaned when they are older than 15 days. Alternatively, the `irmtrash` command may be used to delete data objects and collections in the trash collection instantly. 
@@ -183,7 +183,7 @@ We now upload the data to the iRODS.
 iput -K example.txt
 ```
 
-*The flag -K triggers iRODS to create a checksum and store it [in the iCAT metadata catalogue](#checking-data-integrity).*
+*The flag -K triggers iRODS to create a [checksum](#checking-data-integrity) and store it in the iCAT database.*
 
 Let’s remove the original file.
 
@@ -515,7 +515,7 @@ iget inflation.txt
 - Create a collection in iRODS called 'molecules'.
 - Sync the local directory data/molecules with the collection 'molecules' in iRODS.
 - Check whether all files have been uploaded to iRODS.
-- Count how many carbon (C) atoms there are in all molecules combined.
+- Open the files and count how many carbon (C) atoms there are in all molecules combined. 
 - Create a file called 'carbon_count.txt' in the data/molecules directory, with this number as contents.
 - Sync the local directory data/molecules with the collection 'molecules' again.
 - Check whether the file 'carbon_count.txt' is now present in iRODS.
