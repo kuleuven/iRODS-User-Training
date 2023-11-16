@@ -30,7 +30,7 @@ As a command line user interface to iRODS, more than 50 iCommands exist. However
 ### Configuration of the iRODS connection
 
 Log in to the [KU Leuven ManGO portal](https://mango.kuleuven.be/) and click on 'How to connect'.  
-Then, follow the instructions under 'iCommands Client on Linux'.
+Then, follow the instructions under 'iCommands on Linux'.
 
 You will then start an iRODS session that will last 7 days.  
 After 7 days the created temporary password will expire and you will need to repeat this procedure to reconnect to iRODS.
@@ -131,10 +131,10 @@ imv test1 test/
 ```
 
 To remove one or more data objects or collections from iRODS space we use `irm` (again, with the `-r` for collections). However, once we execute this command the items are by default moved first to the trash collection (/yourZone/trash) unless the `-f` option is used.
-Let's can remove test1 collection.
+Let's remove test1 collection.
 
 ```sh
-irm -r test1
+irm -r test/test1
 ```
 
 **Note:** All the collections and data objects that are deleted move to the trash collection. They are permanently cleaned when they are older than 15 days. Alternatively, the `irmtrash` command may be used to delete data objects and collections in the trash collection instantly. 
@@ -183,7 +183,7 @@ We now upload the data to the iRODS.
 iput -K example.txt
 ```
 
-*The flag -K triggers iRODS to create a checksum and store it [in the iCAT metadata catalogue](#checking-data-integrity).*
+*The flag -K triggers iRODS to create a [checksum](#checking-data-integrity) and store it in the iCAT database.*
 
 Let’s remove the original file.
 
@@ -280,7 +280,7 @@ ils -A -r shared
 
 #### Checking data integrity
 
-For confirming data integrity, the checksum of a data object or a collection can be checked both in our local client and iRODS: if two items have the same checksum, they are the identical.
+For confirming data integrity, the checksum of a data object or a collection can be checked both in our local client and iRODS: if two items have the same checksum, they are identical.
 Let's first check the checksum of the `shared` collection in iRODS.
 
 ```sh
@@ -296,7 +296,7 @@ We can reproduce the same digits of the checksum with `sha256sum ${FILENAME} | a
 For example, to check the checksum of the local counterpart of `example1.txt`:
 
 ```sh
-sha256sum example-restored.txt | awk '{print $1}' | xxd -r -p | base64
+sha256sum example-restore.txt | awk '{print $1}' | xxd -r -p | base64
 # MGYDAyYBfv49YHkGxNBYQ4sZLE2dxR+yLGhvRjCH4pE=
 ```
 
@@ -515,7 +515,7 @@ iget inflation.txt
 - Create a collection in iRODS called 'molecules'.
 - Sync the local directory data/molecules with the collection 'molecules' in iRODS.
 - Check whether all files have been uploaded to iRODS.
-- Count how many carbon (C) atoms there are in all molecules combined.
+- Open the files and count how many carbon (C) atoms there are in all molecules combined. 
 - Create a file called 'carbon_count.txt' in the data/molecules directory, with this number as contents.
 - Sync the local directory data/molecules with the collection 'molecules' again.
 - Check whether the file 'carbon_count.txt' is now present in iRODS.
@@ -610,8 +610,6 @@ iget molecules.tar
 - Oops, we made a mistake! Open the file corpus2.txt, and look what the language is. 
   Overwrite the current AVU with one with the correct value (tip: check the documentation of imeta with `imeta -h`).
 - Execute a query which searches all files which contain Dutch text.
-- Give all three files the AVU 'type:text', only using one command. 
-  You can search for ways to do this in the documentation of imeta.
 
 
 <details>
@@ -653,9 +651,6 @@ The query can be executed with `iquest` or `imeta qu`:
 iquest "SELECT DATA_NAME where META_DATA_ATTR_NAME = 'language' and META_DATA_ATTR_VALUE = 'dutch'"
 
 imeta qu -d language = dutch
-```
-```sh
-imeta addw 
 ```
 
 </details>

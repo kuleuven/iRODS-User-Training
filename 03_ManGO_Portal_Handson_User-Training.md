@@ -312,7 +312,7 @@ In this exercise, you will use the files patient1.csv and anonymized.csv from da
 - Oh no, we forgot something! While the data in anonymized.csv is anonymized, the other file contains sensitive data!  
   Remove the read permissions for the group from patient1.csv.  
 - Later, some colleagues mention they need to upload some new files to the lifescience collection.  
-  Give another group write access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
+  Give another group modify access to the lifescience collection (without changing the permissions of anonymized.csv and patient1.csv)  
 
 
 **Exercise 4: working with metadata**
@@ -321,12 +321,12 @@ In this exercise, you will use the files corpus1.txt, corpus2.txt and corpus3.tx
 
 - Make a collection called 'languages' and upload the files to it.  
 - Add the following AVU's to the files:  
-    - Attribute 'language' and value 'dutch' to corpus1.txt  
-    - Attribute 'language' and value 'french' to corpus2.txt  
-    - Attribute 'language' and value 'latin' to corpus3.txt  
-- Oops, we made a mistake! Open the file corpus2.txt, and look what the language is.  
+    - Attribute name 'language' and value 'dutch' to corpus1.txt  
+    - Attribute name 'language' and value 'french' to corpus2.txt  
+    - Attribute name 'language' and value 'latin' to corpus3.txt  
+- Oops, we made a mistake! Open the file corpus2.txt locally, and look what the language is.  
   Overwrite the current AVU with one with the correct value.  
-- Go to the 'search' tab and search for all files with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.  
+- Go to the 'search' tab and search for all data objects with Metadata Attribute Name 'language' and Metadata Attribute Value 'latin'.  
 
 
 **Exercise 5: metadata schemas**
