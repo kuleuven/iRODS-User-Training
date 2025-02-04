@@ -1,0 +1,70 @@
+{
+  "schema_name": "analysis",
+  "version": "1.0.0",
+  "status": "published",
+  "properties": {
+    "date": {
+      "title": "Date on which the analysis was run",
+      "type": "date",
+      "placeholder": "",
+      "pattern": "",
+      "required": true,
+      "help": "Input type: date"
+    },
+    "analyst": {
+      "title": "Analyst",
+      "type": "text",
+      "placeholder": "",
+      "pattern": "",
+      "required": true,
+      "help": "Name of the analyst"
+    },
+    "settings": {
+      "title": "Settings of the analysis",
+      "properties": {
+        "session": {
+          "title": "Session ID",
+          "type": "text",
+          "placeholder": "01",
+          "pattern": "\\d\\d",
+          "required": true,
+          "help": "Two digits"
+        },
+        "source_code": {
+          "title": "Source code file",
+          "type": "text",
+          "placeholder": "",
+          "pattern": "",
+          "help": "Script used to generate this file"
+        },
+        "original_dataset": {
+          "title": "Original dataset",
+          "type": "text",
+          "placeholder": "",
+          "pattern": "",
+          "help": "Input file name"
+        },
+        "os": {
+          "title": "Operating System",
+          "type": "select",
+          "values": [
+            "Linux",
+            "Windows",
+            "Mac"
+          ],
+          "multiple": false,
+          "ui": "radio",
+          "help": "Choose one of 3 options."
+        }
+      },
+      "type": "object",
+      "required": false,
+      "repeatable": false,
+      "help": ""
+    }
+  },
+  "edited_by": "u0118974",
+  "realm": "mango_training",
+  "title": "Analysis Information",
+  "parent": ""
+}
