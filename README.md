@@ -12,6 +12,9 @@ This repository contains a few scripts with boilerplate code to:
 
 - [Query data objects based on metadata and download them](./query_metadata.py)
 
+The [metadata schema](./metadata-schema.json) was created with the metadata schema editor of the ManGO Portal and can be uploaded there
+to create a new version of it. It can be parse in Python with the [`mango-mdschema`](https://github.com/kuleuven/mango-mdschema) package.
+
 ## How to run these scripts
 
 1. You should have Python installed and some virtual environment with the packages `python-irodsclient` and `mango-mdschema`. This can be set up as follows:
